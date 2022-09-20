@@ -1,0 +1,97 @@
+/* TELA DE CADASTRO */
+
+.logo {
+    text-align: left;
+    position: absolute;
+    padding-left: 700px;
+    padding-top: 40px;
+}
+
+.logoimg {
+    width: 80%;
+    border-width: 5px;
+    padding: 10px;
+}
+
+.logotitle {
+    position: absolute;
+}
+
+#cadastrotitle {
+    position: absolute;
+    padding-left: 700px;
+    padding-top: 190px;
+}
+
+.cadastro {
+    padding-top: 50px;
+    margin: 50px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #add8e6, #0000ff);
+    border-color: #0000ff;
+}
+
+.cadform {
+    background-color: black;
+    color: white;
+}
+
+/* TELA DE LOGIN */
+
+.logo2 {
+    text-align: left;
+    position: absolute;
+    padding-left: 700px;
+}
+
+#cadastrotitle2 {
+    position: absolute;
+    padding-left: 700px;
+    padding-top: 115px;
+}
+
+/* NAVBAR */
+
+.topnav {
+    background-image: linear-gradient(to right, #add8e6, #0000ff);
+    padding-top: 6px;
+    border: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #6F9BD6, #0000B2);
+    border-style: solid;
+}
+
+.navbtn {
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.navbtn:hover {
+    background-color: lightblue;
+    text-decoration: none;
+}
+
+.navlogo {
+    width: 5%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.logoff {
+    font-size: 14px;
+    padding: 10px;
+    position: absolute;
+    margin-left: 400px;
+}
+
+.perfil {
+    font-size: 14px;
+    padding: 10px;
+    position: absolute;
+    margin-left: 330px;
+}
