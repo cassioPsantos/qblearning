@@ -10,3 +10,10 @@ create table usuarios (
     nascimento date,
     genero int
 );
+
+create table cubos (
+	cod int primary key not null auto_increment,
+    tipo_cubo int,
+    modelo varchar(30),
+    manutencao date
+);
