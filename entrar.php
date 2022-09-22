@@ -16,7 +16,7 @@ if (isset($_POST['btnEntrar'])) {
 
       if (mysqli_affected_rows($conn) > 0) {
         echo"<script> alert('Login sucessido.') </script>";
-        header("Location: https://localhost/tcc/cronometro.php");
+        header("Location: http://localhost/qblearning/cronometro.php");
         die();
       }else{
         echo"<script> alert('Usuário ou senha incorretos.') </script>";

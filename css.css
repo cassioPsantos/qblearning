@@ -95,3 +95,34 @@
     position: absolute;
     margin-left: 330px;
 }
+
+/* COLEÇÃO */
+
+.titulo {
+    margin-left: 50px;
+    margin-right: 900px;
+    margin-top: 20px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    padding-right: 50px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
+}
+
+.colbtn {
+    position: absolute;
+    margin-top: -70px;
+    margin-left: 1100px;
+}
+
+/* CADASTRAR CUBO */
+
+.titulo1 {
+    margin-left: 50px;
+    margin-right: 800px;
+    margin-top: 20px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
+}
