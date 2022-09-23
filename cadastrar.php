@@ -14,10 +14,9 @@ if (isset($_POST['btnEnviar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $nascimento =  $_POST['nascimento'];
-    $genero = $_POST['genero'];
     
-    $sql = "INSERT INTO usuarios (nome, email, senha, nascimento, genero) 
-            VALUES ('$nome', '$email', '$senha', '$nascimento', '$genero')";
+    $sql = "INSERT INTO usuarios (nome, email, senha, nascimento) 
+            VALUES ('$nome', '$email', '$senha', '$nascimento')";
 
     mysqli_query($conn, $sql);
 

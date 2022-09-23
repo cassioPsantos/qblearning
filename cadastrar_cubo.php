@@ -1,12 +1,13 @@
 <html>
 <?php include('config.php');
+include('conexao.php');
 ?>
 
 <head>
 <link rel="stylesheet" href="css.css">
 </head>
 
-<body>
+<body id="cadastrobarra">
 <h1 class="titulo1">Cadastrar novo cubo</h1>
 
 <?php
@@ -14,9 +15,10 @@ if (isset($_POST['btnEnviar'])) {
     $tipo_cubo = $_POST['tipo_cubo'];
     $modelo = $_POST['modelo'];
     $manutencao = $_POST['manutencao'];
+    $aquisicao = $_POST['aquisicao'];
     
-    $sql = "INSERT INTO cubos (tipo_cubo, modelo, manutencao) 
-            VALUES ('$tipo_cubo', '$modelo', '$manutencao')";
+    $sql = "INSERT INTO cubos (tipo_cubo, modelo, manutencao, aquisicao) 
+            VALUES ('$tipo_cubo', '$modelo', '$manutencao', '$aquisicao')";
 
     mysqli_query($conn, $sql);
 
@@ -29,7 +31,8 @@ if (isset($_POST['btnEnviar'])) {
     }
 }
 ?>
-<div class="container">
+<div class="row">
+<div class="container col-10">
     <form method="post">
 
     <div class="row">
@@ -68,11 +71,23 @@ if (isset($_POST['btnEnviar'])) {
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+            Data de aquisição: <input class='form-control' type="date" name="aquisicao" />
+            </div>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="form-group">
                     <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+            <a class="btn btn-danger" href="colecao.php">Cancelar</a>
             </div>
         </div>
     </div>
@@ -80,5 +95,11 @@ if (isset($_POST['btnEnviar'])) {
     </form>
 </div>
 
+<div class="container fundo_cadastro col-6">
+    <div>
+        <img src="logobranco.png" alt="Logo QBLearning" class="logocad">
+    </div>
+</div>
+</div>
 </body>
 </html>
