@@ -13,8 +13,16 @@ create table usuarios (
 
 create table cubos (
 	cod int primary key not null auto_increment,
-    tipo_cubo int,
+    id_usuario int,
+    tipo_cubo varchar(15),
     modelo varchar(30),
     manutencao date,
     aquisicao date
+);
+
+create table tempos (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    tempo float(4,2)
 );

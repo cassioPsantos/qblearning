@@ -7,6 +7,7 @@ $query = mysqli_query($conn, $sql);
 ?>
 <head>
 <link rel="stylesheet" href="css.css">
+<title>Coleção - QBLearning</title>
 </head>
 
 <body>

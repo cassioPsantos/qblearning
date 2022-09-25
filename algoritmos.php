@@ -4,6 +4,7 @@ include('navbar.php');
 ?>
 
 <head>
+<title>Algoritmos - QBLearning</title>
 </head>
 
 <body>

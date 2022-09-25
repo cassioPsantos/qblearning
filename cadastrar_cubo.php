@@ -5,6 +5,7 @@ include('conexao.php');
 
 <head>
 <link rel="stylesheet" href="css.css">
+<title>Cadastrar cubo - QBLearning</title>
 </head>
 
 <body id="cadastrobarra">

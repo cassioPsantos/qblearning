@@ -1,6 +1,8 @@
+<?php session_start(); ?>
 <html>
 <head>
 <link rel="stylesheet" href="css.css">
+<title>Entrar - QBLearning</title>
 </head>
 <?php
 include('conexao.php');
@@ -8,11 +10,14 @@ include('config.php');
 
 if (isset($_POST['btnEntrar'])) {
     $email = $_POST['email'];
-    $senha = $_POST['senha'];  
+    $senha = $_POST['senha']; 
 
-    $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
-
+    $sql = "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'";
     mysqli_query($conn, $sql);
+    $query = mysqli_query($conn, $sql);
+    while ($dados = mysqli_fetch_array($query)) {
+        $_SESSION['id_usuario'] = $dados['id'];
+    }
 
       if (mysqli_affected_rows($conn) > 0) {
         echo"<script> alert('Login sucessido.') </script>";

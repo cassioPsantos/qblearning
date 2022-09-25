@@ -4,6 +4,7 @@ include('navbar.php');
 ?>
 
 <head>
+<title>Tutoriais - QBLearning</title>
 </head>
 
 <body>
