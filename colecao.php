@@ -1,8 +1,10 @@
+<?php session_start(); ?>
 <html>
 <?php include('config.php');
 include('conexao.php');
 include('navbar.php');
-$sql = "SELECT * FROM cubos";
+$id_usuario = $_SESSION['id_usuario'];
+$sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario'";
 $query = mysqli_query($conn, $sql);
 ?>
 <head>

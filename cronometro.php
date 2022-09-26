@@ -55,7 +55,7 @@ if ($tempo != null) {
         </tr>
 
         <?php
-        $sql1 = "SELECT * FROM tempos where id_usuario='$id_usuario'";
+        $sql1 = "SELECT * FROM tempos WHERE id_usuario='$id_usuario'";
         $query = mysqli_query($conn, $sql1);
         while ($dados = mysqli_fetch_array($query)) { ?>
             <tr>
