@@ -17,6 +17,8 @@ if (isset($_POST['btnEntrar'])) {
     $query = mysqli_query($conn, $sql);
     while ($dados = mysqli_fetch_array($query)) {
         $_SESSION['id_usuario'] = $dados['id'];
+        $_SESSION['melhor_tempo'] = "";
+        $_SESSION['pior_tempo'] = "";
     }
 
       if (mysqli_affected_rows($conn) > 0) {

@@ -7,11 +7,22 @@ include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = "3x3";
 $tempo = $_GET['tempo'];
+$melhor_tempo = $_SESSION['melhor_tempo'];
+$pior_tempo = $_SESSION['pior_tempo'];
 if ($tempo != null) {
     $sql = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
             VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
     mysqli_query($conn, $sql);
+    if ($tempo < $melhor_tempo OR $melhor_tempo == null) {
+        $melhor_tempo = $tempo;
+        $_SESSION['melhor_tempo'] = $tempo;
+    }
+    if ($tempo > $pior_tempo OR $pior_tempo == null) {
+        $pior_tempo = $tempo;
+        $_SESSION['pior_tempo'] = $tempo;
+    }
 }
+
 ?>
 <head>
 <link rel="stylesheet" href="css.css">
@@ -26,7 +37,11 @@ if ($tempo != null) {
         echo $tempo;
     }
     ?></h1><br>
+
     <script>
+
+        // função do cronômetro
+
         let tempo = 0;
         let timer;
         let crocheck = 1;
@@ -53,6 +68,10 @@ if ($tempo != null) {
                 document.getElementById('tempo').style.color = 'blue'
             }
         }
+
+        // função melhor tempo
+
+
         
     </script>
 
