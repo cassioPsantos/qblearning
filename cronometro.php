@@ -18,7 +18,7 @@ if ($tempo != null) {
 <title>Cronômetro - QBLearning</title>
 </head>
 
-<body onkeyup="inicia()">
+<body onkeypress="cor_cron()" onkeyup="inicia()">
     <h1 id="tempo"><?php
     if ($tempo == null) {
         echo "0";
@@ -39,21 +39,30 @@ if ($tempo != null) {
                 tempo += 0.01;
                 document.getElementById('tempo').innerHTML = tempo.toFixed(2);
             }, 10);
+            document.getElementById('tempo').style.color = 'black'
+            document.getElementById('tempo_comeca').style.visibility = 'hidden'
             } else {
             crocheck=1
             clearInterval(timer);
             window.location.href = '/qblearning/cronometro.php?tempo='+tempo.toFixed(2)
             }
         }
+
+        function cor_cron(){
+            if (crocheck == 1) {
+                document.getElementById('tempo').style.color = 'blue'
+            }
+        }
+        
     </script>
 
+<div id="tempo_comeca">
 <div class="container tabela_tempos">
-    <table class="table table-hover">
+    <table class="table table-striped">  
         <tr>
             <td>Código</td>
             <td>Tempo</td>
         </tr>
-
         <?php
         $sql1 = "SELECT * FROM tempos WHERE id_usuario='$id_usuario'";
         $query = mysqli_query($conn, $sql1);
@@ -64,6 +73,44 @@ if ($tempo != null) {
             </tr>
         <?php } ?>
     </table>
+</div>
+
+<div class="container tabela_dados">
+    <table class="table table-striped">
+        <tr>
+            <td>Melhor tempo:</td>
+            <td><?php echo $melhor_tempo ?></td>
+        </tr>
+        <tr>
+            <td>Pior tempo:</td>
+            <td><?php echo $pior_tempo ?></td>
+        </tr>
+        <tr>
+            <td>Média da sessão:</td>
+            <td><?php echo $media ?></td>
+        </tr>
+        <tr>
+            <td>Média de 5:</td>
+            <td><?php echo $media_5 ?></td>
+        </tr>
+        <tr>
+            <td>Melhor média de 5:</td>
+            <td><?php echo $melhormedia_5 ?></td>
+        </tr>
+        <tr>
+            <td>Média de 12:</td>
+            <td><?php echo $media_12 ?></td>
+        </tr>
+        <tr>
+            <td>Melhor média de 12:</td>
+            <td><?php echo $melhormedia_12 ?></td>
+        </tr>
+    </table>
+</div>
+
+<div class="espaco_comecar">
+    <h5>Pressione e segure espaço para começar</h5>
+</div>
 </div>
 
 </body>
