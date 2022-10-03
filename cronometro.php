@@ -9,6 +9,7 @@ $tipo_cubo = "3x3";
 $tempo = $_GET['tempo'];
 $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
+$media = $_SESSION['media'];
 if ($tempo != null) {
     $sql = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
             VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
@@ -21,6 +22,11 @@ if ($tempo != null) {
         $pior_tempo = $tempo;
         $_SESSION['pior_tempo'] = $tempo;
     }
+    $sqlmedia = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario'";
+    $query1 = mysqli_query($conn, $sqlmedia);
+    $dados1 = mysqli_fetch_array($query1);
+    $media = $dados1['media'];
+    $_SESSION['media'] = $media;
 }
 
 ?>
@@ -69,18 +75,14 @@ if ($tempo != null) {
             }
         }
 
-        // função melhor tempo
-
-
-        
     </script>
 
 <div id="tempo_comeca">
 <div class="container tabela_tempos">
     <table class="table table-striped">  
         <tr>
-            <td>Código</td>
-            <td>Tempo</td>
+            <th>Código</td>
+            <th>Tempo</td>
         </tr>
         <?php
         $sql1 = "SELECT * FROM tempos WHERE id_usuario='$id_usuario'";
@@ -106,7 +108,13 @@ if ($tempo != null) {
         </tr>
         <tr>
             <td>Média da sessão:</td>
-            <td><?php echo $media ?></td>
+            <td><?php 
+                if ($media != 0) {
+                    echo number_format((float)$media, 2);
+                } else {
+                    $media = '';
+                }
+                ?></td>
         </tr>
         <tr>
             <td>Média de 5:</td>

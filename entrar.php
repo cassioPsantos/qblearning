@@ -19,6 +19,7 @@ if (isset($_POST['btnEntrar'])) {
         $_SESSION['id_usuario'] = $dados['id'];
         $_SESSION['melhor_tempo'] = "";
         $_SESSION['pior_tempo'] = "";
+        $_SESSION['media'] = "";
     }
 
       if (mysqli_affected_rows($conn) > 0) {
