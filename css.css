@@ -174,7 +174,7 @@
 
 .tabela_dados {
     width: 250px;
-    height: 308px;
+    height: auto;
     border-style: solid;
     border-width: 3px;
     border-image-slice: 1;
@@ -191,9 +191,39 @@
     top: auto;
 }
 
+.escolher_cubo {
+    margin: auto;
+    width: 20%;
+    border-style: solid;
+    border-width: 3px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
+}
+
+.escolher_cubo_titulo {
+    font-size: 24px;
+    text-align: center;
+}
+
 /* PERFIL */
 
 .subtitulo {
-    margin-left: 50px;
+    margin-left: 150px;
+    font-size: 30px;
+}
+
+.dadosperfil {
+    margin-left: 180px;
     font-size: 20px;
+}
+
+.mostrarsenha {
+    position: absolute;
+    left: 240;
+}
+
+.mostrarsenha1 {
+    position: absolute;
+    left: 260px;
+    top: 351px;
 }

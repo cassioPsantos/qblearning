@@ -160,6 +160,36 @@ if ($tempo != null) {
 <div class="espaco_comecar">
     <h5>Pressione e segure espaço para começar</h5>
 </div>
+<br>
+
+<div class="form-group escolher_cubo">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <h1 class="escolher_cubo_titulo">Tipo de cubo</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select class="form-control" name="escolher_cubo">
+                    <option value="2x2">2x2</option>
+                    <option selected="selected" value="3x3">3x3</option>
+                    <option value="4x4">4x4</option>
+                    <option value="5x5">5x5</option>
+                    <option value="6x6">6x6</option>
+                    <option value="7x7">7x7</option>
+                    <option value="Piramynx">Piramynx</option>
+                    <option value="Megamynx">Megamynx</option>
+                    <option value="Skewb">Skewb</option>
+                    <option value="Square-1">Square-1</option>
+                    <option value="Clock">Clock</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
 </div>
 
 </body>

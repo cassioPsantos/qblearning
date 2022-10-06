@@ -11,7 +11,36 @@ include('navbar.php');
 
 <body>
 <h1 class="titulo"><?php echo $_SESSION['nome_usuario']?></h1>
-<h6 class="subtitulo">Endereço de email: <?php echo $_SESSION['email_usuario']?></h6>
-<h6 class="subtitulo">Senha: <?php echo $_SESSION['senha_usuario']?></h6>
+<br>
+<h2 class="subtitulo">Recordes</h2>
+<br>
+
+
+
+
+
+
+
+
+<h2 class="subtitulo">Informações pessoais</h2>
+<br>
+<h6 class="dadosperfil">&#9658; Endereço de email: <?php echo $_SESSION['email_usuario']?></h6>
+<br>
+<h6 class="dadosperfil">&#9658; Senha: <?php echo $_SESSION['senha_usuario']?>
+
+<!-- <script> function mostrar_senha() {
+  var x = document.getElementById("mostrarsenha");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+<label for="mostrarsenha" class="mostrarsenha1">Exibir senha</label>
+<input class="mostrarsenha" type="checkbox" name="mostrarsenha" onclick="mostrar_senha()">
+-->
+
+</h6>
 </body>
 </html>
