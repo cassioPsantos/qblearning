@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <html>
-<?php 
-include('config.php');
+<?php
 include('conexao.php');
 include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];
@@ -10,23 +9,46 @@ $tempo = $_GET['tempo'];
 $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
 $media = $_SESSION['media'];
+$embaralhamento = "";
+$dia = date("d/m/Y");
+
 if ($tempo != null) {
-    $sql = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
-            VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
-    mysqli_query($conn, $sql);
+
+    // inserção temporaria de tempos
+    $sql_tempo = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
+                    VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
+    mysqli_query($conn, $sql_tempo);
+
+    // definição da média da seção
+    $sql_media = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario'";
+    $query_media = mysqli_query($conn, $sql_media);
+    $dados_media = mysqli_fetch_array($query_media);
+    $media = $dados_media['media'];
+    $_SESSION['media'] = $media;
+
+    // definição de melhor tempo da sessão
     if ($tempo < $melhor_tempo OR $melhor_tempo == null) {
         $melhor_tempo = $tempo;
         $_SESSION['melhor_tempo'] = $tempo;
+        $sql_melhortempo = "INSERT INTO melhor_tempo (id_usuario, tipo_cubo, tempo, embaralhamento, dia) 
+                            VALUES ('$id_usuario', '$tipo_cubo', '$melhor_tempo', '$embaralhamento', '$dia')";
+        mysqli_query($conn, $sql_melhortempo);
     }
+
+    // definição de pior tempo da sessão
     if ($tempo > $pior_tempo OR $pior_tempo == null) {
         $pior_tempo = $tempo;
         $_SESSION['pior_tempo'] = $tempo;
     }
-    $sqlmedia = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario'";
-    $query1 = mysqli_query($conn, $sqlmedia);
-    $dados1 = mysqli_fetch_array($query1);
-    $media = $dados1['media'];
-    $_SESSION['media'] = $media;
+
+    // definição de melhor média geral da sessão
+    if ($media < $melhor_media OR $melhor_media == null) {
+        $melhor_media = $media;
+        $_SESSION['melhor_media'] = $media;
+        $sql_melhormedia = "INSERT INTO melhor_media (id_usuario, tipo_cubo, media, dia) 
+                            VALUES ('$id_usuario', '$tipo_cubo', '$melhor_media', '$dia')";
+        mysqli_query($conn, $sql_melhormedia);
+    }
 }
 
 ?>
@@ -85,12 +107,12 @@ if ($tempo != null) {
             <th>Tempo</td>
         </tr>
         <?php
-        $sql1 = "SELECT * FROM tempos WHERE id_usuario='$id_usuario'";
-        $query = mysqli_query($conn, $sql1);
-        while ($dados = mysqli_fetch_array($query)) { ?>
+        $sql_listagem = "SELECT * FROM tempos WHERE id_usuario='$id_usuario'";
+        $query_listagem = mysqli_query($conn, $sql_listagem);
+        while ($dados_listagem = mysqli_fetch_array($query_listagem)) { ?>
             <tr>
-                <td><?php echo $dados['cod'] ?></td>
-                <td><?php echo $dados['tempo'] ?></td>
+                <td><?php echo $dados_listagem['cod'] ?></td>
+                <td><?php echo $dados_listagem['tempo'] ?></td>
             </tr>
         <?php } ?>
     </table>
@@ -100,11 +122,11 @@ if ($tempo != null) {
     <table class="table table-striped">
         <tr>
             <td>Melhor tempo:</td>
-            <td><?php echo $melhor_tempo ?></td>
+            <td><?php echo number_format((float)$melhor_tempo, 2) ?></td>
         </tr>
         <tr>
             <td>Pior tempo:</td>
-            <td><?php echo $pior_tempo ?></td>
+            <td><?php echo number_format((float)$pior_tempo, 2) ?></td>
         </tr>
         <tr>
             <td>Média da sessão:</td>
@@ -118,19 +140,19 @@ if ($tempo != null) {
         </tr>
         <tr>
             <td>Média de 5:</td>
-            <td><?php echo $media_5 ?></td>
+            <td><?php /* echo $media_5 */ ?></td>
         </tr>
         <tr>
             <td>Melhor média de 5:</td>
-            <td><?php echo $melhormedia_5 ?></td>
+            <td><?php /* echo $melhormedia_5 */ ?></td>
         </tr>
         <tr>
             <td>Média de 12:</td>
-            <td><?php echo $media_12 ?></td>
+            <td><?php /* echo $media_12 */ ?></td>
         </tr>
         <tr>
             <td>Melhor média de 12:</td>
-            <td><?php echo $melhormedia_12 ?></td>
+            <td><?php /* echo $melhormedia_12 */ ?></td>
         </tr>
     </table>
 </div>

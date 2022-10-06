@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <html>
 <?php 
-include('config.php');
 include('conexao.php');
 $id_usuario = $_SESSION['id_usuario'];
 if (isset($_POST['btnEnviar'])) {

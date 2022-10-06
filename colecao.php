@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <html>
-<?php include('config.php');
+<?php
 include('conexao.php');
 include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];

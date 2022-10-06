@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_destroy();
+session_start(); 
+?>
 <html>
 <head>
 <link rel="stylesheet" href="css.css">
@@ -6,16 +9,20 @@
 </head>
 <?php
 include('conexao.php');
-include('config.php'); 
+$sqllogoff = "DELETE FROM tempos";
+mysqli_query($conn, $sqllogoff); 
 
 if (isset($_POST['btnEntrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha']; 
 
-    $sql = "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'";
+    $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
     mysqli_query($conn, $sql);
     $query = mysqli_query($conn, $sql);
     while ($dados = mysqli_fetch_array($query)) {
+        $_SESSION['nome_usuario'] = $dados['nome'];
+        $_SESSION['email_usuario'] = $dados['email'];
+        $_SESSION['senha_usuario'] = $dados['senha'];
         $_SESSION['id_usuario'] = $dados['id'];
         $_SESSION['melhor_tempo'] = "";
         $_SESSION['pior_tempo'] = "";

@@ -7,7 +7,6 @@
 <body>
 <?php
 include('conexao.php');
-include('config.php');
 
 if (isset($_POST['btnEnviar'])) {
     $nome = $_POST['nome'];
@@ -74,7 +73,7 @@ if (isset($_POST['btnEnviar'])) {
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    Insira seu gênero: <select class='form-control' name="genero">
+                    Gênero: <select class='form-control' name="genero">
                     <option value="1">Masculino</option>
                     <option value="2">Feminino</option>
                     <option value="3">Outro</option>

@@ -1,5 +1,7 @@
+<?php session_start(); ?>
 <html>
-<?php include('config.php');
+<?php
+include('conexao.php');
 include('navbar.php');
 ?>
 

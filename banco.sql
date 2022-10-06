@@ -1,5 +1,4 @@
 create database qblearning;
-drop database qblearning;
 
 use qblearning;
 
@@ -8,6 +7,7 @@ create table usuarios (
 	nome varchar(30),
     email varchar(30),
     senha varchar(30),
+    genero varchar(9),
     nascimento date
 );
 
@@ -17,7 +17,8 @@ create table cubos (
     tipo_cubo varchar(15),
     modelo varchar(30),
     manutencao date,
-    aquisicao date
+    aquisicao date,
+	foreign key (id_usuario) references usuarios(id)
 );
 
 create table tempos (
@@ -25,4 +26,23 @@ create table tempos (
     id_usuario int,
     tipo_cubo varchar(15),
     tempo float(4,2)
+);
+
+create table melhor_tempo (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    tempo float(4,2),
+    embaralhamento varchar(60),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
+create table melhor_media (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    media float(4,2),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
 );
