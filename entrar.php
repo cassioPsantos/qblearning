@@ -24,12 +24,9 @@ if (isset($_POST['btnEntrar'])) {
         $query = mysqli_query($conn, $sql);
         while ($dados = mysqli_fetch_array($query)) {
             $_SESSION['nome_usuario'] = $dados['nome_usuario'];
-            $_SESSION['nome_completo'] = $dados['nome_completo'];
-            $_SESSION['email_usuario'] = $dados['email'];
-            $_SESSION['senha_usuario'] = $dados['senha'];
-            $_SESSION['genero_usuario'] = $dados['genero'];
-            $_SESSION['nascimento_usuario'] = $dados['nascimento'];
             $_SESSION['id_usuario'] = $dados['id'];
+            $_SESSION['tipo_cubo'] = "3x3";
+            $_SESSION['cubo_check'] = 0;
             $_SESSION['melhor_tempo'] = "";
             $_SESSION['pior_tempo'] = "";
             $_SESSION['media'] = "";

@@ -2,26 +2,8 @@
 <html>
 <?php 
 include('conexao.php');
+include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];
-if (isset($_POST['btnEnviar'])) {
-    $tipo_cubo = $_POST['tipo_cubo'];
-    $modelo = $_POST['modelo'];
-    $manutencao = $_POST['manutencao'];
-    $aquisicao = $_POST['aquisicao'];
-    
-    $sql = "INSERT INTO cubos (tipo_cubo, modelo, manutencao, aquisicao) 
-            VALUES ('$tipo_cubo', '$modelo', '$manutencao', '$aquisicao')";
-
-    mysqli_query($conn, $sql);
-
-    if (mysqli_affected_rows($conn) > 0) {
-        echo "<script> alert('Cubo cadastrado com sucesso.') </script>";
-        header("Location: http://localhost/qblearning/colecao.php");
-        } 
-        else {
-        echo "<script> alert('Ocorreu algum erro.') </script>";
-    }
-}
 ?>
 
 <head>
@@ -102,13 +84,13 @@ if (isset($_POST['btnEnviar'])) {
     </div>
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-1">
             <div class="form-group">
                     <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
             </div>
         </div>
-        <div class="col">
-            <div class="form-group">
+        <div class="col-1">
+            <div class="form-group cancelarbtn">
             <a class="btn btn-danger" href="colecao.php">Cancelar</a>
             </div>
         </div>

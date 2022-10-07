@@ -6,7 +6,7 @@ include('navbar.php');
 ?>
 
 <head>
-<title>Tempos- QBLearning</title>
+<title>Tempos - QBLearning</title>
 </head>
 
 <body>

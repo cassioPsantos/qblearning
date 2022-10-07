@@ -161,6 +161,10 @@
     overflow-x: hidden;
 }
 
+.cancelarbtn {
+    margin-left: 30px;
+}
+
 /* CRONOMETRO */
 
 #tempo {
@@ -210,8 +214,7 @@
     border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
 }
 
-.escolher_cubo_titulo {
-    font-size: 24px;
+.atualizabtn {
     text-align: center;
 }
 
@@ -236,4 +239,8 @@
     position: absolute;
     left: 260px;
     top: 351px;
+}
+
+.perfilbtn {
+    margin-left: 180px;
 }
