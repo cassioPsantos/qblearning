@@ -5,16 +5,21 @@
     position: absolute;
     padding-left: 700px;
     padding-top: 40px;
+    width: 500px;
+    border-width: 5px;
+    padding: 10px;
+    right: 10%;
+    left: auto;
 }
 
 .logoimg {
-    width: 80%;
-    border-width: 5px;
-    padding: 10px;
+    margin-top: 30px;
+    width: 500px;
 }
 
-.logotitle {
-    position: absolute;
+.logotext {
+    right: 12%;
+    left: auto;
 }
 
 #cadastrotitle {
@@ -38,12 +43,17 @@
     color: white;
 }
 
+.cadform2 {
+    margin-left: 4%;
+}
+
+
 /* TELA DE LOGIN */
 
-.logo2 {
-    text-align: left;
-    position: absolute;
-    padding-left: 700px;
+.logotext2 {
+    right: 12%;
+    left: auto;
+    margin-top: 60px;
 }
 
 #cadastrotitle2 {

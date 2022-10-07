@@ -122,11 +122,11 @@ if ($tempo != null) {
     <table class="table table-striped">
         <tr>
             <td>Melhor tempo:</td>
-            <td><?php echo number_format((float)$melhor_tempo, 2) ?></td>
+            <td><?php echo $melhor_tempo ?></td>
         </tr>
         <tr>
             <td>Pior tempo:</td>
-            <td><?php echo number_format((float)$pior_tempo, 2) ?></td>
+            <td><?php echo $pior_tempo ?></td>
         </tr>
         <tr>
             <td>Média da sessão:</td>

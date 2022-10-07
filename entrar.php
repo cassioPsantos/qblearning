@@ -14,42 +14,55 @@ mysqli_query($conn, $sqllogoff);
 
 if (isset($_POST['btnEntrar'])) {
     $email = $_POST['email'];
-    $senha = $_POST['senha']; 
+    $senha = $_POST['senha'];
+    $confirmar_senha = $_POST['confirmar_senha'];
 
-    $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
-    mysqli_query($conn, $sql);
-    $query = mysqli_query($conn, $sql);
-    while ($dados = mysqli_fetch_array($query)) {
-        $_SESSION['nome_usuario'] = $dados['nome'];
-        $_SESSION['email_usuario'] = $dados['email'];
-        $_SESSION['senha_usuario'] = $dados['senha'];
-        $_SESSION['id_usuario'] = $dados['id'];
-        $_SESSION['melhor_tempo'] = "";
-        $_SESSION['pior_tempo'] = "";
-        $_SESSION['media'] = "";
+    if ($senha == $confirmar_senha) {
+
+        $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
+        mysqli_query($conn, $sql);
+        $query = mysqli_query($conn, $sql);
+        while ($dados = mysqli_fetch_array($query)) {
+            $_SESSION['nome_usuario'] = $dados['nome_usuario'];
+            $_SESSION['nome_completo'] = $dados['nome_completo'];
+            $_SESSION['email_usuario'] = $dados['email'];
+            $_SESSION['senha_usuario'] = $dados['senha'];
+            $_SESSION['genero_usuario'] = $dados['genero'];
+            $_SESSION['nascimento_usuario'] = $dados['nascimento'];
+            $_SESSION['id_usuario'] = $dados['id'];
+            $_SESSION['melhor_tempo'] = "";
+            $_SESSION['pior_tempo'] = "";
+            $_SESSION['media'] = "";
+        }
+
+        if (mysqli_affected_rows($conn) > 0) {
+            echo"<script> alert('Login sucessido.') </script>";
+            header("Location: http://localhost/qblearning/cronometro.php");
+            die();
+        }else{
+            echo"<script> alert('Usuário ou senha incorretos.') </script>";
+        }
+    } else {
+        echo"<script> alert('As senhas não batem') </script>";
     }
-
-      if (mysqli_affected_rows($conn) > 0) {
-        echo"<script> alert('Login sucessido.') </script>";
-        header("Location: http://localhost/qblearning/cronometro.php");
-        die();
-      }else{
-        echo"<script> alert('Usuário ou senha incorretos.') </script>";
-      }
   }
 ?>
 
 <div class="cadastro cadform">
-<div class="logo2">
+
+<div class="logo">
         <img src="logo2.png" alt="Logo QBLearning" class="logoimg">
 </div>
-<div class="container" id="cadastrotitle2">
+<div class="container logotext2" id="cadastrotitle2">
         <p>Entre na sua conta para entrar na QBLearning.</p>
         <p>Não possui uma conta? <a href="cadastrar.php">Cadastre-se aqui.</a></p>
 </div>
 
-<div class="container" id="form">
+<div class="container-fluid cadentrar" id="form">
+
+    <div class="cadform2">
     <form method="post">
+
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -57,6 +70,7 @@ if (isset($_POST['btnEntrar'])) {
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -64,6 +78,15 @@ if (isset($_POST['btnEntrar'])) {
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                Confirmar senha: <input class='form-control' type="password" name="confirmar_senha"/>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-3">
                 <div class="form-group">
@@ -71,7 +94,9 @@ if (isset($_POST['btnEntrar'])) {
                 </div>
             </div>
         </div>
+
     </form>
+    </div>
 </div>
 </div>
 </html>

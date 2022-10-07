@@ -4,7 +4,8 @@ use qblearning;
 
 create table usuarios (
 	id int primary key not null auto_increment,
-	nome varchar(30),
+    nome_usuario varchar(20),
+	nome_completo varchar(30),
     email varchar(30),
     senha varchar(30),
     genero varchar(9),

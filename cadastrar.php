@@ -9,13 +9,15 @@
 include('conexao.php');
 
 if (isset($_POST['btnEnviar'])) {
-    $nome = $_POST['nome'];
+    $nome_usuario = $_POST['nome_usuario'];
+    $nome_completo = $_POST['nome_completo'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    $genero = $_POST['genero'];
     $nascimento =  $_POST['nascimento'];
     
-    $sql = "INSERT INTO usuarios (nome, email, senha, nascimento) 
-            VALUES ('$nome', '$email', '$senha', '$nascimento')";
+    $sql = "INSERT INTO usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento) 
+            VALUES ('$nome_usuario', '$nome_completo', '$email', '$senha', '$genero', '$nascimento')";
 
     mysqli_query($conn, $sql);
 
@@ -29,25 +31,35 @@ if (isset($_POST['btnEnviar'])) {
 ?>
 
 <div class="cadastro cadform">
+
 <div class="logo">
         <img src="logo2.png" alt="Logo QBLearning" class="logoimg">
 </div>
-<div class="container" id="cadastrotitle">
+    <div class="container logotext" id="cadastrotitle">
         <p>Crie sua conta para fazer parte da QBLearning!</p>
         <p>Já tem uma conta? <a href="entrar.php">Entre aqui.</a></p>
         <p><a href="listaUsuario.php">Checar usuários</a> (teste temporario)</p>
 </div>
 
-<div class="container">
+<div class="container-fluid">
+    <div class="cadform2">
     <form method="post">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                Nome de usuário: <input class='form-control' type="text" name="nome_usuario"/>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                Nome: <input class='form-control' type="text" name="nome"/>
+                Nome completo: <input class='form-control' type="text" name="nome_completo"/>
                 </div>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-6">
@@ -74,9 +86,9 @@ if (isset($_POST['btnEnviar'])) {
             <div class="col-3">
                 <div class="form-group">
                     Gênero: <select class='form-control' name="genero">
-                    <option value="1">Masculino</option>
-                    <option value="2">Feminino</option>
-                    <option value="3">Outro</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
                     </select>
                 </div>
             </div>
@@ -91,6 +103,7 @@ if (isset($_POST['btnEnviar'])) {
         </div>
 
     </form>
+    </div>
 </div>
 </div>
 
