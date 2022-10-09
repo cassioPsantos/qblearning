@@ -22,6 +22,7 @@ if (isset($_POST['btnEnviar'])) {
     mysqli_query($conn, $sql);
 
     if (mysqli_affected_rows($conn) > 0) {
+        
         echo "<script> alert('Usuário cadastrado com sucesso.') </script>";
         } 
         else {

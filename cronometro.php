@@ -8,19 +8,23 @@ $tipo_cubo = $_SESSION['tipo_cubo'];
 if (isset($_POST['btnEnviar'])) {
     $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
     $tipo_cubo = $_SESSION['tipo_cubo'];
-    $sql_dados_cubos = "SELECT tempo FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo';
-                        SELECT media FROM melhor_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
-    $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
-    $dados_cubo = mysqli_fetch_array($query_dados_cubo);
     $_SESSION['cubo_check'] = 1;
-    $_SESSION['media'] = "";
-    $_SESSION['melhor_tempo'] = $dados_cubo['tempo'];
-    $_SESSION['pior_tempo'] = $dados_cubo['media'];
 }
-$tempo = $_GET['tempo'];
+// seleção de melhor tempo
+$sql_dados_cubo = "SELECT melhor_tempo FROM melhor_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
+$dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$_SESSION['melhor_tempo'] = $dados_cubo['melhor_tempo'];
+    
+// seleção de pior tempo
+$sql_dados_cubo = "SELECT pior_tempo FROM pior_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
+$dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$_SESSION['pior_tempo'] = $dados_cubo['pior_tempo'];
+
 $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
-$media = $_SESSION['media'];
+$tempo = $_GET['tempo'];
 $embaralhamento = "";
 $dia = date("d/m/Y");
 
@@ -28,42 +32,59 @@ if ($tempo != null) {
 
     if ($_SESSION['cubo_check'] == 0) {
 
-        // inserção temporaria de tempos
+        // inserção de tempos
         $sql_tempo = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
                         VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
-        $query_dados_cubo = mysqli_query($conn, $sql_tempo);
+        mysqli_query($conn, $sql_tempo);
 
-        // definição de melhor tempo da sessão
-        if ($tempo < $melhor_tempo OR $melhor_tempo == null) {
-            $melhor_tempo = $tempo;
+        // inserção de melhor tempo
+        if ($tempo < $melhor_tempo or $melhor_tempo == null) {
             $_SESSION['melhor_tempo'] = $tempo;
-            $sql_melhortempo = "INSERT INTO melhor_tempo (id_usuario, tipo_cubo, tempo, embaralhamento, dia) 
-                                VALUES ('$id_usuario', '$tipo_cubo', '$melhor_tempo', '$embaralhamento', '$dia')";
+            $melhor_tempo = $_SESSION['melhor_tempo'];
+            $sql_melhortempo = "SELECT * FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_melhortempo);
+            if (mysqli_affected_rows($conn) == 0) {
+                $sql_melhortempo = "INSERT INTO melhor_tempo (id_usuario, tipo_cubo, melhor_tempo, embaralhamento, dia) 
+                                    VALUES ('$id_usuario', '$tipo_cubo', '$melhor_tempo', '$embaralhamento', '$dia')";
+                mysqli_query($conn, $sql_melhortempo);
+            } else if (mysqli_affected_rows($conn) > 0) {
+                $sql_melhortempo = "UPDATE melhor_tempo
+                                    SET melhor_tempo = '$melhor_tempo',
+                                    embaralhamento = '$embaralhamento',
+                                    dia = '$dia'
+                                    WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+                mysqli_query($conn, $sql_melhortempo);
+            }
+
         }
         
-        // definição de pior tempo da sessão
-        if ($tempo > $pior_tempo OR $pior_tempo == null) {
-            $pior_tempo = $tempo;
+        // inserção de pior tempo
+        if ($tempo > $pior_tempo or $pior_tempo == null) {
             $_SESSION['pior_tempo'] = $tempo;
+            $pior_tempo = $_SESSION['pior_tempo'];
+            $sql_piortempo = "SELECT * FROM pior_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_piortempo);
+            if (mysqli_affected_rows($conn) == 0) {
+                $sql_piortempo = "INSERT INTO pior_tempo (id_usuario, tipo_cubo, pior_tempo, embaralhamento, dia) 
+                                    VALUES ('$id_usuario', '$tipo_cubo', '$pior_tempo', '$embaralhamento', '$dia')";
+                mysqli_query($conn, $sql_piortempo);
+            } else if (mysqli_affected_rows($conn) > 0) {
+                $sql_piortempo = "UPDATE pior_tempo
+                                    SET pior_tempo = '$pior_tempo',
+                                    embaralhamento = '$embaralhamento',
+                                    dia = '$dia'
+                                    WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+                mysqli_query($conn, $sql_piortempo);
+            }
+
         }
     
     }
-    // definição da média da seção
+    // seleção da média
     $sql_media = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
     $query_media = mysqli_query($conn, $sql_media);
     $dados_media = mysqli_fetch_array($query_media);
     $media = $dados_media['media'];
-    $_SESSION['media'] = $media;
-
-    // definição de melhor média geral da sessão
-    if ($media < $melhor_media OR $melhor_media == null) {
-        $melhor_media = $media;
-        $_SESSION['melhor_media'] = $media;
-        $sql_melhormedia = "INSERT INTO melhor_media (id_usuario, tipo_cubo, media, dia) 
-                            VALUES ('$id_usuario', '$tipo_cubo', '$melhor_media', '$dia')";
-        mysqli_query($conn, $sql_melhormedia);
-    }
 }
 
 $_SESSION['cubo_check'] = 0;
@@ -106,11 +127,11 @@ $_SESSION['cubo_check'] = 0;
     <table class="table table-striped">
         <tr>
             <td>Melhor tempo:</td>
-            <td><?php echo $melhor_tempo ?></td>
+            <td><?php echo number_format((float)$melhor_tempo, 2); ?></td>
         </tr>
         <tr>
             <td>Pior tempo:</td>
-            <td><?php echo $pior_tempo ?></td>
+            <td><?php echo number_format((float)$pior_tempo, 2); ?></td>
         </tr>
         <tr>
             <td>Média da sessão:</td>
@@ -152,7 +173,7 @@ $_SESSION['cubo_check'] = 0;
         <tr>
             <td>
                 <select class="form-control" name="tipo_cubo">
-                    <option>Tipo de cubo: <?php echo $tipo_cubo?> </option>
+                    <option selected="true" disabled="disabled">Tipo de cubo: <?php echo $tipo_cubo?> </option>
                     <option value="2x2">2x2</option>
                     <option value="3x3">3x3</option>
                     <option value="4x4">4x4</option>

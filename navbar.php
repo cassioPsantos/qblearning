@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<div id="tempo_comeca1">
 <link rel="stylesheet" href="css.css">
 <div class="topnav">
   <img src="logo.png" alt="Logo QBLearning" class="navlogo">
@@ -9,4 +10,5 @@
   <a class="navbtn" href="colecao.php">Coleção</a>
   <a class="navbtn logoff" href="entrar.php">Log off</a>
   <a class="navbtn perfil" href="perfil.php">Perfil: <?php echo $_SESSION['nome_usuario']?></a>
+</div>
 </div>

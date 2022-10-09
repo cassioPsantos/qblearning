@@ -38,6 +38,7 @@ function inicia(){
     }, 10);
     document.getElementById('tempo').style.color = 'black'
     document.getElementById('tempo_comeca').style.visibility = 'hidden'
+    document.getElementById('tempo_comeca1').style.visibility = 'hidden'
     } else {
     crocheck=1
     clearInterval(timer);

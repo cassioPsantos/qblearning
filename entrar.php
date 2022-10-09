@@ -9,8 +9,6 @@ session_start();
 </head>
 <?php
 include('conexao.php');
-$sqllogoff = "DELETE FROM tempos";
-mysqli_query($conn, $sqllogoff); 
 
 if (isset($_POST['btnEntrar'])) {
     $email = $_POST['email'];
@@ -27,11 +25,8 @@ if (isset($_POST['btnEntrar'])) {
             $_SESSION['id_usuario'] = $dados['id'];
             $_SESSION['tipo_cubo'] = "3x3";
             $_SESSION['cubo_check'] = 0;
-            $_SESSION['melhor_tempo'] = "";
-            $_SESSION['pior_tempo'] = "";
-            $_SESSION['media'] = "";
+            $_SESSION['melhor_tempo'] = '';
         }
-
         if (mysqli_affected_rows($conn) > 0) {
             echo"<script> alert('Login sucessido.') </script>";
             header("Location: http://localhost/qblearning/cronometro.php");
