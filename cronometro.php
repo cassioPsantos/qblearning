@@ -26,7 +26,7 @@ $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
 $tempo = $_GET['tempo'];
 $embaralhamento = "";
-$dia = date("d/m/Y");
+$dia = date("Y-m-d");
 
 if ($tempo != null) {
 
@@ -40,9 +40,10 @@ if ($tempo != null) {
         // inserção de melhor tempo
         if ($tempo < $melhor_tempo or $melhor_tempo == null) {
             $_SESSION['melhor_tempo'] = $tempo;
-            $melhor_tempo = $_SESSION['melhor_tempo'];
+            $melhor_tempo = $tempo;
             $sql_melhortempo = "SELECT * FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_melhortempo);
+            $teste = mysqli_affected_rows($conn);
             if (mysqli_affected_rows($conn) == 0) {
                 $sql_melhortempo = "INSERT INTO melhor_tempo (id_usuario, tipo_cubo, melhor_tempo, embaralhamento, dia) 
                                     VALUES ('$id_usuario', '$tipo_cubo', '$melhor_tempo', '$embaralhamento', '$dia')";

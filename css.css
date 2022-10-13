@@ -184,7 +184,7 @@
     padding: 0px;
     position: absolute;
     margin-left: 50px;
-    top: 100px;
+    top: 20%;
 }
 
 .tabela_dados {
@@ -198,7 +198,7 @@
     position: absolute;
     right: 50px;
     left: auto;
-    top: 100px;
+    top: 20%;
 }
 
 .espaco_comecar {

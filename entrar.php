@@ -25,7 +25,6 @@ if (isset($_POST['btnEntrar'])) {
             $_SESSION['id_usuario'] = $dados['id'];
             $_SESSION['tipo_cubo'] = "3x3";
             $_SESSION['cubo_check'] = 0;
-            $_SESSION['melhor_tempo'] = '';
         }
         if (mysqli_affected_rows($conn) > 0) {
             echo"<script> alert('Login sucessido.') </script>";
