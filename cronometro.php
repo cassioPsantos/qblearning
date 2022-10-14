@@ -10,6 +10,56 @@ if (isset($_POST['btnEnviar'])) {
     $tipo_cubo = $_SESSION['tipo_cubo'];
     $_SESSION['cubo_check'] = 1;
 }
+
+function calculo_media5(array $array_media_5) {
+
+    if(empty($array_media_5)) {
+        return;
+    }
+    
+    $max = PHP_INT_MIN;
+    $secondMax = PHP_INT_MIN;
+    $thirdMax = PHP_INT_MIN;
+    $fourthMax = PHP_INT_MIN;
+    $fifthMax = PHP_INT_MIN;
+    
+    foreach($array_media_5 as $number) {
+        
+        if($number > $max) {
+            $fifthMax = $fourthMax;
+            $fourthMax = $thirdMax;
+            $thirdMax = $secondMax;
+            $secondMax = $max;
+            $max = $number;
+        }
+    
+        if($number > $secondMax && $number < $max) {
+            $fifthMax = $fourthMax;
+            $fourthMax = $thirdMax;
+            $thirdMax = $secondMax;
+            $secondMax = $number;
+        }
+
+        if($number > $thirdMax && ($number < $max && $number < $secondMax)) {
+            $fifthMax = $fourthMax;
+            $fourthMax = $thirdMax;
+            $thirdMax = $number;
+        }
+
+        if($number > $fourthMax && ($number < $max && $number < $secondMax && $number < $thirdMax)) {
+            $fifthMax = $fourthMax;
+            $fourthMax = $number;
+        }
+
+        if($number > $fifthMax && ($number < $max && $number < $secondMax && $number < $thirdMax && $number < $fourthMax)) {
+            $fifthMax = $number;
+        }
+
+    }
+    
+
+}
+
 // seleção de melhor tempo
 $sql_dados_cubo = "SELECT melhor_tempo FROM melhor_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
@@ -22,6 +72,28 @@ $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
 $_SESSION['pior_tempo'] = $dados_cubo['pior_tempo'];
 
+    //seleção de média de 5
+
+    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 3,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_5 = mysqli_fetch_array($query_media5);
+    $x2 = $dados_media5_5['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 2,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_4 = mysqli_fetch_array($query_media5);
+    $x3 = $dados_media5_4['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 1,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_3 = mysqli_fetch_array($query_media5);
+    $x4 = $dados_media5_3['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_2 = mysqli_fetch_array($query_media5);
+    $x5 = $dados_media5_2['tempo'];
+
 $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
 $tempo = $_GET['tempo'];
@@ -31,6 +103,12 @@ $dia = date("Y-m-d");
 if ($tempo != null) {
 
     if ($_SESSION['cubo_check'] == 0) {
+
+        $x1 = $tempo;
+        $array_media_5 = array($x1, $x2, $x3, $x4, $x5);
+        var_dump($array_media_5);
+        
+        $media_5 = calculo_media5($array_media_5);
 
         // inserção de tempos
         $sql_tempo = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
@@ -86,6 +164,7 @@ if ($tempo != null) {
     $query_media = mysqli_query($conn, $sql_media);
     $dados_media = mysqli_fetch_array($query_media);
     $media = $dados_media['media'];
+
 }
 
 $_SESSION['cubo_check'] = 0;
