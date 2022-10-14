@@ -3,61 +3,13 @@
 <?php
 include('conexao.php');
 include('navbar.php');
+include('funcoes_cronometro.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_SESSION['tipo_cubo'];
 if (isset($_POST['btnEnviar'])) {
     $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
     $tipo_cubo = $_SESSION['tipo_cubo'];
     $_SESSION['cubo_check'] = 1;
-}
-
-function calculo_media5(array $array_media_5) {
-
-    if(empty($array_media_5)) {
-        return;
-    }
-    
-    $max = PHP_INT_MIN;
-    $secondMax = PHP_INT_MIN;
-    $thirdMax = PHP_INT_MIN;
-    $fourthMax = PHP_INT_MIN;
-    $fifthMax = PHP_INT_MIN;
-    
-    foreach($array_media_5 as $number) {
-        
-        if($number > $max) {
-            $fifthMax = $fourthMax;
-            $fourthMax = $thirdMax;
-            $thirdMax = $secondMax;
-            $secondMax = $max;
-            $max = $number;
-        }
-    
-        if($number > $secondMax && $number < $max) {
-            $fifthMax = $fourthMax;
-            $fourthMax = $thirdMax;
-            $thirdMax = $secondMax;
-            $secondMax = $number;
-        }
-
-        if($number > $thirdMax && ($number < $max && $number < $secondMax)) {
-            $fifthMax = $fourthMax;
-            $fourthMax = $thirdMax;
-            $thirdMax = $number;
-        }
-
-        if($number > $fourthMax && ($number < $max && $number < $secondMax && $number < $thirdMax)) {
-            $fifthMax = $fourthMax;
-            $fourthMax = $number;
-        }
-
-        if($number > $fifthMax && ($number < $max && $number < $secondMax && $number < $thirdMax && $number < $fourthMax)) {
-            $fifthMax = $number;
-        }
-
-    }
-    
-
 }
 
 // seleção de melhor tempo
@@ -72,24 +24,30 @@ $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
 $_SESSION['pior_tempo'] = $dados_cubo['pior_tempo'];
 
+// seleção de melhor media
+$sql_dados_cubo = "SELECT melhor_media FROM melhor_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
+$dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$_SESSION['melhor_media'] = $dados_cubo['melhor_media'];
+
     //seleção de média de 5
 
-    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 3,1";
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 3,1";
     $query_media5 = mysqli_query($conn, $sql_media5);
     $dados_media5_5 = mysqli_fetch_array($query_media5);
     $x2 = $dados_media5_5['tempo'];
 
-    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 2,1";
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 2,1";
     $query_media5 = mysqli_query($conn, $sql_media5);
     $dados_media5_4 = mysqli_fetch_array($query_media5);
     $x3 = $dados_media5_4['tempo'];
 
-    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 1,1";
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1,1";
     $query_media5 = mysqli_query($conn, $sql_media5);
     $dados_media5_3 = mysqli_fetch_array($query_media5);
     $x4 = $dados_media5_3['tempo'];
 
-    $sql_media5 = "SELECT tempo from tempos order by cod DESC LIMIT 1";
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1";
     $query_media5 = mysqli_query($conn, $sql_media5);
     $dados_media5_2 = mysqli_fetch_array($query_media5);
     $x5 = $dados_media5_2['tempo'];
@@ -105,10 +63,104 @@ if ($tempo != null) {
     if ($_SESSION['cubo_check'] == 0) {
 
         $x1 = $tempo;
-        $array_media_5 = array($x1, $x2, $x3, $x4, $x5);
-        var_dump($array_media_5);
+        $max = max($x1, $x2, $x3, $x4, $x5);
+        $min = min($x1, $x2, $x3, $x4, $x5);
+        if ($max == $x1) {
+
+            if ($min == $x2) {
+                $media_5 = ($x3 + $x4 + $x5) / 3;
+            }
         
-        $media_5 = calculo_media5($array_media_5);
+            if ($min == $x3) {
+                $media_5 = ($x2 + $x4 + $x5) / 3;
+            }
+        
+            if ($min == $x4) {
+                $media_5 = ($x3 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x5) {
+                $media_5 = ($x3 + $x2 + $x4) / 3;
+            }
+        }
+        
+        if ($max == $x2) {
+        
+            if ($min == $x1) {
+                $media_5 = ($x3 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x3) {
+                $media_5 = ($x1 + $x4 + $x5) / 3;
+            }
+        
+            if ($min == $x4) {
+                $media_5 = ($x3 + $x1 + $x5) / 3;
+            }
+        
+            if ($min == $x5) {
+                $media_5 = ($x3 + $x1 + $x4) / 3;
+            }
+        }
+        
+        if ($max == $x3) {
+        
+            if ($min == $x1) {
+                $media_5 = ($x4 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x2) {
+                $media_5 = ($x1 + $x4 + $x5) / 3;
+            }
+        
+            if ($min == $x4) {
+                $media_5 = ($x1 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x5) {
+                $media_5 = ($x1 + $x2 + $x4) / 3;
+            }
+        
+        }
+        
+        if ($max == $x4) {
+        
+            if ($min == $x1) {
+                $media_5 = ($x3 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x2) {
+                $media_5 = ($x3 + $x1 + $x5) / 3;
+            }
+        
+            if ($min == $x3) {
+                $media_5 = ($x1 + $x2 + $x5) / 3;
+            }
+        
+            if ($min == $x5) {
+                $media_5 = ($x3 + $x2 + $x1) / 3;
+            }
+        }
+        
+        if ($max == $x5) {
+        
+            if ($min == $x1) {
+                $media_5 = ($x3 + $x2 + $x4) / 3;
+            }
+        
+            if ($min == $x2) {
+                $media_5 = ($x3 + $x1 + $x4) / 3; 
+            }
+        
+            if ($min == $x3) {
+                $media_5 = ($x1 + $x2 + $x4) / 3;
+            }
+        
+            if ($min == $x4) {
+                $media_5 = ($x3 + $x2 + $x1) / 3;
+            }
+        
+        }
 
         // inserção de tempos
         $sql_tempo = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
@@ -154,6 +206,28 @@ if ($tempo != null) {
                                     dia = '$dia'
                                     WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
                 mysqli_query($conn, $sql_piortempo);
+            }
+
+        }
+
+        //inserção de melhor média
+        var_dump($media_5);
+        var_dump($melhor_media);
+        if ($media_5 < $melhor_media or $melhor_media == null) {
+            $_SESSION['melhor_media'] = $media_5;
+            $melhor_media = $_SESSION['melhor_media'];
+            $sql_melhormedia = "SELECT * FROM melhor_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_melhormedia);
+            if (mysqli_affected_rows($conn) == 0) {
+                $sql_melhormedia = "INSERT INTO melhor_media (id_usuario, tipo_cubo, melhor_media, dia) 
+                                    VALUES ('$id_usuario', '$tipo_cubo', '$melhor_media', '$dia')";
+                mysqli_query($conn, $sql_melhormedia);
+            } else if (mysqli_affected_rows($conn) > 0) {
+                $sql_melhormedia = "UPDATE melhor_media
+                                    SET melhor_media = '$melhor_media',
+                                    dia = '$dia'
+                                    WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+                mysqli_query($conn, $sql_melhormedia);
             }
 
         }
@@ -206,6 +280,9 @@ $_SESSION['cubo_check'] = 0;
 <div class="container tabela_dados">
     <table class="table table-striped">
         <tr>
+            <th>Dados da sessão</td>
+        </tr>
+        <tr>
             <td>Melhor tempo:</td>
             <td><?php echo number_format((float)$melhor_tempo, 2); ?></td>
         </tr>
@@ -224,20 +301,12 @@ $_SESSION['cubo_check'] = 0;
                 ?></td>
         </tr>
         <tr>
-            <td>Média de 5:</td>
-            <td><?php /* echo $media_5 */ ?></td>
+            <td>Média 3/5:</td>
+            <td><?php echo number_format((float)$media_5, 2); ?></td>
         </tr>
         <tr>
-            <td>Melhor média de 5:</td>
-            <td><?php /* echo $melhormedia_5 */ ?></td>
-        </tr>
-        <tr>
-            <td>Média de 12:</td>
-            <td><?php /* echo $media_12 */ ?></td>
-        </tr>
-        <tr>
-            <td>Melhor média de 12:</td>
-            <td><?php /* echo $melhormedia_12 */ ?></td>
+            <td>Melhor média 3/5:</td>
+            <td><?php echo number_format((float)$melhor_media, 2); ?></td>
         </tr>
     </table>
 </div>

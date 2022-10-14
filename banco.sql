@@ -49,5 +49,14 @@ create table pior_tempo (
     foreign key (id_usuario) references usuarios(id)
 );
 
+create table melhor_media (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    melhor_media float(4,2),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
 insert into usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento)
 values ('cassiopsantos', 'Cássio Pereira dos Santos', 'teste@teste', 'teste', 'Masculino', '2004-10-14');
