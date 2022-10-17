@@ -189,7 +189,7 @@
 
 .tabela_dados {
     width: 250px;
-    height: 328px;
+    height: 263px;
     border-style: solid;
     border-width: 3px;
     border-image-slice: 1;
@@ -245,4 +245,37 @@
 
 .perfilbtn {
     margin-left: 180px;
+}
+
+/* TABELA DE TEMPOS */
+
+.cont_tempos {
+    margin-top: 50px;
+    margin-left: 150px;
+    width: 650px;
+    height: auto;
+    padding: 20px;
+    border-style: solid;
+    border-width: 3px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
+}
+
+.img3x3{
+    width: 160px;
+    top: 160px;
+    left: 166px;
+    position: absolute;
+    padding: 0px;
+}
+
+.titulo_cubo {
+    padding-left: 23px;
+    margin-right: 50px;
+}
+
+.dados_cubo {
+    margin-top: 10px;
+    padding-left: 40px;
+    margin-right: 50px;
 }

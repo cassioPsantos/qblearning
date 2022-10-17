@@ -211,8 +211,6 @@ if ($tempo != null) {
         }
 
         //inserção de melhor média
-        var_dump($media_5);
-        var_dump($melhor_media);
         if ($media_5 < $melhor_media or $melhor_media == null) {
             $_SESSION['melhor_media'] = $media_5;
             $melhor_media = $_SESSION['melhor_media'];
@@ -281,6 +279,7 @@ $_SESSION['cubo_check'] = 0;
     <table class="table table-striped">
         <tr>
             <th>Dados da sessão</td>
+            <th></td>
         </tr>
         <tr>
             <td>Melhor tempo:</td>
@@ -296,7 +295,7 @@ $_SESSION['cubo_check'] = 0;
                 if ($media != 0) {
                     echo number_format((float)$media, 2);
                 } else {
-                    $media = '';
+                    echo '0.00';
                 }
                 ?></td>
         </tr>
