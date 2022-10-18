@@ -161,6 +161,10 @@
     overflow-x: hidden;
 }
 
+#cadastrobarray {
+    overflow-y: hidden;
+}
+
 .cancelarbtn {
     margin-left: 30px;
 }
@@ -189,7 +193,7 @@
 
 .tabela_dados {
     width: 250px;
-    height: 263px;
+    height: 281px;
     border-style: solid;
     border-width: 3px;
     border-image-slice: 1;
@@ -199,6 +203,17 @@
     right: 50px;
     left: auto;
     top: 20%;
+}
+
+.tabela_titulo {
+    color: white;
+    background-image: linear-gradient(to right, #A7D1E7, #566BF3);
+    padding: 10px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #0000B2);
+    overflow-anchor: 43px;
 }
 
 .espaco_comecar {
@@ -218,6 +233,16 @@
 
 .atualizabtn {
     text-align: center;
+}
+
+.embaralhamento {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.embar_botao {
+    margin-left: 553px;
 }
 
 /* PERFIL */
@@ -252,7 +277,7 @@
 .cont_tempos {
     margin-top: 50px;
     margin-left: 150px;
-    width: 650px;
+    width: 500px;
     height: auto;
     padding: 20px;
     border-style: solid;
@@ -262,8 +287,8 @@
 }
 
 .img3x3{
-    width: 160px;
-    top: 160px;
+    width: 120px;
+    top: 25%;
     left: 166px;
     position: absolute;
     padding: 0px;

@@ -42,7 +42,7 @@ if (isset($_POST['btnEntrar'])) {
 <div class="cadastro cadform">
 
 <div class="logo">
-        <img src="logo2.png" alt="Logo QBLearning" class="logoimg">
+        <img src="imagens/logo2.png" alt="Logo QBLearning" class="logoimg">
 </div>
 <div class="container logotext2" id="cadastrotitle2">
         <p>Entre na sua conta para entrar na QBLearning.</p>

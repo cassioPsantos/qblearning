@@ -1,4 +1,4 @@
-  // função do cronômetro
+    // função do cronômetro
 podeIniciar = 0;
 let timerInit;
 
@@ -45,3 +45,9 @@ function inicia(){
     window.location.href = '/qblearning/cronometro.php?tempo='+tempo.toFixed(2)
     }
 }
+
+const button = document.getElementById('embar_botao');
+
+button.addEventListener('click', function handleClick() {
+    window.location.reload(true);
+});

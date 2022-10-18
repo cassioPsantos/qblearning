@@ -101,7 +101,7 @@ if (isset($_POST['btnEnviar'])) {
 
 <div class="container fundo_cadastro col-6">
     <div>
-        <img src="logobranco.png" alt="Logo QBLearning" class="logocad">
+        <img src="imagens/logobranco.png" alt="Logo QBLearning" class="logocad">
     </div>
 </div>
 </div>

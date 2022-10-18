@@ -2,7 +2,7 @@
 <div id="tempo_comeca1">
 <link rel="stylesheet" href="css.css">
 <div class="topnav">
-  <img src="logo.png" alt="Logo QBLearning" class="navlogo">
+  <img src="imagens/logo.png" alt="Logo QBLearning" class="navlogo">
   <a class="navbtn" href="tutorial.php">Tutoriais</a>
   <a class="navbtn" href="cronometro.php">Cronômetro</a>
   <a class="navbtn" href="tempos.php">Tempos</a>

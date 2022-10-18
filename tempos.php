@@ -18,8 +18,8 @@ include('navbar.php');
 
         <div class="col-3"></div>
 
-        <div class="col-8">
-            <h1 class="titulo_cubo">Cubo 3x3</h1>
+        <div class="col-7">
+            <h2 class="titulo_cubo">Cubo 3x3</h2>
         </div>
     </div>
 
@@ -27,15 +27,15 @@ include('navbar.php');
 
         <div class="col-3"></div>
 
-        <div class="col-6 dados_cubo">
-            <h5>
+        <div class="col-7 dados_cubo">
+            <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_3x3 != null) {
                     echo $melhor_tempo_3x3;
                 } else {
                     echo "Nenhum";
                 }?>
-            </h5>
+            </h6>
         </div>
         
     </div>
@@ -44,15 +44,15 @@ include('navbar.php');
 
         <div class="col-3"></div>
 
-        <div class="col-6 dados_cubo">
-            <h5>
+        <div class="col-7 dados_cubo">
+            <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_3x3 != null) {
                 echo $melhor_media_3x3;
                 } else {
                     echo "Nenhum";
                 }?>
-            </h5>
+            </h6>
         </div>
 
     </div>

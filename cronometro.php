@@ -4,8 +4,13 @@
 include('conexao.php');
 include('navbar.php');
 include('funcoes_cronometro.php');
+include('scrambler.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_SESSION['tipo_cubo'];
+$scrambler = new Scrambler();
+$embaralhamento = '';
+//$embaralhamento = $scrambler->generate();
+$dia = date("Y-m-d");
 if (isset($_POST['btnEnviar'])) {
     $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
     $tipo_cubo = $_SESSION['tipo_cubo'];
@@ -55,8 +60,6 @@ $_SESSION['melhor_media'] = $dados_cubo['melhor_media'];
 $melhor_tempo = $_SESSION['melhor_tempo'];
 $pior_tempo = $_SESSION['pior_tempo'];
 $tempo = $_GET['tempo'];
-$embaralhamento = "";
-$dia = date("Y-m-d");
 
 if ($tempo != null) {
 
@@ -238,16 +241,16 @@ if ($tempo != null) {
     $media = $dados_media['media'];
 
 }
-
 $_SESSION['cubo_check'] = 0;
 ?>
+
 <head>
 <link rel="stylesheet" href="css.css">
 <title>Cronômetro - QBLearning</title>
 <script src="cronometro.js" defer></script>
 </head>
 
-<body>
+<body id="cadastrobarray">
     <h1 id="tempo"><?php
     if ($tempo == null) {
         echo "0";
@@ -259,10 +262,9 @@ $_SESSION['cubo_check'] = 0;
 <div id="tempo_comeca">
 <div class="container tabela_tempos">
     <table class="table table-striped">  
-        <tr>
-            <th>Código</td>
-            <th>Tempo</td>
-        </tr>
+        <div class="tabela_titulo">
+            <a>Tempos</a>
+        </div>
         <?php
         $sql_listagem = "SELECT * FROM tempos WHERE id_usuario='$id_usuario' AND tipo_cubo='$tipo_cubo'";
         $query_listagem = mysqli_query($conn, $sql_listagem);
@@ -277,10 +279,9 @@ $_SESSION['cubo_check'] = 0;
 
 <div class="container tabela_dados">
     <table class="table table-striped">
-        <tr>
-            <th>Dados da sessão</td>
-            <th></td>
-        </tr>
+        <div class="tabela_titulo">
+            <a>Dados da sessão</a>
+        </div>
         <tr>
             <td>Melhor tempo:</td>
             <td><?php echo number_format((float)$melhor_tempo, 2); ?></td>
@@ -312,6 +313,12 @@ $_SESSION['cubo_check'] = 0;
 
 <div class="espaco_comecar">
     <h5>Pressione e segure espaço para começar</h5>
+</div>
+<p class="embaralhamento"><?php
+    echo $scrambler->generate();
+    ?></p>
+<div class="embar_botao">
+    <button id="embar_botao" class="btn btn-primary">Atualizar embaralhamento</button>
 </div>
 <br>
 
