@@ -39,6 +39,7 @@ function inicia(){
     document.getElementById('tempo').style.color = 'black'
     document.getElementById('tempo_comeca').style.visibility = 'hidden'
     document.getElementById('tempo_comeca1').style.visibility = 'hidden'
+    document.getElementById('tempo_comeca2').style.visibility = 'hidden'
     } else {
     crocheck=1
     clearInterval(timer);
@@ -49,5 +50,6 @@ function inicia(){
 const button = document.getElementById('embar_botao');
 
 button.addEventListener('click', function handleClick() {
-    window.location.reload(true);
+    embar_check=1
+    window.location.href = '/qblearning/cronometro.php?embar_check='+embar_check
 });

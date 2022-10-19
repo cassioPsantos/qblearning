@@ -8,9 +8,16 @@ include('scrambler.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_SESSION['tipo_cubo'];
 $scrambler = new Scrambler();
+$pira_scrambler = new pira_Scrambler();
+$mega_scrambler = new mega_Scrambler();
 $embaralhamento = '';
 //$embaralhamento = $scrambler->generate();
 $dia = date("Y-m-d");
+$embar_check = $_GET['embar_check'];
+if ($embar_check == 1) {
+    $_SESSION['cubo_check'] = 1;
+}
+$embar_check = 0;
 if (isset($_POST['btnEnviar'])) {
     $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
     $tipo_cubo = $_SESSION['tipo_cubo'];
@@ -251,6 +258,71 @@ $_SESSION['cubo_check'] = 0;
 </head>
 
 <body id="cadastrobarray">
+<div id="tempo_comeca2">
+<p id="embar" class="embaralhamento"><?php
+switch ($tipo_cubo) {
+    case '2x2':
+        echo $scrambler->generate();
+        break;
+    case '3x3':
+        echo $scrambler->generate();
+        break;
+    case '4x4':
+        $scrambler->setLength(30);
+        $scrambler->setWide(25);
+        echo $scrambler->generate();
+        break;
+    case '5x5':
+        $scrambler->setLength(30);
+        $scrambler->setWide(25);
+        echo $scrambler->generate();
+        break;
+    case '6x6':
+        $scrambler->setLength(35);
+        $scrambler->setTwo(10);
+        $scrambler->setThree(10);
+        echo $scrambler->generate();
+        break;
+    case '7x7':
+        $scrambler->setLength(35);
+        $scrambler->setTwo(10);
+        $scrambler->setThree(10);
+        echo $scrambler->generate();
+        break;
+    case 'Piramynx':
+        echo $pira_scrambler->generate();
+        break;
+    case 'Megamynx':
+        ?><script>
+            document.getElementById('embar').style.fontSize = '15px';
+            document.getElementById('embar').style.marginTop = '1.5%';
+        </script><?php
+        echo $mega_scrambler->generate();
+        echo '  /  ';
+        echo $mega_scrambler->generate();
+        echo '  /  ';
+        echo $mega_scrambler->generate();
+        echo '<br>';
+        echo $mega_scrambler->generate();
+        echo '  /  ';
+        echo $mega_scrambler->generate();
+        echo '  /  ';
+        echo $mega_scrambler->generate();
+        echo '<br>';
+        echo $mega_scrambler->generate();
+        break;
+    case 'Skewb':
+        echo "ainda não desenvolvido";
+        break;
+    case 'Square-1':
+        echo "ainda não desenvolvido";
+        break;
+    case 'Clock':
+        echo "ainda não desenvolvido";
+        break;
+}
+?></p>
+</div>
     <h1 id="tempo"><?php
     if ($tempo == null) {
         echo "0";
@@ -313,14 +385,11 @@ $_SESSION['cubo_check'] = 0;
 
 <div class="espaco_comecar">
     <h5>Pressione e segure espaço para começar</h5>
-</div>
-<p class="embaralhamento"><?php
-    echo $scrambler->generate();
-    ?></p>
+</div><br>
+
 <div class="embar_botao">
     <button id="embar_botao" class="btn btn-primary">Atualizar embaralhamento</button>
 </div>
-<br>
 
 <form method="POST">
 <div class="form-group escolher_cubo">

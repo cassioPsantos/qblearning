@@ -188,7 +188,7 @@
     padding: 0px;
     position: absolute;
     margin-left: 50px;
-    top: 20%;
+    bottom: 10%;
 }
 
 .tabela_dados {
@@ -202,7 +202,7 @@
     position: absolute;
     right: 50px;
     left: auto;
-    top: 20%;
+    bottom: 10%;
 }
 
 .tabela_titulo {
@@ -242,6 +242,10 @@
 }
 
 .embar_botao {
+    right: 69px;
+    left: auto;
+    bottom: 57%;
+    position: absolute;
     margin-left: 553px;
 }
 
