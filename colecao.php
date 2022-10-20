@@ -28,8 +28,8 @@ $query = mysqli_query($conn, $sql);
             <tr>
                 <td><?php echo $dados['tipo_cubo'] ?></td>
                 <td><?php echo $dados['modelo'] ?></td>
-                <td><?php echo $dados['manutencao'] ?></td>
-                <td><?php echo $dados['aquisicao'] ?></td>
+                <td><?php echo date_format(date_create($dados['aquisicao']), "d/m/Y") ?></td>
+                <td><?php echo date_format(date_create($dados['manutencao']), "d/m/Y") ?></td>
             </tr>
         <?php } ?>
     </table>

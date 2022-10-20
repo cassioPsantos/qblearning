@@ -10,8 +10,7 @@ $tipo_cubo = $_SESSION['tipo_cubo'];
 $scrambler = new Scrambler();
 $pira_scrambler = new pira_Scrambler();
 $mega_scrambler = new mega_Scrambler();
-$embaralhamento = '';
-//$embaralhamento = $scrambler->generate();
+$embaralhamento = "";
 $dia = date("Y-m-d");
 $embar_check = $_GET['embar_check'];
 $tempo = $_GET['tempo'];
@@ -317,10 +316,14 @@ $_SESSION['cubo_check'] = 0;
 <p id="embar" class="embaralhamento"><?php
 switch ($tipo_cubo) {
     case '2x2':
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case '3x3':
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case '4x4':
         $scrambler->setLength(30);

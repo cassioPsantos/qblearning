@@ -66,19 +66,19 @@ if (isset($_POST['btnEnviar'])) {
             </div>
         </div>
     </div>
-    
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group">
-            Última manutenção: <input class='form-control' type="date" name="manutencao" />
-            </div>
-        </div>
-    </div>
 
     <div class="row">
         <div class="col-6">
             <div class="form-group">
             Data de aquisição: <input class='form-control' type="date" name="aquisicao" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+            Última manutenção: <input class='form-control' type="date" name="manutencao" />
             </div>
         </div>
     </div>

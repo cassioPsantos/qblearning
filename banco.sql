@@ -34,7 +34,7 @@ create table melhor_tempo (
     id_usuario int,
     tipo_cubo varchar(15),
     melhor_tempo float(4,2),
-    embaralhamento varchar(60),
+    embaralhamento varchar(200),
     dia date,
     foreign key (id_usuario) references usuarios(id)
 );
@@ -44,7 +44,7 @@ create table pior_tempo (
     id_usuario int,
     tipo_cubo varchar(15),
     pior_tempo float(4,2),
-    embaralhamento varchar(60),
+    embaralhamento varchar(200),
     dia date,
     foreign key (id_usuario) references usuarios(id)
 );
@@ -54,7 +54,7 @@ create table ultimo_tempo (
     id_usuario int,
     tipo_cubo varchar(15),
     ultimo_tempo float(4,2),
-    embaralhamento varchar(60),
+    embaralhamento varchar(200),
     dia date,
     foreign key (id_usuario) references usuarios(id)
 );

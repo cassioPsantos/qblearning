@@ -452,7 +452,7 @@
     border-width: 3px;
     border-image-slice: 3;
     border-image-source: linear-gradient(to left, #A7D1E7, #566BF3);
-    margin-right: 360px;
+    width: 1300px;
 }
 
 .btn_voltar {
@@ -480,4 +480,32 @@
     margin-top: -95px;
     margin-left: 625px;
     position: absolute;
+}
+
+.coisas_detalhes {
+    margin-left: 50px;
+}
+
+.titulo_caixas {
+    margin-top: 34px;
+    margin-left: 50px;
+    padding-bottom: 15px;
+}
+
+.caixas_detalhe {
+    display: flex;
+}
+
+.caixa_pagina {
+    margin: 40px;
+    width: 380px;
+    margin-top: 40px;
+    border-bottom-style: solid;
+    border-bottom-width: 3;
+    border-bottom-right-radius: 18px;
+    border-bottom-color: #A7D1E7;
+    border-right-style: solid;
+    border-right-width: 3;
+    border-right-color: #A7D1E7;
+    border-right-color: #A7D1E7;
 }

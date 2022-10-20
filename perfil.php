@@ -26,20 +26,8 @@ $dados = mysqli_fetch_array($query);
 <br>
 <h6 class="dadosperfil">&#9658; Gênero: <?php echo $dados['genero']?></h6>
 <br>
-<h6 class="dadosperfil">&#9658; Data de nascimento: <?php echo $dados['nascimento']?></h6>
+<h6 class="dadosperfil">&#9658; Data de nascimento: <?php echo date_format(date_create($dados['nascimento']), "d/m/Y") ?></h6>
 <br>
 <a class="btn btn-primary perfilbtn" href="editar_perfil.php">Editar perfil</a>
-<!-- <script> function mostrar_senha() {
-  var x = document.getElementById("mostrarsenha");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
-<label for="mostrarsenha" class="mostrarsenha1">Exibir senha</label>
-<input class="mostrarsenha" type="checkbox" name="mostrarsenha" onclick="mostrar_senha()">
--->
 </body>
 </html>
