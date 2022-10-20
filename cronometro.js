@@ -1,4 +1,3 @@
-    // função do cronômetro
 podeIniciar = 0;
 let timerInit;
 

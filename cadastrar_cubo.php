@@ -50,7 +50,7 @@ if (isset($_POST['btnEnviar'])) {
                 <option value="6x6">6x6</option>
                 <option value="7x7">7x7</option>
                 <option value="Piramynx">Piramynx</option>
-                <option value="Megamynx">Megamynx</option>
+                <option value="Megaminx">Megaminx</option>
                 <option value="Skewb">Skewb</option>
                 <option value="Square-1">Square-1</option>
                 <option value="Clock">Clock</option>

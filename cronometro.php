@@ -14,6 +14,7 @@ $embaralhamento = '';
 //$embaralhamento = $scrambler->generate();
 $dia = date("Y-m-d");
 $embar_check = $_GET['embar_check'];
+$tempo = $_GET['tempo'];
 if ($embar_check == 1) {
     $_SESSION['cubo_check'] = 1;
 }
@@ -28,158 +29,37 @@ if (isset($_POST['btnEnviar'])) {
 $sql_dados_cubo = "SELECT melhor_tempo FROM melhor_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
-$_SESSION['melhor_tempo'] = $dados_cubo['melhor_tempo'];
+$melhor_tempo = $dados_cubo['melhor_tempo'];
     
 // seleção de pior tempo
 $sql_dados_cubo = "SELECT pior_tempo FROM pior_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
-$_SESSION['pior_tempo'] = $dados_cubo['pior_tempo'];
+$pior_tempo = $dados_cubo['pior_tempo'];
 
 // seleção de melhor media
 $sql_dados_cubo = "SELECT melhor_media FROM melhor_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
-$_SESSION['melhor_media'] = $dados_cubo['melhor_media'];
+$melhor_media = $dados_cubo['melhor_media'];
 
-    //seleção de média de 5
-
-    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 3,1";
-    $query_media5 = mysqli_query($conn, $sql_media5);
-    $dados_media5_5 = mysqli_fetch_array($query_media5);
-    $x2 = $dados_media5_5['tempo'];
-
-    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 2,1";
-    $query_media5 = mysqli_query($conn, $sql_media5);
-    $dados_media5_4 = mysqli_fetch_array($query_media5);
-    $x3 = $dados_media5_4['tempo'];
-
-    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1,1";
-    $query_media5 = mysqli_query($conn, $sql_media5);
-    $dados_media5_3 = mysqli_fetch_array($query_media5);
-    $x4 = $dados_media5_3['tempo'];
-
-    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1";
-    $query_media5 = mysqli_query($conn, $sql_media5);
-    $dados_media5_2 = mysqli_fetch_array($query_media5);
-    $x5 = $dados_media5_2['tempo'];
-
-$melhor_tempo = $_SESSION['melhor_tempo'];
-$pior_tempo = $_SESSION['pior_tempo'];
-$tempo = $_GET['tempo'];
+// seleção de pior media
+$sql_dados_cubo = "SELECT pior_media FROM pior_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
+$dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$pior_media = $dados_cubo['pior_media'];
 
 if ($tempo != null) {
 
     if ($_SESSION['cubo_check'] == 0) {
 
-        $x1 = $tempo;
-        $max = max($x1, $x2, $x3, $x4, $x5);
-        $min = min($x1, $x2, $x3, $x4, $x5);
-        if ($max == $x1) {
-
-            if ($min == $x2) {
-                $media_5 = ($x3 + $x4 + $x5) / 3;
-            }
-        
-            if ($min == $x3) {
-                $media_5 = ($x2 + $x4 + $x5) / 3;
-            }
-        
-            if ($min == $x4) {
-                $media_5 = ($x3 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x5) {
-                $media_5 = ($x3 + $x2 + $x4) / 3;
-            }
-        }
-        
-        if ($max == $x2) {
-        
-            if ($min == $x1) {
-                $media_5 = ($x3 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x3) {
-                $media_5 = ($x1 + $x4 + $x5) / 3;
-            }
-        
-            if ($min == $x4) {
-                $media_5 = ($x3 + $x1 + $x5) / 3;
-            }
-        
-            if ($min == $x5) {
-                $media_5 = ($x3 + $x1 + $x4) / 3;
-            }
-        }
-        
-        if ($max == $x3) {
-        
-            if ($min == $x1) {
-                $media_5 = ($x4 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x2) {
-                $media_5 = ($x1 + $x4 + $x5) / 3;
-            }
-        
-            if ($min == $x4) {
-                $media_5 = ($x1 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x5) {
-                $media_5 = ($x1 + $x2 + $x4) / 3;
-            }
-        
-        }
-        
-        if ($max == $x4) {
-        
-            if ($min == $x1) {
-                $media_5 = ($x3 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x2) {
-                $media_5 = ($x3 + $x1 + $x5) / 3;
-            }
-        
-            if ($min == $x3) {
-                $media_5 = ($x1 + $x2 + $x5) / 3;
-            }
-        
-            if ($min == $x5) {
-                $media_5 = ($x3 + $x2 + $x1) / 3;
-            }
-        }
-        
-        if ($max == $x5) {
-        
-            if ($min == $x1) {
-                $media_5 = ($x3 + $x2 + $x4) / 3;
-            }
-        
-            if ($min == $x2) {
-                $media_5 = ($x3 + $x1 + $x4) / 3; 
-            }
-        
-            if ($min == $x3) {
-                $media_5 = ($x1 + $x2 + $x4) / 3;
-            }
-        
-            if ($min == $x4) {
-                $media_5 = ($x3 + $x2 + $x1) / 3;
-            }
-        
-        }
-
         // inserção de tempos
         $sql_tempo = "INSERT INTO tempos (id_usuario, tipo_cubo, tempo) 
-                        VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
+        VALUES ('$id_usuario', '$tipo_cubo', '$tempo')";
         mysqli_query($conn, $sql_tempo);
 
         // inserção de melhor tempo
         if ($tempo < $melhor_tempo or $melhor_tempo == null) {
-            $_SESSION['melhor_tempo'] = $tempo;
             $melhor_tempo = $tempo;
             $sql_melhortempo = "SELECT * FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_melhortempo);
@@ -198,11 +78,10 @@ if ($tempo != null) {
             }
 
         }
-        
+
         // inserção de pior tempo
         if ($tempo > $pior_tempo or $pior_tempo == null) {
-            $_SESSION['pior_tempo'] = $tempo;
-            $pior_tempo = $_SESSION['pior_tempo'];
+            $pior_tempo = $tempo;
             $sql_piortempo = "SELECT * FROM pior_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_piortempo);
             if (mysqli_affected_rows($conn) == 0) {
@@ -220,34 +99,210 @@ if ($tempo != null) {
 
         }
 
-        //inserção de melhor média
-        if ($media_5 < $melhor_media or $melhor_media == null) {
-            $_SESSION['melhor_media'] = $media_5;
-            $melhor_media = $_SESSION['melhor_media'];
-            $sql_melhormedia = "SELECT * FROM melhor_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
-            mysqli_query($conn, $sql_melhormedia);
-            if (mysqli_affected_rows($conn) == 0) {
-                $sql_melhormedia = "INSERT INTO melhor_media (id_usuario, tipo_cubo, melhor_media, dia) 
-                                    VALUES ('$id_usuario', '$tipo_cubo', '$melhor_media', '$dia')";
-                mysqli_query($conn, $sql_melhormedia);
-            } else if (mysqli_affected_rows($conn) > 0) {
-                $sql_melhormedia = "UPDATE melhor_media
-                                    SET melhor_media = '$melhor_media',
-                                    dia = '$dia'
-                                    WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
-                mysqli_query($conn, $sql_melhormedia);
-            }
+        //inserção de último tempo
+        $sql_ultimotempo = "SELECT * FROM ultimo_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+        mysqli_query($conn, $sql_ultimotempo);
+        if (mysqli_affected_rows($conn) == 0) {
+            $sql_ultimotempo = "INSERT INTO ultimo_tempo (id_usuario, tipo_cubo, embaralhamento, ultimo_tempo, dia) 
+                                VALUES ('$id_usuario', '$tipo_cubo', '$embaralhamento', '$tempo', '$dia')";
+            mysqli_query($conn, $sql_ultimotempo);
+        } else if (mysqli_affected_rows($conn) > 0) {
+            $sql_ultimotempo = "UPDATE ultimo_tempo
+                                SET ultimo_tempo = '$tempo',
+                                embaralhamento = '$embaralhamento',
+                                dia = '$dia'
+                                WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_ultimotempo);
+        }
+    }
+}
 
+$sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+mysqli_query($conn, $sql_checktempos);
+if (mysqli_affected_rows($conn) >= 5) {
+    //seleção de média de 5
+
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_5 = mysqli_fetch_array($query_media5);
+    $x1 = $dados_media5_5['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 1,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_5 = mysqli_fetch_array($query_media5);
+    $x2 = $dados_media5_5['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 2,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_4 = mysqli_fetch_array($query_media5);
+    $x3 = $dados_media5_4['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 3,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_3 = mysqli_fetch_array($query_media5);
+    $x4 = $dados_media5_3['tempo'];
+
+    $sql_media5 = "SELECT tempo from tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo' order by cod DESC LIMIT 4,1";
+    $query_media5 = mysqli_query($conn, $sql_media5);
+    $dados_media5_2 = mysqli_fetch_array($query_media5);
+    $x5 = $dados_media5_2['tempo'];
+
+    $max = max($x1, $x2, $x3, $x4, $x5);
+    $min = min($x1, $x2, $x3, $x4, $x5);
+    if ($max == $x1) {
+
+        if ($min == $x2) {
+            $media_5 = ($x3 + $x4 + $x5) / 3;
+        }
+    
+        if ($min == $x3) {
+            $media_5 = ($x2 + $x4 + $x5) / 3;
+        }
+    
+        if ($min == $x4) {
+            $media_5 = ($x3 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x5) {
+            $media_5 = ($x3 + $x2 + $x4) / 3;
+        }
+    }
+    
+    if ($max == $x2) {
+    
+        if ($min == $x1) {
+            $media_5 = ($x3 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x3) {
+            $media_5 = ($x1 + $x4 + $x5) / 3;
+        }
+    
+        if ($min == $x4) {
+            $media_5 = ($x3 + $x1 + $x5) / 3;
+        }
+    
+        if ($min == $x5) {
+            $media_5 = ($x3 + $x1 + $x4) / 3;
+        }
+    }
+    
+    if ($max == $x3) {
+    
+        if ($min == $x1) {
+            $media_5 = ($x4 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x2) {
+            $media_5 = ($x1 + $x4 + $x5) / 3;
+        }
+    
+        if ($min == $x4) {
+            $media_5 = ($x1 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x5) {
+            $media_5 = ($x1 + $x2 + $x4) / 3;
         }
     
     }
-    // seleção da média
-    $sql_media = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
-    $query_media = mysqli_query($conn, $sql_media);
-    $dados_media = mysqli_fetch_array($query_media);
-    $media = $dados_media['media'];
+    
+    if ($max == $x4) {
+    
+        if ($min == $x1) {
+            $media_5 = ($x3 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x2) {
+            $media_5 = ($x3 + $x1 + $x5) / 3;
+        }
+    
+        if ($min == $x3) {
+            $media_5 = ($x1 + $x2 + $x5) / 3;
+        }
+    
+        if ($min == $x5) {
+            $media_5 = ($x3 + $x2 + $x1) / 3;
+        }
+    }
+    
+    if ($max == $x5) {
+    
+        if ($min == $x1) {
+            $media_5 = ($x3 + $x2 + $x4) / 3;
+        }
+    
+        if ($min == $x2) {
+            $media_5 = ($x3 + $x1 + $x4) / 3; 
+        }
+    
+        if ($min == $x3) {
+            $media_5 = ($x1 + $x2 + $x4) / 3;
+        }
+    
+        if ($min == $x4) {
+            $media_5 = ($x3 + $x2 + $x1) / 3;
+        }
+    
+    }
 
+    //inserção de melhor média
+    if ($media_5 < $melhor_media or $melhor_media == null) {
+        $melhor_media = $media_5;
+        $sql_melhormedia = "SELECT * FROM melhor_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+        mysqli_query($conn, $sql_melhormedia);
+        if (mysqli_affected_rows($conn) == 0) {
+            $sql_melhormedia = "INSERT INTO melhor_media (id_usuario, tipo_cubo, melhor_media, dia) 
+                                VALUES ('$id_usuario', '$tipo_cubo', '$melhor_media', '$dia')";
+            mysqli_query($conn, $sql_melhormedia);
+        } else if (mysqli_affected_rows($conn) > 0) {
+            $sql_melhormedia = "UPDATE melhor_media
+                                SET melhor_media = '$melhor_media',
+                                dia = '$dia'
+                                WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_melhormedia);
+        }
+    }
+
+    //inserção de pior média
+    if ($media_5 > $pior_media or $pior_media == null) {
+        $pior_media = $media_5;
+        $sql_piormedia = "SELECT * FROM pior_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+        mysqli_query($conn, $sql_piormedia);
+        if (mysqli_affected_rows($conn) == 0) {
+            $sql_piormedia = "INSERT INTO pior_media (id_usuario, tipo_cubo, pior_media, dia) 
+                                VALUES ('$id_usuario', '$tipo_cubo', '$pior_media', '$dia')";
+            mysqli_query($conn, $sql_piormedia);
+        } else if (mysqli_affected_rows($conn) > 0) {
+            $sql_piormedia = "UPDATE pior_media
+                                SET pior_media = '$pior_media',
+                                dia = '$dia'
+                                WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_piormedia);
+        }
+    }
+
+    //inserção de última média
+    $sql_ultimamedia = "SELECT * FROM ultima_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+    mysqli_query($conn, $sql_ultimamedia);
+    if (mysqli_affected_rows($conn) == 0) {
+        $sql_ultimamedia = "INSERT INTO ultima_media (id_usuario, tipo_cubo, ultima_media, dia) 
+                            VALUES ('$id_usuario', '$tipo_cubo', '$media_5', '$dia')";
+        mysqli_query($conn, $sql_ultimamedia);
+    } else if (mysqli_affected_rows($conn) > 0) {
+        $sql_ultimamedia = "UPDATE ultima_media
+                            SET ultima_media = '$media_5',
+                            dia = '$dia'
+                            WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+        mysqli_query($conn, $sql_ultimamedia);
+    }
 }
+
+// seleção da média
+$sql_media = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+$query_media = mysqli_query($conn, $sql_media);
+$dados_media = mysqli_fetch_array($query_media);
+$media = $dados_media['media'];
 $_SESSION['cubo_check'] = 0;
 ?>
 
@@ -292,7 +347,7 @@ switch ($tipo_cubo) {
     case 'Piramynx':
         echo $pira_scrambler->generate();
         break;
-    case 'Megamynx':
+    case 'Megaminx':
         ?><script>
             document.getElementById('embar').style.fontSize = '15px';
             document.getElementById('embar').style.marginTop = '1.5%';
@@ -338,11 +393,10 @@ switch ($tipo_cubo) {
             <a>Tempos</a>
         </div>
         <?php
-        $sql_listagem = "SELECT * FROM tempos WHERE id_usuario='$id_usuario' AND tipo_cubo='$tipo_cubo'";
+        $sql_listagem = "SELECT * FROM tempos WHERE id_usuario='$id_usuario' AND tipo_cubo='$tipo_cubo' ORDER BY cod DESC";
         $query_listagem = mysqli_query($conn, $sql_listagem);
         while ($dados_listagem = mysqli_fetch_array($query_listagem)) { ?>
             <tr>
-                <td><?php echo $dados_listagem['cod'] ?></td>
                 <td><?php echo $dados_listagem['tempo'] ?></td>
             </tr>
         <?php } ?>
@@ -363,7 +417,7 @@ switch ($tipo_cubo) {
             <td><?php echo number_format((float)$pior_tempo, 2); ?></td>
         </tr>
         <tr>
-            <td>Média da sessão:</td>
+            <td>Média geral:</td>
             <td><?php 
                 if ($media != 0) {
                     echo number_format((float)$media, 2);
@@ -374,11 +428,39 @@ switch ($tipo_cubo) {
         </tr>
         <tr>
             <td>Média 3/5:</td>
-            <td><?php echo number_format((float)$media_5, 2); ?></td>
+            <td><?php 
+            $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_checktempos);
+            if (mysqli_affected_rows($conn) >= 5) {
+                echo number_format((float)$media_5, 2);
+            } else {
+                echo "N/A";
+            }
+            ?></td>
         </tr>
         <tr>
             <td>Melhor média 3/5:</td>
-            <td><?php echo number_format((float)$melhor_media, 2); ?></td>
+            <td><?php
+            $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_checktempos);
+            if (mysqli_affected_rows($conn) >= 5) {
+                echo number_format((float)$melhor_media, 2);
+            } else {
+                echo "N/A";
+            }
+            ?></td>
+        </tr>
+        <tr>
+            <td>Pior média 3/5:</td>
+            <td><?php
+            $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
+            mysqli_query($conn, $sql_checktempos);
+            if (mysqli_affected_rows($conn) >= 5) {
+                echo number_format((float)$pior_media, 2);
+            } else {
+                echo "N/A";
+            }
+            ?></td>
         </tr>
     </table>
 </div>
@@ -392,12 +474,15 @@ switch ($tipo_cubo) {
 </div>
 
 <form method="POST">
-<div class="form-group escolher_cubo">
-    <table class="table table-striped">
-        <tr>
-            <td>
+<div class="escolher_cubo">
+    <table class="">
+        <tr class=>
+            <td class="tabela_tipo_cubo">
+                <p class="titulo_tipo_cubo">Tipo de cubo:</p>
+            </td>
+            <td class="select_tipo_cubo">
                 <select class="form-control" name="tipo_cubo">
-                    <option selected="true" disabled="disabled">Tipo de cubo: <?php echo $tipo_cubo?> </option>
+                    <option selected="true" disabled="disabled"><?php echo $tipo_cubo?> </option>
                     <option value="2x2">2x2</option>
                     <option value="3x3">3x3</option>
                     <option value="4x4">4x4</option>
@@ -405,20 +490,60 @@ switch ($tipo_cubo) {
                     <option value="6x6">6x6</option>
                     <option value="7x7">7x7</option>
                     <option value="Piramynx">Piramynx</option>
-                    <option value="Megamynx">Megamynx</option>
+                    <option value="Megaminx">Megaminx</option>
                     <option value="Skewb">Skewb</option>
                     <option value="Square-1">Square-1</option>
                     <option value="Clock">Clock</option>
                 </select>
             </td>
         </tr>
-        <div class="atualizabtn">
         <tr>
-            <td>
-                <input class="btn btn-primary" type="submit" value="Atualizar" name="btnEnviar" />
+            <td class="tabela_tipo_cubo">
+                <input class="atualizabtn" type="submit" value="Atualizar" name="btnEnviar" />
+            </td>
+            <td class="tabela_tipo_cubo">
+                <div class="imagem_tipo_cubo1">
+                    <img src="imagens/<?php 
+                    switch ($tipo_cubo) {
+                    case '2x2':
+                        echo "2x2.png";
+                        break;
+                    case '3x3':
+                        echo "3x3.png";
+                        break;
+                    case '4x4':
+                        echo "4x4.png";
+                        break;
+                    case '5x5':
+                        echo "5x5.png";
+                        break;
+                    case '6x6':
+                        echo "6x6.png";
+                        break;
+                    case '7x7':
+                        echo "7x7.png";
+                        break;
+                    case 'Piramynx':
+                        echo "piramynx.png";
+                        break;
+                    case 'Megaminx':
+                        echo "megaminx.png";
+                        break;
+                    case 'Skewb':
+                        echo "skewb.png";
+                        break;
+                    case 'Square-1':
+                        echo "square1.png";
+                        break;
+                    case 'Clock':
+                        echo "clock.png";
+                        break;
+                }
+                    
+                    ?>" alt="3x3" class="imagem_tipo_cubo">
+                </div>
             </td>
         </tr>
-        </div>
     </table>
 </div>
 </form>

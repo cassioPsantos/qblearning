@@ -49,11 +49,39 @@ create table pior_tempo (
     foreign key (id_usuario) references usuarios(id)
 );
 
+create table ultimo_tempo (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    ultimo_tempo float(4,2),
+    embaralhamento varchar(60),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
 create table melhor_media (
 	cod int primary key not null auto_increment,
     id_usuario int,
     tipo_cubo varchar(15),
     melhor_media float(4,2),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
+create table pior_media (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    pior_media float(4,2),
+    dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
+create table ultima_media (
+	cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    ultima_media float(4,2),
     dia date,
     foreign key (id_usuario) references usuarios(id)
 );
