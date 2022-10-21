@@ -134,3 +134,62 @@ class mega_Scrambler
         return implode(' ', $scramble);
     }
 }
+
+class two_scrambler
+{
+    private $faces = array('U','R', 'F');
+    
+    public function __construct()
+    {
+        $this->length = 25;
+        $this->chance_prime = 25;
+        $this->chance_double = 25;
+    }
+    
+    public function generate()
+    {
+        $last = null;
+        do {
+            $move = $this->faces[array_rand($this->faces)];
+            if ($move != $last) {
+                $last = $move;
+                $rand = mt_rand(0, 100);
+                if ($rand <= $this->chance_prime) {
+                    $move .= "'";
+                } elseif ($rand <= $this->chance_prime + $this->chance_double) {
+                    $move .= '2';
+                }
+                $scramble[] = $move;
+            }
+        } while (count($scramble) < $this->length);
+        return implode(' ', $scramble);
+    }
+}
+
+class skewb_Scrambler
+{
+    private $faces = array('F', 'L', 'R', 'B');
+    
+    public function __construct()
+    {
+        $this->length = 25;
+        $this->chance_prime = 25;
+    }
+    
+    public function generate()
+    {
+        $last = null;
+        do {
+            $move = $this->faces[array_rand($this->faces)];
+            if ($move != $last) {
+                $last = $move;
+                $rand = mt_rand(0, 100);
+                if ($rand <= $this->chance_prime) {
+                    $move .= "'";
+                }
+                $scramble[] = $move;
+            }
+        } while (count($scramble) < $this->length);
+        return implode(' ', $scramble);
+    }
+}

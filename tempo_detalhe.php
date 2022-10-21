@@ -196,8 +196,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($melhor_tempo_data), "d/m/Y") ?></h6>
-
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($melhor_tempo != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $melhor_tempo_embar ?></h6>
 
     <br>
@@ -213,8 +217,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($pior_tempo_data), "d/m/Y") ?></h6>
-
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($pior_tempo != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $pior_tempo_embar ?></h6>
 
     <br>
@@ -230,7 +238,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($ultimo_tempo_data), "d/m/Y") ?></h6>
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($ultimo_tempo != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
 
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $ultimo_tempo_embar ?></h6>
 
@@ -249,7 +262,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($melhor_media_data), "d/m/Y") ?></h6>
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($melhor_media != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
 
     <br>
 </div>
@@ -264,7 +282,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($pior_media_data), "d/m/Y") ?></h6>
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($pior_media != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
 
     <br>
 </div>
@@ -279,7 +302,12 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($ultima_media_data), "d/m/Y") ?></h6>
+    <h6 class="coisas_detalhes">Data: <?php 
+                if ($ultima_media != 0) {
+                    echo date_format(date_create($melhor_tempo_data), "d/m/Y");
+                } else {
+                    echo 'N/A';
+                }?></h6>
 
     <br>
 </div>

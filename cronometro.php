@@ -7,14 +7,21 @@ include('funcoes_cronometro.php');
 include('scrambler.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_SESSION['tipo_cubo'];
+
+// funções embaralhamento
 $scrambler = new Scrambler();
 $pira_scrambler = new pira_Scrambler();
 $mega_scrambler = new mega_Scrambler();
+$two_scrambler = new two_Scrambler();
+$skewb_scrambler = new skewb_Scrambler();
 $embaralhamento = $_SESSION['embar'];
 $embar = str_replace("'","''",$embaralhamento,$i);
 $embaralhamento = $embar;
-$dia = date("Y-m-d");
 $embar_check = $_GET['embar_check'];
+
+// definição de dia
+$dia = date("Y-m-d");
+
 $tempo = $_GET['tempo'];
 $tempo_final = tempoFinal($tempo);
 if ($embar_check == 1) {
@@ -25,6 +32,20 @@ if (isset($_POST['btnEnviar'])) {
     $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
     $tipo_cubo = $_SESSION['tipo_cubo'];
     $_SESSION['cubo_check'] = 1;
+}
+
+//deletar tempo
+if (isset($_GET['deletar_btn'])) {
+    $i = $_GET['cod'];
+    $sql_deletar = "DELETE FROM tempos WHERE cod='$i'";
+    mysqli_query($conn, $sql_deletar);
+    if (mysqli_affected_rows($conn) > 0) {
+        header("Location: cronometro.php");
+    } else {
+        echo "<script>alert('Houve algum erro.');</script>";
+        mysqli_error($conn);
+        echo $conn->error;
+    }
 }
 
 // seleção de melhor tempo
@@ -319,28 +340,24 @@ $_SESSION['cubo_check'] = 0;
 <p id="embar" class="embaralhamento"><?php
 switch ($tipo_cubo) {
     case '2x2':
-        $embaralhamento = $scrambler->generate();
+        $embaralhamento = $two_scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case '3x3':
         $embaralhamento = $scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case '4x4':
         $scrambler->setLength(30);
         $scrambler->setWide(25);
         $embaralhamento = $scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case '5x5':
         $scrambler->setLength(30);
         $scrambler->setWide(25);
         $embaralhamento = $scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case '6x6':
         $scrambler->setLength(35);
@@ -348,7 +365,6 @@ switch ($tipo_cubo) {
         $scrambler->setThree(10);
         $embaralhamento = $scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case '7x7':
         $scrambler->setLength(35);
@@ -356,12 +372,10 @@ switch ($tipo_cubo) {
         $scrambler->setThree(10);
         $embaralhamento = $scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Piramynx':
         $embaralhamento = $pira_scrambler->generate();
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Megaminx':
         ?><script>
@@ -377,10 +391,10 @@ switch ($tipo_cubo) {
         $mega_embar_7 = $mega_scrambler->generate();
         $embaralhamento = $mega_embar_1 . " / " . $mega_embar_2 . " / " . $mega_embar_3 . " / " . $mega_embar_4 . " / " . $mega_embar_5 . " / " . $mega_embar_6 . " / " . $mega_embar_7;
         echo $embaralhamento;
-        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Skewb':
-        echo "ainda não desenvolvido";
+        $embaralhamento = $skewb_scrambler->generate();
+        echo $embaralhamento;
         break;
     case 'Square-1':
         echo "ainda não desenvolvido";
@@ -389,6 +403,7 @@ switch ($tipo_cubo) {
         echo "ainda não desenvolvido";
         break;
 }
+$_SESSION['embar'] = $embaralhamento;
 ?></p>
 </div>
     <h1 id="tempo"><?php
@@ -414,7 +429,14 @@ switch ($tipo_cubo) {
                 <td><?php
                     $tempo_final = tempoFinal($dados_listagem['tempo']);
                     echo $tempo_final;
-                    ?></td>
+                    $tempo_deletar = $dados_listagem['cod'];
+                ?></td>
+                <td>
+                    <form method="GET">
+                        <input type="hidden" name="cod" value="<?php echo $tempo_deletar ?>"></input>
+                        <input type="submit" class='deletar_btn' name="deletar_btn" value="X"></input></td>
+                    </form>
+                </td>
             </tr>
         <?php } ?>
     </table>
