@@ -10,10 +10,13 @@ $tipo_cubo = $_SESSION['tipo_cubo'];
 $scrambler = new Scrambler();
 $pira_scrambler = new pira_Scrambler();
 $mega_scrambler = new mega_Scrambler();
-$embaralhamento = "";
+$embaralhamento = $_SESSION['embar'];
+$embar = str_replace("'","''",$embaralhamento,$i);
+$embaralhamento = $embar;
 $dia = date("Y-m-d");
 $embar_check = $_GET['embar_check'];
 $tempo = $_GET['tempo'];
+$tempo_final = tempoFinal($tempo);
 if ($embar_check == 1) {
     $_SESSION['cubo_check'] = 1;
 }
@@ -328,46 +331,53 @@ switch ($tipo_cubo) {
     case '4x4':
         $scrambler->setLength(30);
         $scrambler->setWide(25);
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case '5x5':
         $scrambler->setLength(30);
         $scrambler->setWide(25);
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case '6x6':
         $scrambler->setLength(35);
         $scrambler->setTwo(10);
         $scrambler->setThree(10);
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case '7x7':
         $scrambler->setLength(35);
         $scrambler->setTwo(10);
         $scrambler->setThree(10);
-        echo $scrambler->generate();
+        $embaralhamento = $scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Piramynx':
-        echo $pira_scrambler->generate();
+        $embaralhamento = $pira_scrambler->generate();
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Megaminx':
         ?><script>
             document.getElementById('embar').style.fontSize = '15px';
             document.getElementById('embar').style.marginTop = '1.5%';
         </script><?php
-        echo $mega_scrambler->generate();
-        echo '  /  ';
-        echo $mega_scrambler->generate();
-        echo '  /  ';
-        echo $mega_scrambler->generate();
-        echo '<br>';
-        echo $mega_scrambler->generate();
-        echo '  /  ';
-        echo $mega_scrambler->generate();
-        echo '  /  ';
-        echo $mega_scrambler->generate();
-        echo '<br>';
-        echo $mega_scrambler->generate();
+        $mega_embar_1 = $mega_scrambler->generate();
+        $mega_embar_2 = $mega_scrambler->generate();
+        $mega_embar_3 = $mega_scrambler->generate();
+        $mega_embar_4 = $mega_scrambler->generate();
+        $mega_embar_5 = $mega_scrambler->generate();
+        $mega_embar_6 = $mega_scrambler->generate();
+        $mega_embar_7 = $mega_scrambler->generate();
+        $embaralhamento = $mega_embar_1 . " / " . $mega_embar_2 . " / " . $mega_embar_3 . " / " . $mega_embar_4 . " / " . $mega_embar_5 . " / " . $mega_embar_6 . " / " . $mega_embar_7;
+        echo $embaralhamento;
+        $_SESSION['embar'] = $embaralhamento;
         break;
     case 'Skewb':
         echo "ainda não desenvolvido";
@@ -385,7 +395,8 @@ switch ($tipo_cubo) {
     if ($tempo == null) {
         echo "0";
     } else {
-        echo $tempo;
+        $tempo_final = tempoFinal($tempo);
+        echo $tempo_final;
     }
     ?></h1><br>
 
@@ -400,7 +411,10 @@ switch ($tipo_cubo) {
         $query_listagem = mysqli_query($conn, $sql_listagem);
         while ($dados_listagem = mysqli_fetch_array($query_listagem)) { ?>
             <tr>
-                <td><?php echo $dados_listagem['tempo'] ?></td>
+                <td><?php
+                    $tempo_final = tempoFinal($dados_listagem['tempo']);
+                    echo $tempo_final;
+                    ?></td>
             </tr>
         <?php } ?>
     </table>
@@ -413,17 +427,24 @@ switch ($tipo_cubo) {
         </div>
         <tr>
             <td>Melhor tempo:</td>
-            <td><?php echo number_format((float)$melhor_tempo, 2); ?></td>
+            <td><?php
+                $tempo_final = tempoFinal($melhor_tempo); 
+                echo $tempo_final; 
+                ?></td>
         </tr>
         <tr>
             <td>Pior tempo:</td>
-            <td><?php echo number_format((float)$pior_tempo, 2); ?></td>
+            <td><?php
+                $tempo_final = tempoFinal($pior_tempo); 
+                echo $tempo_final;
+                ?></td>
         </tr>
         <tr>
             <td>Média geral:</td>
             <td><?php 
                 if ($media != 0) {
-                    echo number_format((float)$media, 2);
+                    $tempo_final = tempoFinal($media);
+                    echo number_format((float)$tempo_final, 2);
                 } else {
                     echo '0.00';
                 }
@@ -435,7 +456,8 @@ switch ($tipo_cubo) {
             $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
-                echo number_format((float)$media_5, 2);
+                $tempo_final = tempoFinal($media_5);
+                echo number_format((float)$tempo_final, 2);
             } else {
                 echo "N/A";
             }
@@ -447,7 +469,8 @@ switch ($tipo_cubo) {
             $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
-                echo number_format((float)$melhor_media, 2);
+                $tempo_final = tempoFinal($melhor_media);
+                echo number_format((float)$tempo_final, 2);
             } else {
                 echo "N/A";
             }
@@ -459,7 +482,8 @@ switch ($tipo_cubo) {
             $sql_checktempos = "SELECT * FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
-                echo number_format((float)$pior_media, 2);
+                $tempo_final = tempoFinal($pior_media);
+                echo number_format((float)$tempo_final, 2);
             } else {
                 echo "N/A";
             }

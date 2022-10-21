@@ -1,6 +1,33 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', 'aluno01') or die ("Não possível conectar ao banco de dados");
-$banco = mysqli_select_db($conn, 'qblearning'); ?>
+$conn = mysqli_connect('localhost', 'root', '') or die ("Não possível conectar ao banco de dados");
+$banco = mysqli_select_db($conn, 'qblearning');
+
+function tempoFinal($init) {
+    if ($init > 59) {
+    $secs = floor($init);
+    $milli = (int) (($init - $secs) * 101);
+
+    $hours = ($secs / 3600);
+    $minutes = (($secs / 60) % 60);
+    $seconds = $secs % 60;
+
+    if($minutes < 10) {
+        $minutes = "0".$minutes;
+    }
+
+    if($seconds < 10) {
+        $seconds = "0".$seconds;
+    }
+
+    $tempo_final = "$minutes:$seconds.$milli";
+    return $tempo_final;
+    } else {
+    $tempo_final = $init;
+    return $tempo_final; 
+    }
+}
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

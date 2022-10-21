@@ -135,7 +135,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_2x2 != null) {
-                    echo $melhor_tempo_2x2;
+                    $tempo_final = tempoFinal($melhor_tempo_2x2);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -143,7 +144,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_2x2 != null) {
-                echo $melhor_media_2x2;
+                    $tempo_final = tempoFinal($melhor_media_2x2);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -159,7 +161,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_3x3 != null) {
-                    echo $melhor_tempo_3x3;
+                    $tempo_final = tempoFinal($melhor_tempo_3x3);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -167,7 +170,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_3x3 != null) {
-                echo $melhor_media_3x3;
+                    $tempo_final = tempoFinal($melhor_media_3x3);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -183,7 +187,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_4x4 != null) {
-                    echo $melhor_tempo_4x4;
+                    $tempo_final = tempoFinal($melhor_tempo_4x4);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -191,7 +196,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_4x4 != null) {
-                echo $melhor_media_4x4;
+                    $tempo_final = tempoFinal($melhor_media_4x4);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -207,7 +213,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_5x5 != null) {
-                    echo $melhor_tempo_5x5;
+                    $tempo_final = tempoFinal($melhor_tempo_5x5);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -215,7 +222,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_5x5 != null) {
-                echo $melhor_media_5x5;
+                    $tempo_final = tempoFinal($melhor_media_5x5);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -231,7 +239,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_6x6 != null) {
-                    echo $melhor_tempo_6x6;
+                    $tempo_final = tempoFinal($melhor_tempo_6x6);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -239,7 +248,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_6x6 != null) {
-                echo $melhor_media_6x6;
+                    $tempo_final = tempoFinal($melhor_media_6x6);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -255,7 +265,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_7x7 != null) {
-                    echo $melhor_tempo_7x7;
+                    $tempo_final = tempoFinal($melhor_tempo_7x7);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -263,7 +274,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_7x7 != null) {
-                echo $melhor_media_7x7;
+                    $tempo_final = tempoFinal($melhor_media_7x7);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -279,7 +291,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_pira != null) {
-                    echo $melhor_tempo_pira;
+                    $tempo_final = tempoFinal($melhor_tempo_pira);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -287,7 +300,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_pira != null) {
-                echo $melhor_media_pira;
+                    $tempo_final = tempoFinal($melhor_media_pira);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -303,7 +317,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_mega != null) {
-                    echo $melhor_tempo_mega;
+                    $tempo_final = tempoFinal($melhor_tempo_mega);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -311,7 +326,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_mega != null) {
-                echo $melhor_media_mega;
+                    $tempo_final = tempoFinal($melhor_media_mega);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -327,7 +343,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_skewb != null) {
-                    echo $melhor_tempo_skewb;
+                    $tempo_final = tempoFinal($melhor_tempo_skewb);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -335,7 +352,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_skewb != null) {
-                echo $melhor_media_skewb;
+                    $tempo_final = tempoFinal($melhor_media_skewb);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -351,7 +369,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_square1 != null) {
-                    echo $melhor_tempo_square1;
+                    $tempo_final = tempoFinal($melhor_tempo_square1);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -359,7 +378,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_square1 != null) {
-                echo $melhor_media_square1;
+                    $tempo_final = tempoFinal($melhor_media_square1);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -376,7 +396,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor tempo: <?php 
                 if ($melhor_tempo_clock != null) {
-                    echo $melhor_tempo_clock;
+                    $tempo_final = tempoFinal($melhor_tempo_clock);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>
@@ -384,7 +405,8 @@ $melhor_media_clock = $dados_cubo['melhor_media'];
             <h6>
             Melhor média 3/5: <?php 
                 if ($melhor_media_clock != null) {
-                echo $melhor_media_clock;
+                    $tempo_final = tempoFinal($melhor_media_clock);
+                    echo $tempo_final;
                 } else {
                     echo "Nenhum";
                 }?>

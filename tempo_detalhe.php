@@ -57,6 +57,12 @@ $query_media = mysqli_query($conn, $sql_media);
 $dados_media = mysqli_fetch_array($query_media);
 $media = $dados_media['media'];
 
+//seleção de quantidade de tempos
+$sql_dados = "SELECT COUNT(tempo) AS quantidade_tempos FROM tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados = mysqli_query($conn, $sql_dados);
+$dados = mysqli_fetch_array($query_dados);
+$quantidade_tempos = $dados['quantidade_tempos'];
+
 switch ($tipo_cubo) {
     case '2x2':
         $img_detalhes = "2x2.png";
@@ -119,21 +125,24 @@ switch ($tipo_cubo) {
     <h5 class="linha_detalhes">Melhor tempo: 
                 <?php 
                 if ($melhor_tempo != 0) {
-                    echo $melhor_tempo;
+                    $tempo_final = tempoFinal($melhor_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
     <h5 class="linha_detalhes">Pior tempo:        
                 <?php 
                 if ($pior_tempo != 0) {
-                    echo $pior_tempo;
+                    $tempo_final = tempoFinal($pior_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
     <h5 class="linha_detalhes">Último tempo:     
                 <?php 
                 if ($ultimo_tempo != 0) {
-                    echo $ultimo_tempo;
+                    $tempo_final = tempoFinal($ultimo_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
@@ -141,21 +150,24 @@ switch ($tipo_cubo) {
         <h5 class="linha_detalhes">Melhor média 3/5:          
                 <?php 
                 if ($melhor_media != 0) {
-                    echo $melhor_media;
+                    $tempo_final = tempoFinal($melhor_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
         <h5 class="linha_detalhes">Pior média 3/5:                
                 <?php 
                 if ($pior_media != 0) {
-                    echo $pior_media;
+                    $tempo_final = tempoFinal($pior_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
         <h5 class="linha_detalhes">Última média 3/5:                
                 <?php 
                 if ($ultima_media != 0) {
-                    echo $ultima_media;
+                    $tempo_final = tempoFinal($ultima_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
@@ -163,23 +175,27 @@ switch ($tipo_cubo) {
     <h5 class="linha_detalhes">Média geral: 
                 <?php 
                 if ($ultima_media != 0) {
-                    echo number_format((float)$media, 2);
+                    $tempo_final = tempoFinal($ultima_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
     <br>
 </div>
 
+<h3 class="titulo_caixas">Quantidade de tempos registrados: <?php echo $quantidade_tempos ?></h3>
+
 <div class="caixas_detalhe">
 <!-- melhor tempo detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Melhor tempo:                
+    <h3 class="titulo_caixas">Melhor tempo:                
                 <?php 
                 if ($melhor_tempo != 0) {
-                    echo $melhor_tempo;
+                    $tempo_final = tempoFinal($melhor_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
+                } ?></h3>
     <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($melhor_tempo_data), "d/m/Y") ?></h6>
 
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $melhor_tempo_embar ?></h6>
@@ -189,13 +205,14 @@ switch ($tipo_cubo) {
 
 <!-- pior tempo detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Pior tempo:                
+    <h3 class="titulo_caixas">Pior tempo:                
                 <?php 
                 if ($pior_tempo != 0) {
-                    echo $pior_tempo;
+                    $tempo_final = tempoFinal($pior_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
+                } ?></h3>
     <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($pior_tempo_data), "d/m/Y") ?></h6>
 
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $pior_tempo_embar ?></h6>
@@ -205,13 +222,14 @@ switch ($tipo_cubo) {
 
 <!-- ultimo tempo detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Último tempo:                
+    <h3 class="titulo_caixas">Último tempo:                
                 <?php 
                 if ($ultimo_tempo != 0) {
-                    echo $ultimo_tempo;
+                    $tempo_final = tempoFinal($ultimo_tempo);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
+                } ?></h3>
     <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($ultimo_tempo_data), "d/m/Y") ?></h6>
 
     <h6 class="coisas_detalhes">Embaralhamento: <?php echo $ultimo_tempo_embar ?></h6>
@@ -223,40 +241,46 @@ switch ($tipo_cubo) {
 <div class="caixas_detalhe">
 <!-- melhor media detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Melhor média:                
+    <h3 class="titulo_caixas">Melhor média 3/5:                
                 <?php 
                 if ($melhor_media != 0) {
-                    echo $melhor_media;
+                    $tempo_final = tempoFinal($melhor_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
+                } ?></h3>
     <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($melhor_media_data), "d/m/Y") ?></h6>
+
     <br>
 </div>
 
 <!-- pior media detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Pior média:                
+    <h3 class="titulo_caixas">Pior média 3/5:                
                 <?php 
                 if ($pior_media != 0) {
-                    echo $pior_media;
+                    $tempo_final = tempoFinal($pior_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
+                } ?></h3>
     <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($pior_media_data), "d/m/Y") ?></h6>
+
     <br>
 </div>
 
-<!-- ultimo tempo detalhes -->
+<!-- ultima media detalhes -->
 <div class="caixa_pagina">
-    <h2 class="titulo_caixas">Última média:                
+    <h3 class="titulo_caixas">Última média 3/5:               
                 <?php 
-                if ($ultimo_tempo != 0) {
-                    echo $ultimo_tempo;
+                if ($ultima_media != 0) {
+                    $tempo_final = tempoFinal($ultima_media);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
-                } ?></h5></h2>
-    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($ultimo_tempo_data), "d/m/Y") ?></h6>
+                } ?></h3>
+    <h6 class="coisas_detalhes">Data: <?php echo date_format(date_create($ultima_media_data), "d/m/Y") ?></h6>
+
     <br>
 </div>
 </div>

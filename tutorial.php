@@ -3,6 +3,8 @@
 <?php
 include('conexao.php');
 include('navbar.php');
+$id_usuario = $_SESSION['id_usuario'];
+$tipo_cubo = $_SESSION['tipo_cubo'];
 ?>
 
 <head>
@@ -10,6 +12,5 @@ include('navbar.php');
 </head>
 
 <body>
-    ESSA PAGINA É DE TUTORIAIS
 </body>
 </html>
