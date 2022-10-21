@@ -3,8 +3,7 @@
 <?php
 include('conexao.php');
 include('navbar.php');
-include('funcoes_cronometro.php');
-include('scrambler.php');
+include('funcoes_crono.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_SESSION['tipo_cubo'];
 
@@ -170,104 +169,7 @@ if (mysqli_affected_rows($conn) >= 5) {
     $dados_media5_2 = mysqli_fetch_array($query_media5);
     $x5 = $dados_media5_2['tempo'];
 
-    $max = max($x1, $x2, $x3, $x4, $x5);
-    $min = min($x1, $x2, $x3, $x4, $x5);
-    if ($max == $x1) {
-
-        if ($min == $x2) {
-            $media_5 = ($x3 + $x4 + $x5) / 3;
-        }
-    
-        if ($min == $x3) {
-            $media_5 = ($x2 + $x4 + $x5) / 3;
-        }
-    
-        if ($min == $x4) {
-            $media_5 = ($x3 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x5) {
-            $media_5 = ($x3 + $x2 + $x4) / 3;
-        }
-    }
-    
-    if ($max == $x2) {
-    
-        if ($min == $x1) {
-            $media_5 = ($x3 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x3) {
-            $media_5 = ($x1 + $x4 + $x5) / 3;
-        }
-    
-        if ($min == $x4) {
-            $media_5 = ($x3 + $x1 + $x5) / 3;
-        }
-    
-        if ($min == $x5) {
-            $media_5 = ($x3 + $x1 + $x4) / 3;
-        }
-    }
-    
-    if ($max == $x3) {
-    
-        if ($min == $x1) {
-            $media_5 = ($x4 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x2) {
-            $media_5 = ($x1 + $x4 + $x5) / 3;
-        }
-    
-        if ($min == $x4) {
-            $media_5 = ($x1 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x5) {
-            $media_5 = ($x1 + $x2 + $x4) / 3;
-        }
-    
-    }
-    
-    if ($max == $x4) {
-    
-        if ($min == $x1) {
-            $media_5 = ($x3 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x2) {
-            $media_5 = ($x3 + $x1 + $x5) / 3;
-        }
-    
-        if ($min == $x3) {
-            $media_5 = ($x1 + $x2 + $x5) / 3;
-        }
-    
-        if ($min == $x5) {
-            $media_5 = ($x3 + $x2 + $x1) / 3;
-        }
-    }
-    
-    if ($max == $x5) {
-    
-        if ($min == $x1) {
-            $media_5 = ($x3 + $x2 + $x4) / 3;
-        }
-    
-        if ($min == $x2) {
-            $media_5 = ($x3 + $x1 + $x4) / 3; 
-        }
-    
-        if ($min == $x3) {
-            $media_5 = ($x1 + $x2 + $x4) / 3;
-        }
-    
-        if ($min == $x4) {
-            $media_5 = ($x3 + $x2 + $x1) / 3;
-        }
-    
-    }
+    $media_5 = gerarMedia5($x1, $x2, $x3, $x4, $x5);
 
     //inserção de melhor média
     if ($media_5 < $melhor_media or $melhor_media == null) {
@@ -389,7 +291,7 @@ switch ($tipo_cubo) {
         $mega_embar_5 = $mega_scrambler->generate();
         $mega_embar_6 = $mega_scrambler->generate();
         $mega_embar_7 = $mega_scrambler->generate();
-        $embaralhamento = $mega_embar_1 . " / " . $mega_embar_2 . " / " . $mega_embar_3 . " / " . $mega_embar_4 . " / " . $mega_embar_5 . " / " . $mega_embar_6 . " / " . $mega_embar_7;
+        $embaralhamento = $mega_embar_1 . " / " . $mega_embar_2 . "<br>" . $mega_embar_3 . " / " . $mega_embar_4 . "<br>" . $mega_embar_5 . " / " . $mega_embar_6 . "<br>" . $mega_embar_7;
         echo $embaralhamento;
         break;
     case 'Skewb':
@@ -588,7 +490,6 @@ $_SESSION['embar'] = $embaralhamento;
                         echo "clock.png";
                         break;
                 }
-                    
                     ?>" alt="3x3" class="imagem_tipo_cubo">
                 </div>
             </td>

@@ -16,10 +16,10 @@ $query = mysqli_query($conn, $sql);
     <h1 class="titulo">Coleção</h1>
     <a class="btn btn-primary colbtn" href="cadastrar_cubo.php">Cadastrar novo cubo</a>
 
-    <table class='table table-hover'>
+    <table class="tabela_cubos">
         <tr>
-            <td>Tipo de Cubo</td>
-            <td>Modelo</td>
+            <td class="linha_tabela_cubos">Tipo de Cubo</td>
+            <td class="linha_tabela_cubos">Modelo</td>
             <td>Data de manutenção</td>
             <td>Data de aquisição</td>
         </tr>
