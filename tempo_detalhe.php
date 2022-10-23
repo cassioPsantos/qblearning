@@ -204,7 +204,7 @@ switch ($tipo_cubo) {
                 }?></h6>
     <h6 class="coisas_detalhes">Embaralhamento: <?php                 
                 if ($melhor_tempo != 0) {
-                    echo date_format(date_create($melhor_tempo_embar), "d/m/Y");
+                    echo $melhor_tempo_embar;
                 } else {
                     echo 'N/A';
                 }?></h6>
@@ -229,7 +229,7 @@ switch ($tipo_cubo) {
                 }?></h6>
     <h6 class="coisas_detalhes">Embaralhamento: <?php                 
                 if ($pior_tempo != 0) {
-                    echo date_format(date_create($pior_tempo_embar), "d/m/Y");
+                    echo $pior_tempo_embar;
                 } else {
                     echo 'N/A';
                 }?></h6>
@@ -255,7 +255,7 @@ switch ($tipo_cubo) {
 
     <h6 class="coisas_detalhes">Embaralhamento: <?php                 
                 if ($ultimo_tempo != 0) {
-                    echo date_format(date_create($ultimo_tempo_embar), "d/m/Y");
+                    echo $ultimo_tempo_embar;
                 } else {
                     echo 'N/A';
                 }?></h6>

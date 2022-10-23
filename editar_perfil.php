@@ -21,13 +21,38 @@ if (isset($_POST['btnEnviar'])) {
     $nome_completo = $_POST['nome_completo'];
     $email = $_POST['email'];
     $senha_atual = $_POST['senha_atual'];
-    $senha = $_POST['senha'];
-    $genero = $_POST['genero'];
-    $nascimento =  $_POST['nascimento'];
+    $descricao =  $_POST['descricao'];
+
+    $file =  $_FILES['file'];
+    $file_nome = $file['name'];
+    $fileTmpName = $file['tmp_name'];
+    $file_tamanho = $file['size'];
+    $file_erro = $file['error'];
+    $file_tipo = $file['type'];
+
+    $tipo_arquivo_temp = explode('.', $file_nome);
+    $tipo_arquivo = strtolower(end($tipo_arquivo_temp));
+
+    $permitido = array('jpg', 'jpeg', 'png');
+    if (in_array($tipo_arquivo, $permitido)) {
+        if ($file_erro === 0) {
+            if ($file_tamanho < 1000000) {
+                $foto = "foto_perfil".$id_usuario.".".$tipo_arquivo;
+                $file_destino = 'uploads/'.$foto;
+                move_uploaded_file($fileTmpName, $file_destino);
+            } else {
+                echo "<script> alert('O arquivo escolhido é grande demais.') </script>";
+            }
+        } else {
+            echo "<script> alert('Não foi possível enviar o arquivo.') </script>";
+        }
+    } else {
+        echo "<script> alert('Tipo de arquivo não suportado.') </script>";
+    }
     
     $sql = "UPDATE usuarios
             SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
-                email = '$email', senha = '$senha', genero = '$genero', nascimento = '$nascimento'
+                email = '$email', foto = '$foto', descricao = '$descricao'
             WHERE id='$id_usuario' AND senha='$senha_atual'";
 
     mysqli_query($conn, $sql);
@@ -43,7 +68,7 @@ if (isset($_POST['btnEnviar'])) {
 ?>
 <div class="row">
 <div class="container col-10">
-<form method="post">
+<form method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -60,6 +85,21 @@ if (isset($_POST['btnEnviar'])) {
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                Foto de perfil: <input class='form-control' type="file" name="file"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                Descrição: <textarea class='form-control' name="descricao"></textarea>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-6">
@@ -77,43 +117,11 @@ if (isset($_POST['btnEnviar'])) {
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Nova senha: <input class='form-control' type="password" name="senha"/>
-                </div>
-            </div>
-        </div>
+    <div class="form-group">
+        <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
+        <a class="btn btn-danger" href="colecao.php">Cancelar</a>
+    </div>
 
-        <div class="row">
-            <div class="col-3">
-                <div class="form-group">
-                Data de nascimento: <input class='form-control' type="date" name="nascimento" />
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    Gênero: <select class='form-control' name="genero">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Outro">Outro</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-1">
-                <div class="form-group">
-                    <input class='btn btn-primary' type="submit" value="Editar perfil" name="btnEnviar" />
-                </div>
-            </div>
-            <div class="col-1">
-                <div class="form-group">
-                    <a class='btn btn-danger' href='perfil.php'>Cancelar</a>
-                </div>
-            </div>
-        </div>
     </form>
 </div>
 

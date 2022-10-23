@@ -421,7 +421,7 @@ $_SESSION['embar'] = $embaralhamento;
 </div><br>
 
 <div class="embar_botao">
-    <button id="embar_botao" class="btn btn-primary">Atualizar embaralhamento</button>
+    <button id="embar_botao" class="botao">Atualizar embaralhamento</button>
 </div>
 
 <form method="POST">
@@ -450,7 +450,7 @@ $_SESSION['embar'] = $embaralhamento;
         </tr>
         <tr>
             <td class="tabela_tipo_cubo">
-                <input class="atualizabtn" type="submit" value="Atualizar" name="btnEnviar" />
+                <input class="botao atualiza_btn" type="submit" value="Atualizar" name="btnEnviar" />
             </td>
             <td class="tabela_tipo_cubo">
                 <div class="imagem_tipo_cubo1">

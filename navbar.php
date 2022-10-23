@@ -8,7 +8,7 @@
   <a class="navbtn" href="tempos.php">Tempos</a>
   <a class="navbtn" href="algoritmos.php">Algoritmos</a>
   <a class="navbtn" href="colecao.php">Coleção</a>
-  <a class="navbtn logoff" href="entrar.php">Log off</a>
-  <a class="navbtn perfil" href="perfil.php">Perfil: <?php echo $_SESSION['nome_usuario']?></a>
+  <a class="navbtn logoff" href="logout.php">Log off</a>
+  <a class="navbtn logoff" href="perfil.php">Perfil</a>
 </div>
 </div>

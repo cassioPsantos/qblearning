@@ -1,7 +1,4 @@
-<?php 
-session_destroy();
-session_start(); 
-?>
+<?php session_start() ?>
 <html>
 <head>
 <link rel="stylesheet" href="css.css">

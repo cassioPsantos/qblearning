@@ -83,17 +83,10 @@ if (isset($_POST['btnEnviar'])) {
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-1">
-            <div class="form-group">
-                    <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
-            </div>
-        </div>
-        <div class="col-1">
-            <div class="form-group cancelarbtn">
-            <a class="btn btn-danger" href="colecao.php">Cancelar</a>
-            </div>
-        </div>
+
+    <div class="form-group">
+        <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
+        <a class="btn btn-danger" href="colecao.php">Cancelar</a>
     </div>
 
     </form>

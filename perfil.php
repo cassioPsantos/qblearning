@@ -14,20 +14,30 @@ $dados = mysqli_fetch_array($query);
 </head>
 
 <body>
-<h1 class="titulo"><?php echo $_SESSION['nome_usuario']?></h1>
-<br>
-<h2 class="subtitulo">Informações pessoais</h2>
-<br>
-<h6 class="dadosperfil">&#9658; Nome completo: <?php echo $dados['nome_completo']?></h6>
-<br>
-<h6 class="dadosperfil">&#9658; Endereço de email: <?php echo $dados['email']?></h6>
-<br>
-<h6 class="dadosperfil">&#9658; Senha: <?php echo $dados['senha']?></h6>
-<br>
-<h6 class="dadosperfil">&#9658; Gênero: <?php echo $dados['genero']?></h6>
-<br>
-<h6 class="dadosperfil">&#9658; Data de nascimento: <?php echo date_format(date_create($dados['nascimento']), "d/m/Y") ?></h6>
-<br>
-<a class="btn btn-primary perfilbtn" href="editar_perfil.php">Editar perfil</a>
+
+<div class="header_perfil">
+    <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php 
+    echo $dados['foto']
+    ?>">
+</div>
+
+<div class="capa_perfil">
+</div>
+
+<a class="botao btn_editar" href="editar_perfil.php">Editar perfil</a>
+
+<div class="nome_completo">
+    <h1><?php echo $dados['nome_completo']?></h1>
+</div>
+
+<div class="nome_usuario">
+    <p><?php echo "@".$dados['nome_usuario']?></p>
+</div>
+
+
+<div class="descricao">
+    <p class="desc_texto"><?php echo $dados['descricao']?></hp>
+</div>
+
 </body>
 </html>

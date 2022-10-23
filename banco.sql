@@ -6,6 +6,8 @@ create table usuarios (
 	id int primary key not null auto_increment,
     nome_usuario varchar(20),
 	nome_completo varchar(30),
+    descricao text(200),
+    foto blob,
     email varchar(30),
     senha varchar(30),
     genero varchar(9),
@@ -86,5 +88,5 @@ create table ultima_media (
     foreign key (id_usuario) references usuarios(id)
 );
 
-insert into usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento)
-values ('cassiopsantos', 'Cássio Pereira dos Santos', 'teste@teste', 'teste', 'Masculino', '2004-10-14');
+insert into usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento, foto)
+values ('cassiopsantos', 'Cássio Pereira dos Santos', 'teste@teste', 'teste', 'Masculino', '2004-10-14', 'default.png');

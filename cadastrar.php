@@ -11,13 +11,15 @@ include('conexao.php');
 if (isset($_POST['btnEnviar'])) {
     $nome_usuario = $_POST['nome_usuario'];
     $nome_completo = $_POST['nome_completo'];
+    $descricao = "";
+    $foto = "default.png";
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $genero = $_POST['genero'];
     $nascimento =  $_POST['nascimento'];
     
-    $sql = "INSERT INTO usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento) 
-            VALUES ('$nome_usuario', '$nome_completo', '$email', '$senha', '$genero', '$nascimento')";
+    $sql = "INSERT INTO usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento, descricao, foto) 
+            VALUES ('$nome_usuario', '$nome_completo', '$email', '$senha', '$genero', '$nascimento', '$descricao', '$foto')";
 
     mysqli_query($conn, $sql);
 
@@ -39,7 +41,6 @@ if (isset($_POST['btnEnviar'])) {
     <div class="container logotext" id="cadastrotitle">
         <p>Crie sua conta para fazer parte da QBLearning!</p>
         <p>Já tem uma conta? <a href="entrar.php">Entre aqui.</a></p>
-        <p><a href="listaUsuario.php">Checar usuários</a> (teste temporario)</p>
 </div>
 
 <div class="container-fluid">
