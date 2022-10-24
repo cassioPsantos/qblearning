@@ -12,29 +12,24 @@ if (isset($_POST['btnEntrar'])) {
     $senha = $_POST['senha'];
     $confirmar_senha = $_POST['confirmar_senha'];
 
-    if ($senha == $confirmar_senha) {
-
-        $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
-        mysqli_query($conn, $sql);
-        $query = mysqli_query($conn, $sql);
-        while ($dados = mysqli_fetch_array($query)) {
-            $_SESSION['nome_usuario'] = $dados['nome_usuario'];
-            $_SESSION['id_usuario'] = $dados['id'];
-            $_SESSION['tipo_cubo'] = "3x3";
-            $_SESSION['cubo_check'] = 0;
-            $_SESSION['embar'] = "";
-        }
-        if (mysqli_affected_rows($conn) > 0) {
-            echo"<script> alert('Login sucessido.') </script>";
-            header("Location: http://localhost/qblearning/cronometro.php");
-            die();
-        }else{
-            echo"<script> alert('Usuário ou senha incorretos.') </script>";
-        }
-    } else {
-        echo"<script> alert('As senhas não batem') </script>";
+    $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
+    mysqli_query($conn, $sql);
+    $query = mysqli_query($conn, $sql);
+    while ($dados = mysqli_fetch_array($query)) {
+        $_SESSION['nome_usuario'] = $dados['nome_usuario'];
+        $_SESSION['id_usuario'] = $dados['id'];
+        $_SESSION['tipo_cubo'] = "3x3";
+        $_SESSION['cubo_check'] = 0;
+        $_SESSION['embar'] = "";
     }
-  }
+    if (mysqli_affected_rows($conn) > 0) {
+        echo"<script> alert('Login sucessido.') </script>";
+        header("Location: http://localhost/qblearning/cronometro.php");
+        die();
+    }else{
+           echo"<script> alert('Usuário ou senha incorretos.') </script>";
+    }
+}
 ?>
 
 <div class="cadastro cadform">
@@ -64,14 +59,6 @@ if (isset($_POST['btnEntrar'])) {
             <div class="col-6">
                 <div class="form-group">
                 Senha: <input class='form-control' type="password" name="senha"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Confirmar senha: <input class='form-control' type="password" name="confirmar_senha"/>
                 </div>
             </div>
         </div>

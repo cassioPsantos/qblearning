@@ -352,15 +352,23 @@ $_SESSION['embar'] = $embaralhamento;
         <tr>
             <td>Melhor tempo:</td>
             <td><?php
-                $tempo_final = tempoFinal($melhor_tempo); 
-                echo $tempo_final; 
+                if ($melhor_tempo != null) {
+                    $tempo_final = tempoFinal($melhor_tempo); 
+                    echo $tempo_final;
+                } else {
+                    echo "N/A";
+                }
                 ?></td>
         </tr>
         <tr>
             <td>Pior tempo:</td>
             <td><?php
-                $tempo_final = tempoFinal($pior_tempo); 
-                echo $tempo_final;
+                if ($pior_tempo != null) {
+                    $tempo_final = tempoFinal($pior_tempo); 
+                    echo $tempo_final;
+                } else {
+                    echo "N/A";
+                }
                 ?></td>
         </tr>
         <tr>
@@ -370,7 +378,7 @@ $_SESSION['embar'] = $embaralhamento;
                     $tempo_final = tempoFinal($media);
                     echo number_format((float)$tempo_final, 2);
                 } else {
-                    echo '0.00';
+                    echo 'N/A';
                 }
                 ?></td>
         </tr>

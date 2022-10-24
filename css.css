@@ -16,50 +16,31 @@
 /* TELA DE CADASTRO */
 
 .logo {
-    text-align: left;
-    position: absolute;
-    padding-left: 700px;
-    padding-top: 40px;
-    width: 500px;
-    border-width: 5px;
-    padding: 10px;
-    right: 10%;
-    left: auto;
+    width: 40%;
+    float: right;
+    margin-right: 5%;
 }
 
 .logoimg {
-    margin-top: 30px;
-    width: 500px;
+    width: 600px;
 }
 
-.logotext {
-    right: 12%;
-    left: auto;
-}
-
-#cadastrotitle {
+.fundo_cadastro_vazio {
     position: absolute;
-    padding-left: 700px;
-    padding-top: 190px;
-}
-
-.cadastro {
-    padding-top: 50px;
-    margin: 50px;
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right, #9bc3d8, #485acc);
+    z-index: -10;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #6F9BD6, #0000B2);
     border-style: solid;
-    border-width: 5px;
-    border-radius: 10px;
-    background-image: linear-gradient(to right, #add8e6, #0000ff);
-    border-color: #0000ff;
 }
 
-.cadform {
-    background-color: black;
-    color: white;
-}
-
-.cadform2 {
-    margin-left: 4%;
+.cadastro_campos {
+    width: 40%;
+    margin-right: 51%;
+    margin-left: auto;
 }
 
 
