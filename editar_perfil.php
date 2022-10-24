@@ -20,7 +20,7 @@ if (isset($_POST['btnEnviar'])) {
     $nome_usuario = $_POST['nome_usuario'];
     $nome_completo = $_POST['nome_completo'];
     $email = $_POST['email'];
-    $senha_atual = $_POST['senha_atual'];
+    $senha = $_POST['senha'];
     $descricao =  $_POST['descricao'];
 
     $file =  $_FILES['file'];
@@ -53,7 +53,7 @@ if (isset($_POST['btnEnviar'])) {
     $sql = "UPDATE usuarios
             SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
                 email = '$email', foto = '$foto', descricao = '$descricao'
-            WHERE id='$id_usuario' AND senha='$senha_atual'";
+            WHERE id='$id_usuario' AND senha='$senha'";
 
     mysqli_query($conn, $sql);
 
@@ -77,55 +77,44 @@ if (isset($_POST['btnEnviar'])) {
 ?>
 <div class="row">
     
-<div class="container col-10">
+<div class="editar_perfil_form col-6">
     <form method="post" enctype="multipart/form-data">
 
-    <div class="foto_perfil">
-        <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php 
-        echo $foto;
-        ?>">
-        Foto de perfil: <input type="file" name="file"/>
+    <div class="row">
+        <div class="col-6 form-group">
+        Nome de usuário: <input class='form-control' type="text" name="nome_usuario" value="<?php echo $nome_usuario ?>"/>
+        </div>
+        <div class="col-5 foto_perfil">
+            <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php echo $foto ?>">
+        </div>
     </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Nome de usuário: <input class='form-control' type="text" name="nome_usuario" value="<?php echo $nome_usuario ?>"/>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-6 form-group">
+        Nome completo: <input class='form-control' type="text" name="nome_completo" value="<?= $nome_completo ?>"/>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Nome completo: <input class='form-control' type="text" name="nome_completo" value="<?= $nome_completo ?>"/>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-6 form-group">
+        Descrição: <textarea class='form-control' name="descricao"><?= $descricao ?></textarea>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Descrição: <textarea class='form-control' name="descricao"><?= $descricao ?></textarea>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-6 form-group">
+        Email: <input class="form-control" type="email" name="email" value="<?= $email ?>"/>
         </div>
+        <div class="col-6 foto_input">
+            Foto de perfil: <input type="file" name="file"/>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Email: <input class="form-control" type="email" name="email" value="<?= $email ?>"/>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-6 form-group">
+        Confirme sua senha: <input class="form-control" type="password" name="senha"/>
         </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Senha atual: <input class='form-control' type="password" name="senha_atual"/>
-                </div>
-            </div>
-        </div>
+    </div>
 
     <div class="form-group">
         <input class='btn btn-primary' type="submit" value="Editar perfil" name="btnEnviar" />
@@ -135,10 +124,8 @@ if (isset($_POST['btnEnviar'])) {
     </form>
 </div>
 
-<div class="container fundo_cadastro col-6">
-    <div>
-        <img src="imagens/logobranco.png" alt="Logo QBLearning" class="logocad">
-    </div>
+<div class="fundo_cadastro col-6">
+    <img src="imagens/logobranco.png" alt="Logo QBLearning" class="logocad">
 </div>
 
 </div>
