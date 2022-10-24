@@ -64,15 +64,33 @@ if (isset($_POST['btnEnviar'])) {
         else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
+} else {
+    $sql = "SELECT * FROM usuarios WHERE id='$id_usuario'";
+    $query = mysqli_query($conn, $sql);
+    $dados = mysqli_fetch_array($query);
+    $nome_completo = $dados['nome_completo'];
+    $nome_usuario = $dados['nome_usuario'];
+    $descricao = $dados['descricao'];
+    $email = $dados['email'];
+    $foto = $dados['foto'];
 }
 ?>
 <div class="row">
+    
 <div class="container col-10">
-<form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
+
+    <div class="foto_perfil">
+        <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php 
+        echo $foto;
+        ?>">
+        Foto de perfil: <input type="file" name="file"/>
+    </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                Novo nome de usuário: <input class='form-control' type="text" name="nome_usuario"/>
+                Nome de usuário: <input class='form-control' type="text" name="nome_usuario" value="<?php echo $nome_usuario ?>"/>
                 </div>
             </div>
         </div>
@@ -80,7 +98,7 @@ if (isset($_POST['btnEnviar'])) {
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                Nome completo: <input class='form-control' type="text" name="nome_completo"/>
+                Nome completo: <input class='form-control' type="text" name="nome_completo" value="<?= $nome_completo ?>"/>
                 </div>
             </div>
         </div>
@@ -88,7 +106,7 @@ if (isset($_POST['btnEnviar'])) {
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                Foto de perfil: <input class='form-control' type="file" name="file"/>
+                Descrição: <textarea class='form-control' name="descricao"><?= $descricao ?></textarea>
                 </div>
             </div>
         </div>
@@ -96,15 +114,7 @@ if (isset($_POST['btnEnviar'])) {
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                Descrição: <textarea class='form-control' name="descricao"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                Email: <input class="form-control" type="email" name="email"/>
+                Email: <input class="form-control" type="email" name="email" value="<?= $email ?>"/>
                 </div>
             </div>
         </div>
@@ -118,8 +128,8 @@ if (isset($_POST['btnEnviar'])) {
         </div>
 
     <div class="form-group">
-        <input class='btn btn-primary' type="submit" value="Cadastrar cubo" name="btnEnviar" />
-        <a class="btn btn-danger" href="colecao.php">Cancelar</a>
+        <input class='btn btn-primary' type="submit" value="Editar perfil" name="btnEnviar" />
+        <a class="btn btn-danger" href="perfil.php">Cancelar</a>
     </div>
 
     </form>
@@ -130,6 +140,10 @@ if (isset($_POST['btnEnviar'])) {
         <img src="imagens/logobranco.png" alt="Logo QBLearning" class="logocad">
     </div>
 </div>
+
 </div>
+
+
+
 </body>
 </html>

@@ -350,6 +350,12 @@
 .descricao {
     width: 500px;
     margin-left: 5%;
+} 
+
+/* EDITAR PERFIL */
+
+.foto_perfil {
+    float: right;
 }
 
 /* TABELA DE TEMPOS */

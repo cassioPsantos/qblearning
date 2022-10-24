@@ -17,7 +17,7 @@ $dados = mysqli_fetch_array($query);
 
 <div class="header_perfil">
     <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php 
-    echo $dados['foto']
+    echo $dados['foto'];
     ?>">
 </div>
 
@@ -37,6 +37,11 @@ $dados = mysqli_fetch_array($query);
 
 <div class="descricao">
     <p class="desc_texto"><?php echo $dados['descricao']?></hp>
+</div>
+<br>
+
+<div class="dados_perfil">
+    
 </div>
 
 </body>

@@ -427,13 +427,13 @@ $_SESSION['embar'] = $embaralhamento;
 <form method="POST">
 <div class="escolher_cubo">
     <table class="">
-        <tr class=>
+        <tr class="">
             <td class="tabela_tipo_cubo">
                 <p class="titulo_tipo_cubo">Tipo de cubo:</p>
             </td>
             <td class="select_tipo_cubo">
                 <select class="form-control" name="tipo_cubo">
-                    <option selected="true" disabled="disabled"><?php echo $tipo_cubo?> </option>
+                    <option selected="true" disabled="disabled"><?php echo $tipo_cubo?></option>
                     <option value="2x2">2x2</option>
                     <option value="3x3">3x3</option>
                     <option value="4x4">4x4</option>
@@ -450,7 +450,7 @@ $_SESSION['embar'] = $embaralhamento;
         </tr>
         <tr>
             <td class="tabela_tipo_cubo">
-                <input class="botao atualiza_btn" type="submit" value="Atualizar" name="btnEnviar" />
+                <input class="botao atualiza_btn" type="submit" value="Atualizar" name="btnEnviar"/>
             </td>
             <td class="tabela_tipo_cubo">
                 <div class="imagem_tipo_cubo1">
