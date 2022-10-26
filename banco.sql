@@ -7,7 +7,7 @@ create table usuarios (
     nome_usuario varchar(20),
 	nome_completo varchar(30),
     descricao text(200),
-    foto blob,
+    foto varchar(25),
     email varchar(30),
     senha varchar(30),
     genero varchar(9),

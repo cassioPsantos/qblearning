@@ -85,7 +85,6 @@ if ($tempo != null) {
             $melhor_tempo = $tempo;
             $sql_melhortempo = "SELECT * FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
             mysqli_query($conn, $sql_melhortempo);
-            $teste = mysqli_affected_rows($conn);
             if (mysqli_affected_rows($conn) == 0) {
                 $sql_melhortempo = "INSERT INTO melhor_tempo (id_usuario, tipo_cubo, melhor_tempo, embaralhamento, dia) 
                                     VALUES ('$id_usuario', '$tipo_cubo', '$melhor_tempo', '$embaralhamento', '$dia')";
@@ -429,7 +428,7 @@ $_SESSION['embar'] = $embaralhamento;
 </div><br>
 
 <div class="embar_botao">
-    <button id="embar_botao" class="botao">Atualizar embaralhamento</button>
+    <button id="embar_botao" class="botao_azul">Atualizar embaralhamento</button>
 </div>
 
 <form method="POST">
@@ -441,7 +440,7 @@ $_SESSION['embar'] = $embaralhamento;
             </td>
             <td class="select_tipo_cubo">
                 <select class="form-control" name="tipo_cubo">
-                    <option selected="true" disabled="disabled"><?php echo $tipo_cubo?></option>
+                    <option selected="true" disabled="disabled" hidden="hidden"><?php echo $tipo_cubo?></option>
                     <option value="2x2">2x2</option>
                     <option value="3x3">3x3</option>
                     <option value="4x4">4x4</option>
@@ -458,7 +457,7 @@ $_SESSION['embar'] = $embaralhamento;
         </tr>
         <tr>
             <td class="tabela_tipo_cubo">
-                <input class="botao atualiza_btn" type="submit" value="Atualizar" name="btnEnviar"/>
+                <input class="botao_azul atualiza_btn" type="submit" value="Atualizar" name="btnEnviar"/>
             </td>
             <td class="tabela_tipo_cubo">
                 <div class="imagem_tipo_cubo1">
@@ -498,7 +497,7 @@ $_SESSION['embar'] = $embaralhamento;
                         echo "clock.png";
                         break;
                 }
-                    ?>" alt="3x3" class="imagem_tipo_cubo">
+                    ?>" alt="tipo_cubo" class="imagem_tipo_cubo">
                 </div>
             </td>
         </tr>

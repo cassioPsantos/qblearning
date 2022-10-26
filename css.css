@@ -2,7 +2,7 @@
     color: white;
     background-image: linear-gradient(to right, #A7D1E7, #566BF3);
     padding: 6px;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-right: 0;
     border-width: 0;
 }
@@ -13,49 +13,102 @@
     background-image: linear-gradient(to right, #9bc3d8, #485acc);
 }
 
+.botao_azul {
+    color: white;
+    background-color: #007BFF;
+    padding: 6px;
+    border-radius: 8px;
+    margin-right: 0;
+    border-width: 0;
+}
+
+.botao_azul:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #036ee0;
+}
+
+.botao_vermelho {
+    color: white;
+    background-color: #DC3545;
+    padding: 6px;
+    border-radius: 8px;
+    margin-right: 0;
+    border-width: 0;
+}
+
+.botao_vermelho:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #be2d3c;
+}
+
 /* TELA DE CADASTRO */
 
 .logo {
     width: 40%;
     float: right;
     margin-right: 5%;
-}
-
-.logoimg {
-    width: 600px;
-}
-
-.fundo_cadastro_vazio {
-    position: absolute;
-    margin-left: 50%;
-    width: 50%;
-    height: 100%;
-    background-image: linear-gradient(to right, #9bc3d8, #485acc);
-    z-index: -10;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to right, #6F9BD6, #0000B2);
-    border-style: solid;
+    color: white;
+    margin-top: 15%;
 }
 
 .cadastro_campos {
     width: 40%;
-    margin-right: 51%;
+    margin-right: 55%;
     margin-left: auto;
+    margin-top: 4%;
 }
 
+.logoimg {
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.tela_cadastro {
+    width: 90%;
+    height: 600px;
+    margin: auto;
+    margin-top: 1.5%;
+    background: linear-gradient(
+        to right,
+        white 0%,
+        white 50%,
+        #6F9BD6 50%,
+        #0000B2 100%
+      );
+    border-color: #0000B2;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: solid;
+}
 
 /* TELA DE LOGIN */
 
-.logotext2 {
-    right: 12%;
-    left: auto;
-    margin-top: 60px;
+.tela_login {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    margin-top: 1.5%;
+    background: linear-gradient(
+        to right,
+        white 0%,
+        white 50%,
+        #6F9BD6 50%,
+        #0000B2 100%
+      );
+    border-color: #0000B2;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: solid;
 }
 
-#cadastrotitle2 {
-    position: absolute;
-    padding-left: 700px;
-    padding-top: 115px;
+.logo_login {
+    width: 40%;
+    float: right;
+    margin-right: 5%;
+    color: white;
+    margin-top: 5%;
 }
 
 /* NAVBAR */
@@ -276,7 +329,7 @@
     padding-bottom: 1px;
     margin-top: -3px;
     margin-bottom: -16px;
-    margin-left: 135px;
+    margin-left: 167px;
     background-color: #A7D1E7;
     border-style: solid;
     border-width: 0px;
@@ -306,7 +359,7 @@
     border-bottom-style: solid;
     border-bottom-width: 3px;
     border-bottom-color: #A7D1E7;
-    background-color: #F2F2F2;
+    background-color: #e7e7e7;
     background-image: url("imagens/capa_default.png");
     background-size: 170px;
     background-repeat: repeat;
@@ -331,19 +384,45 @@
 .descricao {
     width: 500px;
     margin-left: 5%;
-} 
+}
 
 /* EDITAR PERFIL */
 
-.foto_perfil {
-    position: absolute;
-    z-index: -10;
-    left: 55%;
-    top: 25px;
+.editar_perfil_form {
+    margin-left: 50px;
 }
 
-.editar_perfil_form {
-    margin-left: 100px;
+.titulo2 {
+    margin-left: 65px;
+    margin-right: 800px;
+    margin-top: 5px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #A7D1E7, #566BF3);
+    margin-bottom: 20px;
+}
+
+.editar_imagem_form {
+    margin-left: 65px;
+}
+
+.imagem_editar {
+    margin-left: -15px;
+    width: 200px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #A7D1E7;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.btn_imagem {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 15px;
 }
 
 /* TABELA DE TEMPOS */

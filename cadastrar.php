@@ -3,8 +3,6 @@
 <link rel="stylesheet" href="css.css">
 <title>Criar conta - QBLearning</title>
 </head>
-
-<body>
 <?php
 include('conexao.php');
 
@@ -35,59 +33,62 @@ if (isset($_POST['btnEnviar'])) {
 }
 ?>
 
-<div class="logo">
-    <img src="imagens/logo2.png" alt="Logo QBLearning" class="logoimg">
-    <p>Crie sua conta para fazer parte da QBLearning!</p>
-    <p>Já tem uma conta? <a href="entrar.php">Entre aqui.</a></p>
+<body>
+<div class="tela_cadastro">
+    <div class="logo">
+        <img src="imagens/logo2.png" alt="Logo QBLearning" class="logoimg">
+        <p>Crie sua conta para fazer parte da QBLearning!</p>
+        <p>Já tem uma conta? <a href="entrar.php">Entre aqui.</a></p>
+    </div>
+
+    <div class="cadastro_campos">
+
+        <form method="post">
+
+            <div class="form-group">
+                Nome de usuário: <input class='form-control' type="text" name="nome_usuario"/>
+            </div>
+
+            <div class="form-group">
+                Nome completo: <input class='form-control' type="text" name="nome_completo"/>
+            </div>
+
+            <div class="form-group">
+                Email: <input class="form-control" type="email" name="email"/>
+            </div>
+
+            <div class="form-group">
+                Senha: <input class='form-control' type="password" name="senha"/>
+            </div>
+
+            <div class="form-group">
+                Confirmar senha: <input class='form-control' type="password" name="confirmar_senha"/>
+            </div>
+
+            <div class="row">
+
+                <div class="col-6 form-group">
+                    Data de nascimento: <input class='form-control' type="date" name="nascimento" />
+                </div>
+
+                <div class="col-6 form-group">
+                    Gênero: 
+                    <select class='form-control' name="genero">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input class='botao_azul' type="submit" value="Criar Conta" name="btnEnviar" />
+            </div>
+
+        </form>
+    </div>
 </div>
 
-<div class="fundo_cadastro_vazio">
-</div>
-
-<div class="cadastro_campos">
-    <form method="post">
-
-                    <div class="form-group">
-                    Nome de usuário: <input class='form-control' type="text" name="nome_usuario"/>
-                    </div>
-
-                    <div class="form-group">
-                    Nome completo: <input class='form-control' type="text" name="nome_completo"/>
-                    </div>
-
-                    <div class="form-group">
-                    Email: <input class="form-control" type="email" name="email"/>
-                    </div>
-
-                    <div class="form-group">
-                    Senha: <input class='form-control' type="password" name="senha"/>
-                    </div>
-
-                    <div class="form-group">
-                    Confirmar senha: <input class='form-control' type="password" name="confirmar_senha"/>
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-6 form-group">
-                            Data de nascimento: <input class='form-control' type="date" name="nascimento" />
-                        </div>
-
-                        <div class="col-6 form-group">
-                            Gênero: <select class='form-control' name="genero">
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                            <option value="Outro">Outro</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group">
-                        <input class='btn btn-primary' type="submit" value="Criar Conta" name="btnEnviar" />
-                    </div>
-
-    </form>
-</div>
 </body>
 </html>

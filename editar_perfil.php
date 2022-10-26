@@ -22,7 +22,31 @@ if (isset($_POST['btnEnviar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $descricao =  $_POST['descricao'];
+    
+    $sql = "UPDATE usuarios
+            SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
+                email = '$email', descricao = '$descricao'
+            WHERE id='$id_usuario' AND senha='$senha'";
+    mysqli_query($conn, $sql);
 
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "<script> alert('Usuário atualizado com sucesso.') </script>";
+        header("Location: http://localhost/qblearning/perfil.php");
+        } 
+        else {
+        echo "<script> alert('Ocorreu algum erro.') </script>";
+    }
+} else {
+    $sql = "SELECT * FROM usuarios WHERE id='$id_usuario'";
+    $query = mysqli_query($conn, $sql);
+    $dados = mysqli_fetch_array($query);
+    $nome_completo = $dados['nome_completo'];
+    $nome_usuario = $dados['nome_usuario'];
+    $descricao = $dados['descricao'];
+    $email = $dados['email'];
+}
+
+if (isset($_POST['btnPerfil'])) {
     $file =  $_FILES['file'];
     $file_nome = $file['name'];
     $fileTmpName = $file['tmp_name'];
@@ -49,12 +73,10 @@ if (isset($_POST['btnEnviar'])) {
     } else {
         echo "<script> alert('Tipo de arquivo não suportado.') </script>";
     }
-    
-    $sql = "UPDATE usuarios
-            SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
-                email = '$email', foto = '$foto', descricao = '$descricao'
-            WHERE id='$id_usuario' AND senha='$senha'";
 
+    var_dump($foto);
+    
+    $sql = "UPDATE usuarios SET foto = '$foto' WHERE id = '$id_usuario'";
     mysqli_query($conn, $sql);
 
     if (mysqli_affected_rows($conn) > 0) {
@@ -65,27 +87,18 @@ if (isset($_POST['btnEnviar'])) {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
 } else {
-    $sql = "SELECT * FROM usuarios WHERE id='$id_usuario'";
-    $query = mysqli_query($conn, $sql);
-    $dados = mysqli_fetch_array($query);
-    $nome_completo = $dados['nome_completo'];
-    $nome_usuario = $dados['nome_usuario'];
-    $descricao = $dados['descricao'];
-    $email = $dados['email'];
     $foto = $dados['foto'];
 }
+
 ?>
 <div class="row">
     
-<div class="editar_perfil_form col-6">
+<div class="editar_perfil_form col-9">
     <form method="post" enctype="multipart/form-data">
 
     <div class="row">
         <div class="col-6 form-group">
         Nome de usuário: <input class='form-control' type="text" name="nome_usuario" value="<?php echo $nome_usuario ?>"/>
-        </div>
-        <div class="col-5 foto_perfil">
-            <img class="imagem_perfil" alt="foto de perfil" src="uploads/<?php echo $foto ?>">
         </div>
     </div>
 
@@ -105,9 +118,6 @@ if (isset($_POST['btnEnviar'])) {
         <div class="col-6 form-group">
         Email: <input class="form-control" type="email" name="email" value="<?= $email ?>"/>
         </div>
-        <div class="col-6 foto_input">
-            Foto de perfil: <input type="file" name="file"/>
-        </div>
     </div>
 
     <div class="row">
@@ -117,8 +127,32 @@ if (isset($_POST['btnEnviar'])) {
     </div>
 
     <div class="form-group">
-        <input class='btn btn-primary' type="submit" value="Editar perfil" name="btnEnviar" />
-        <a class="btn btn-danger" href="perfil.php">Cancelar</a>
+        <input class='botao_azul' type="submit" value="Salvar perfil" name="btnEnviar" />
+        <a class="botao_vermelho" href="perfil.php">Cancelar</a>
+    </div>
+
+    </form>
+</div>
+
+<h1 class="titulo2">Editar foto de perfil</h1>
+
+<div class="editar_imagem_form col-6">
+    <form method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-3 foto_perfil">
+            <img class="imagem_editar" alt="foto de perfil" src="uploads/<?php echo $foto ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="foto_input">
+                <label for="file"  class="btn_imagem botao" >Escolher arquivo</label>
+                <input type="file" name="file" id="file"/>
+        </div>
+        <div class="form-group">
+            <input class='btn_imagem botao_azul' type="submit" value="Salvar imagem" name="btnPerfil"/>
+        </div>
     </div>
 
     </form>
@@ -127,7 +161,6 @@ if (isset($_POST['btnEnviar'])) {
 <div class="fundo_cadastro col-6">
     <img src="imagens/logobranco.png" alt="Logo QBLearning" class="logocad">
 </div>
-
 </div>
 
 

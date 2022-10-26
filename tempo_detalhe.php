@@ -6,10 +6,25 @@ include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];
 $tipo_cubo = $_GET['tipo_cubo'];
 
+if (isset($_GET['deletar_btn'])) {
+    $i = $_GET['cod'];
+    $table = $_GET['tabela'];
+    $sql_deletar = "DELETE FROM $table WHERE cod='$i'";
+    mysqli_query($conn, $sql_deletar);
+    if (mysqli_affected_rows($conn) > 0) {
+        header("Location: tempos.php");
+    } else {
+        echo "<script>alert('Houve algum erro.');</script>";
+        mysqli_error($conn);
+        echo $conn->error;
+    }
+}
+
 // seleção de melhor tempo
 $sql_dados_cubo = "SELECT * FROM melhor_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$melhor_tempo_cod = $dados_cubo['cod'];
 $melhor_tempo = $dados_cubo['melhor_tempo'];
 $melhor_tempo_data = $dados_cubo['dia'];
 $melhor_tempo_embar = $dados_cubo['embaralhamento'];
@@ -18,6 +33,7 @@ $melhor_tempo_embar = $dados_cubo['embaralhamento'];
 $sql_dados_cubo = "SELECT * FROM pior_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$pior_tempo_cod = $dados_cubo['cod'];
 $pior_tempo = $dados_cubo['pior_tempo'];
 $pior_tempo_data = $dados_cubo['dia'];
 $pior_tempo_embar = $dados_cubo['embaralhamento'];
@@ -26,6 +42,7 @@ $pior_tempo_embar = $dados_cubo['embaralhamento'];
 $sql_dados_cubo = "SELECT * FROM ultimo_tempo WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$ultimo_tempo_cod = $dados_cubo['cod'];
 $ultimo_tempo = $dados_cubo['ultimo_tempo'];
 $ultimo_tempo_data = $dados_cubo['dia'];
 $ultimo_tempo_embar = $dados_cubo['embaralhamento'];
@@ -34,6 +51,7 @@ $ultimo_tempo_embar = $dados_cubo['embaralhamento'];
 $sql_dados_cubo = "SELECT * FROM melhor_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$melhor_media_cod = $dados_cubo['cod'];
 $melhor_media = $dados_cubo['melhor_media'];
 $melhor_media_data = $dados_cubo['dia'];
 
@@ -41,6 +59,7 @@ $melhor_media_data = $dados_cubo['dia'];
 $sql_dados_cubo = "SELECT * FROM pior_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$pior_media_cod = $dados_cubo['cod'];
 $pior_media = $dados_cubo['pior_media'];
 $pior_media_data = $dados_cubo['dia'];
 
@@ -48,6 +67,7 @@ $pior_media_data = $dados_cubo['dia'];
 $sql_dados_cubo = "SELECT * FROM ultima_media WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados_cubo = mysqli_query($conn, $sql_dados_cubo);
 $dados_cubo = mysqli_fetch_array($query_dados_cubo);
+$ultima_media_cod = $dados_cubo['cod'];
 $ultima_media = $dados_cubo['ultima_media'];
 $ultima_media_data = $dados_cubo['dia'];
 
@@ -208,6 +228,11 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 }?></h6>
+    <form method="GET">
+        <input type="hidden" name="cod" value="<?php echo $melhor_tempo_cod ?>"></input>
+        <input type="hidden" name="tabela" value="melhor_tempo"></input>
+        <input type="submit" class='deletar_btn' name="deletar_btn" value="X"></input></td>
+    </form>
     <br>
 </div>
 
@@ -259,7 +284,6 @@ switch ($tipo_cubo) {
                 } else {
                     echo 'N/A';
                 }?></h6>
-
     <br>
 </div>
 </div>
