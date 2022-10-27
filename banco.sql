@@ -1,3 +1,5 @@
+drop database qblearning;
+
 create database qblearning;
 
 use qblearning;

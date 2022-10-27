@@ -14,14 +14,13 @@ document.querySelector('body').addEventListener('keypress', (e)=>{
         timerInit = setTimeout(()=>{
             podeIniciar = 1;
         },300)
+        if(podeIniciar){
+            document.getElementById('tempo').style.color = 'green'
+        }else{
+            document.getElementById('tempo').style.color = 'blue'
+        }
     }
     if(crocheck != 1)return;
-    
-    if(podeIniciar){
-        document.getElementById('tempo').style.color = 'green'
-    }else{
-        document.getElementById('tempo').style.color = 'blue'
-    }
 })
 let tempo = 0;
 let timer;
