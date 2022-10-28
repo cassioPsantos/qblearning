@@ -3,11 +3,37 @@ $conn = mysqli_connect('localhost', 'root', '') or die ("Não possível conectar
 $banco = mysqli_select_db($conn, 'qblearning');
 
 function tempoFinal($init) {
-    if ($init > 59) {
+    if ($init > 3599) {
     $secs = floor($init);
     $milli = (int) (($init - $secs) * 101);
 
-    $hours = ($secs / 3600);
+    $hours = (int) ($secs / 3600);
+    $minutes = (($secs / 60) % 60);
+    $seconds = $secs % 60;
+
+    if ($minutes > 1) {
+        if ($seconds < 10) {
+            $seconds = '0'.$seconds;
+        }
+    }
+
+    if ($hours > 1) {
+        if ($minutes < 10) {
+            $minutes = '0'.$minutes;
+        }
+        if ($seconds < 10) {
+            $seconds = '0'.$seconds;
+        }
+    }
+
+    $tempo_final = "$hours:$minutes:$seconds.$milli";
+    return $tempo_final;
+
+    } elseif ($init > 59) {
+
+    $secs = floor($init);
+    $milli = (int) (($init - $secs) * 101);
+
     $minutes = (($secs / 60) % 60);
     $seconds = $secs % 60;
 
@@ -21,9 +47,12 @@ function tempoFinal($init) {
 
     $tempo_final = "$minutes:$seconds.$milli";
     return $tempo_final;
+
     } else {
+
     $tempo_final = $init;
     return $tempo_final; 
+
     }
 }
 

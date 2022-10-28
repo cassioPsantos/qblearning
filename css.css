@@ -220,7 +220,7 @@
 }
 
 .tabela_tempos {
-    width: 290px;
+    width: auto;
     height: 328px;
     overflow-y: scroll;
     border-style: solid;
@@ -235,7 +235,7 @@
 }
 
 .tabela_dados {
-    width: 250px;
+    width: auto;
     height: 328px;
     border-style: solid;
     border-width: 3px;
@@ -599,16 +599,22 @@ input[type="file"] {
     margin-left: 50px;
 }
 
+.quantidade_tempos {
+    margin: 40px;
+}
+
 .titulo_caixas {
     margin-top: 34px;
-    margin-left: 50px;
-    padding-bottom: 15px;
+    padding-bottom: 2px;
 }
 
 .caixas_detalhe {
-    display: flex;
-    margin-left: -2%;
-    margin-top: -40px;
+    margin-left: 40px;
+    width: 90%;
+    border-style: solid;
+    border-width: 3px;
+    border-image-slice: 3;
+    border-image-source: linear-gradient(to left, #A7D1E7, #566BF3);
 }
 
 .caixa_pagina {
@@ -617,12 +623,14 @@ input[type="file"] {
     margin-top: 40px;
 }
 
-.btn_deletar_detalhes {
+.deletar_detalhes_btn {
+    float: right;
+    margin-top: 5px;
     padding-bottom: 1px;
     background-color: #A7D1E7;
     border-style: solid;
     border-width: 0px;
     border-radius: 3px;
-    font-size: 20px;
+    font-size: 12px;
     color: white;
 }
