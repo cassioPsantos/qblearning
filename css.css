@@ -818,7 +818,14 @@ input[type="file"] {
 }
 
 .tutoriais {
+    width: 800px;
     display: flex;
+    margin: auto;
+}
+
+.tutoriais_centro {
+    width: 350px;
+    margin: auto;
 }
 
 .imagem_tutorial {
@@ -826,8 +833,30 @@ input[type="file"] {
     margin: 10px;
 }
 
+.imagem_tutorial_1 {
+    margin-top: 50px;
+    width: 250px;
+}
+
+.img_tut_1 {
+    width: 250px;
+    margin: auto;
+}
+
 .caixa_tutorial {
     width: 170px;
+    height: 240px;
+    background-color: #A7D1E7;
+    text-align: center;
+    border-radius: 10px;
+    margin: 50px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s;
+}
+
+.caixa_tutorial_centro {
+    width: 270px;
     height: 240px;
     background-color: #A7D1E7;
     text-align: center;
@@ -852,10 +881,19 @@ input[type="file"] {
     color: white;
 }
 
+.videos_tut {
+    margin-left: 150px;
+}
 
 .titulo_conteudo_tutorial {
     margin-top: 100px;
     margin-left: 50px;
+}
+
+.titulo_videos {
+    margin-top: 50px;
+    margin-left: 120px;
+    margin-bottom: 20px;
 }
 
 .conteudo_tutorial {
@@ -864,3 +902,61 @@ input[type="file"] {
     text-align: justify;
     text-indent: 40px;
 }
+
+.nome_tutorial_detalhes {
+    font-size: 23px;
+    color: white;
+}
+
+.nome_tutorial_detalhes:hover {
+    color: white;
+}
+
+.titulo_null {
+    font-size: 20px;
+    color: black;
+}
+
+.parag_null {
+    font-size: 18px;
+}
+
+.nome_null {
+    text-indent: 20px;
+    text-align: justify;
+    font-size: 15px;
+    color: black;
+}
+
+.tut_basico {
+    height: 260px;
+}
+
+.tut_null {
+    background-color: white;
+    height: 260px;
+}
+
+.tut_null:hover {
+    background-color: white;
+    top: 0;
+}
+
+.tut_camadas {
+    background-color: #03BCA7;
+    height: 260px;
+}
+
+.tut_camadas:hover {
+    background-color: #038173;
+}
+
+.tut_cfop {
+    background-color: #FF3945;
+    height: 260px;
+}
+
+.tut_cfop:hover {
+    background-color: #ac252e;
+}
+
