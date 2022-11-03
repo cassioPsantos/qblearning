@@ -73,8 +73,6 @@ if (isset($_POST['btnPerfil'])) {
     } else {
         echo "<script> alert('Tipo de arquivo não suportado.') </script>";
     }
-
-    var_dump($foto);
     
     $sql = "UPDATE usuarios SET foto = '$foto' WHERE id = '$id_usuario'";
     mysqli_query($conn, $sql);
@@ -82,10 +80,8 @@ if (isset($_POST['btnPerfil'])) {
     if (mysqli_affected_rows($conn) > 0) {
         echo "<script> alert('Usuário atualizado com sucesso.') </script>";
         header("Location: http://localhost/qblearning/perfil.php");
-        } 
-        else {
-        echo "<script> alert('Ocorreu algum erro.') </script>";
     }
+    
 } else {
     $foto = $dados['foto'];
 }

@@ -75,14 +75,13 @@ $ultima_media_data = $dados_cubo['dia'];
 // seleção de média geral
 $sql_media = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$tipo_cubo'";
 $query_media = mysqli_query($conn, $sql_media);
-$dados_media = mysqli_fetch_array($query_media);
-$media = $dados_media['media'];
+$media = mysqli_fetch_array($query_media)['media'];
 
 //seleção de quantidade de tempos
 $sql_dados = "SELECT COUNT(tempo) AS quantidade_tempos FROM tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
 $query_dados = mysqli_query($conn, $sql_dados);
-$dados = mysqli_fetch_array($query_dados);
-$quantidade_tempos = $dados['quantidade_tempos'];
+$quantidade_tempos = mysqli_fetch_array($query_dados)['quantidade_tempos'];
+
 
 //seleção de tempo gasto
 $sql_dados = "SELECT SUM(tempo) AS tempo_gasto FROM tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
@@ -93,6 +92,11 @@ if ($dados['tempo_gasto'] == null) {
 } else {
     $tempo_gasto = tempoFinal($dados['tempo_gasto']);
 }
+
+//seleção de desvio padrão
+$sql_dados = "SELECT STD(tempo) AS desvio_padrao FROM tempos WHERE id_usuario= '$id_usuario' AND tipo_cubo= '$tipo_cubo'";
+$query_dados = mysqli_query($conn, $sql_dados);
+$desvio_padrao = mysqli_fetch_array($query_dados)['desvio_padrao'];
 
 switch ($tipo_cubo) {
     case '2x2':
@@ -206,12 +210,17 @@ switch ($tipo_cubo) {
     <h5 class="linha_detalhes">Média geral: 
                 <?php 
                 if ($ultima_media != 0) {
-                    $tempo_final = tempoFinal($ultima_media);
+                    $tempo_final = number_format((float)tempoFinal($media), 2);
                     echo $tempo_final;
                 } else {
                     echo 'N/A';
                 } ?></h5>
     <br>
+</div>
+
+<div class="titulo">
+    <br>
+    <h1>Tempos</h1>
 </div>
 
 <div class="caixas_detalhe">
@@ -220,11 +229,11 @@ switch ($tipo_cubo) {
     <h3 class="quantidade_tempos">Tempo total gasto resolvendo: <?php echo $tempo_gasto ?></h3>
 
     <!-- melhor tempo detalhes -->
-    <div class="caixa_pagina">
+    <div class="caixa_pagina_tempo">
             <form method="GET">
             <input type="hidden" name="cod" value="<?php echo $melhor_tempo_cod ?>"></input>
             <input type="hidden" name="tabela" value="melhor_tempo"></input>
-            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn_tempos' name="deletar_btn" value="Excluir"></input></td>
             </form>
         <h3 class="titulo_caixas">Melhor tempo:                
                     <?php 
@@ -250,11 +259,11 @@ switch ($tipo_cubo) {
     </div>
 
     <!-- pior tempo detalhes -->
-    <div class="caixa_pagina">
+    <div class="caixa_pagina_tempo">
             <form method="GET">
             <input type="hidden" name="cod" value="<?php echo $pior_tempo_cod ?>"></input>
             <input type="hidden" name="tabela" value="pior_tempo"></input>
-            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn_tempos' name="deletar_btn" value="Excluir"></input></td>
             </form>
         <h3 class="titulo_caixas">Pior tempo:                
                     <?php 
@@ -280,11 +289,11 @@ switch ($tipo_cubo) {
     </div>
 
     <!-- ultimo tempo detalhes -->
-    <div class="caixa_pagina">
+    <div class="caixa_pagina_tempo">
             <form method="GET">
             <input type="hidden" name="cod" value="<?php echo $ultimo_tempo_cod ?>"></input>
             <input type="hidden" name="tabela" value="ultimo_tempo"></input>
-            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn_tempos' name="deletar_btn" value="Excluir"></input></td>
             </form>
         <h3 class="titulo_caixas">Último tempo:                
                     <?php 
@@ -307,12 +316,20 @@ switch ($tipo_cubo) {
                     } else {
                         echo 'N/A';
                     }?></h6>
+        <br>
     </div>
 </div>
 
-<br>
+<div class="titulo">
+    <br>
+    <h1>Médias</h1>
+</div>
 
 <div class="caixas_detalhe">
+
+    <h3 class="quantidade_tempos">Média geral: <?php echo number_format((float)tempoFinal($media), 2) ?></h3>
+    <h3 class="quantidade_tempos">Desvio padrão: <?php echo number_format((float)tempoFinal($desvio_padrao), 2) ?></h3>
+
 <!-- melhor media detalhes -->
 <div class="caixa_pagina">
         <form method="GET">

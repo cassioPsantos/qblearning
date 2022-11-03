@@ -4,15 +4,16 @@
 include('conexao.php');
 include('navbar.php');
 $id_usuario = $_SESSION['id_usuario'];
+$codigo_cubo = $_GET['codigo_cubo'];
 ?>
 
 <head>
 <link rel="stylesheet" href="css.css">
-<title>Cadastrar cubo - QBLearning</title>
+<title>Editar - QBLearning</title>
 </head>
 
 <body id="cadastrobarra">
-<h1 class="titulo1">Cadastrar novo cubo</h1>
+<h1 class="titulo1">Editar cubo</h1>
 
 <?php
 if (isset($_POST['btnEnviar'])) {
@@ -21,18 +22,27 @@ if (isset($_POST['btnEnviar'])) {
     $manutencao = $_POST['manutencao'];
     $aquisicao = $_POST['aquisicao'];
     
-    $sql = "INSERT INTO cubos (id_usuario, tipo_cubo, modelo, manutencao, aquisicao) 
-            VALUES ('$id_usuario', '$tipo_cubo', '$modelo', '$manutencao', '$aquisicao')";
+    $sql = "UPDATE cubos
+            SET tipo_cubo='$tipo_cubo', modelo='$modelo', manutencao='$manutencao', aquisicao='$aquisicao'
+            WHERE id_usuario='$id_usuario' AND cod='$codigo_cubo'";
 
     mysqli_query($conn, $sql);
 
     if (mysqli_affected_rows($conn) > 0) {
-        echo "<script> alert('Cubo cadastrado com sucesso.') </script>";
+        echo "<script> alert('Cubo atualizado com sucesso.') </script>";
         header("Location: http://localhost/qblearning/colecao.php");
         } 
         else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
+} else {
+    $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario' AND cod='$codigo_cubo'";
+    $query = mysqli_query($conn, $sql);
+    $dados = mysqli_fetch_array($query);
+    $tipo_cubo = $dados['tipo_cubo'];
+    $modelo = $dados['modelo'];
+    $manutencao = $dados['manutencao'];
+    $aquisicao = $dados['aquisicao'];
 }
 ?>
 <div class="row">
@@ -62,7 +72,7 @@ if (isset($_POST['btnEnviar'])) {
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-            Modelo do cubo: <input class="form-control" type="text" name="modelo"/>
+            Modelo do cubo: <input class="form-control" type="text" name="modelo" value="<?php echo $modelo ?>"/>
             </div>
         </div>
     </div>
@@ -70,7 +80,7 @@ if (isset($_POST['btnEnviar'])) {
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-            Data de aquisição: <input class='form-control' type="date" name="aquisicao" />
+            Data de aquisição: <input class='form-control' type="date" name="aquisicao" value="<?php echo $aquisicao ?>"/>
             </div>
         </div>
     </div>
@@ -78,14 +88,14 @@ if (isset($_POST['btnEnviar'])) {
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-            Última manutenção: <input class='form-control' type="date" name="manutencao" />
+            Última manutenção: <input class='form-control' type="date" name="manutencao" value="<?php echo $manutencao ?>"/>
             </div>
         </div>
     </div>
 
 
     <div class="form-group">
-        <input class='botao_azul' type="submit" value="Cadastrar cubo" name="btnEnviar" />
+        <input class='botao_azul' type="submit" value="Editar cubo" name="btnEnviar" />
         <a class="botao_vermelho" href="colecao.php">Cancelar</a>
     </div>
 
