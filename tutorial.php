@@ -30,7 +30,7 @@ $tipo_cubo = $_SESSION['tipo_cubo'];
 
     <div class="caixa_tutorial">
         <img class="imagem_tutorial" src="imagens/3x3branco.png" alt="3x3">
-        <a href="3x3_tutorial.php" class="nome_tutorial">Cubo 3x3</a>
+        <a href="tutorial_3x3.php" class="nome_tutorial">Cubo 3x3</a>
     </div>
 
     <div class="caixa_tutorial">
