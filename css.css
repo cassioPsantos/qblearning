@@ -151,7 +151,7 @@
 
 .titulo {
     margin-left: 50px;
-    margin-right: 900px;
+    margin-right: 67%;
     margin-top: 20px;
     margin-bottom: 20px;
     border-bottom-style: solid;
@@ -169,8 +169,82 @@
 }
 
 .tabela_cubos {
-    margin: 50px;
-    padding: 50px;
+    margin: auto;
+    margin-top: 80px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.titulo_tabela_cubos {
+    font-size: 20px;
+    width: 250px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+.titulo_tabela_cubos_tipo {
+    font-size: 20px;
+    width: 180px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+.titulo_tabela_cubos_modelo {
+    font-size: 20px;
+    width: 450px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+.titulo_tabela_cubos_data {
+    font-size: 20px;
+    width: 150px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+.titulo_tabela_cubos_botoes {
+    font-size: 20px;
+    width: 140px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+
+.linha_tabela_cubos {
+    width: 150px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
+.img_linha_cubo {
+    width: 50px;
+}
+
+.esp {
+    margin-top: 14px;
+    margin-left: 8px;
+}
+
+.esp2 {
+    display: flex;
+}
+
+.esp3 {
+    height: 34px;
 }
 
 /* CADASTRAR CUBO */
@@ -235,7 +309,7 @@
 }
 
 .tabela_dados {
-    width: auto;
+    width: 238px;
     height: 328px;
     border-style: solid;
     border-width: 3px;
@@ -377,13 +451,80 @@
 }
 
 .nome_completo {
-    margin-top: 80px;
+    display: flex;
+    width: 900px;
+    margin-top: 100px;
     margin-left: 5%;
+}
+
+.idade_perfil {
+    margin-top: 12px;
+    margin-left: 30px;
+    font-size: 20px;
 }
 
 .descricao {
     width: 500px;
     margin-left: 5%;
+}
+
+.cubo_favorito {
+    margin-left: 50px;
+    width: 560px;
+    height: 160px;
+    border-style: solid;
+    border-width: 3px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #6F9BD6, #A7D1E7);
+}
+
+.img_cubo_fav {
+    margin-left: 15px;
+    margin-top: 22px;
+    width: 110px;
+}
+
+.nome_cubo_fav {
+    float: right;
+    margin-right: 320px;
+    margin-top: 50px;
+}
+
+.dados_cubo_fav {
+    float: right;
+    margin-top: -117px;
+    margin-right: 20px;
+}
+
+.img_tempos_cubo {
+    width: 70px;
+}
+
+.nome_tempos_cubo {
+    margin-top: 22px;
+    margin-left: 6px;
+}
+
+.tempo_cubo {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.tempos_p_cubo {
+    display: flex;
+}
+
+.info_perfil {
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.quantidade_tempos_perfil {
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 /* EDITAR PERFIL */
@@ -564,6 +705,7 @@ input[type="file"] {
     border-width: 3px;
     border-image-slice: 3;
     border-image-source: linear-gradient(to left, #A7D1E7, #566BF3);
+    margin-right: 40px;
     width: auto;
 }
 
@@ -605,27 +747,43 @@ input[type="file"] {
 
 .titulo_caixas {
     margin-top: 34px;
+    margin-left: 15px;
     padding-bottom: 2px;
 }
 
 .caixas_detalhe {
     margin-left: 40px;
-    width: 90%;
-    border-style: solid;
-    border-width: 3px;
-    border-image-slice: 3;
-    border-image-source: linear-gradient(to left, #A7D1E7, #566BF3);
+    margin-right: 40px;
+    width: auto;
 }
 
 .caixa_pagina {
     margin: 40px;
-    width: 380px;
+    width: 430px;
     margin-top: 40px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: #A7D1E7;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.caixa_pagina_tempo {
+    margin: 40px;
+    width: 700px;
+    margin-top: 40px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: #A7D1E7;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .deletar_detalhes_btn {
     float: right;
-    margin-top: 5px;
+    margin-top: 40px;
     padding-bottom: 1px;
     background-color: #A7D1E7;
     border-style: solid;
@@ -633,4 +791,76 @@ input[type="file"] {
     border-radius: 3px;
     font-size: 12px;
     color: white;
+}
+
+.deletar_detalhes_btn_tempos {
+    float: right;
+    margin-top: 40px;
+    margin-right: 300px;
+    padding-bottom: 1px;
+    background-color: #A7D1E7;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: white;
+}
+
+/* PAGINA DE TUTORIAIS */
+
+.titulo_tutorial {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.sub_tutorial {
+    margin-top: 40px;
+}
+
+.tutoriais {
+    display: flex;
+}
+
+.imagem_tutorial {
+    width: 150px;
+    margin: 10px;
+}
+
+.caixa_tutorial {
+    width: 170px;
+    height: 240px;
+    background-color: #A7D1E7;
+    text-align: center;
+    border-radius: 10px;
+    margin: 50px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s;
+}
+
+.caixa_tutorial:hover {
+    background-color: #85a7b9;
+    top: -10px;
+}
+
+.nome_tutorial {
+    font-size: 30px;
+    color: white;
+}
+
+.nome_tutorial:hover {
+    color: white;
+}
+
+
+.titulo_conteudo_tutorial {
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.conteudo_tutorial {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: justify;
+    text-indent: 40px;
 }
