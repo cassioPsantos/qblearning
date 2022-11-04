@@ -36,27 +36,6 @@ include('navbar.php');
     <img class="imagem_tutorial_1" src="imagens/all.png" alt="Esquema de cores">
 </div>
 
-<div class="tutoriais">
-    <div class="tut_null caixa_tutorial">
-        <img class="imagem_tutorial" src="cubes/centros.png" alt="Peças">
-        <h6 class="titulo_null">Centros</h6>
-        <p class="nome_null"></p>
-    </div>
-
-    <div class="tut_null caixa_tutorial">
-        <img class="imagem_tutorial" src="cubes/peças.png" alt="Método de Camadas">
-        <h6 class="titulo_null">Meios</h6>
-        <p class="nome_null"></p>
-    </div>
-
-    <div class="tut_null caixa_tutorial">
-        <img class="imagem_tutorial" src="cubes/quinas.png" alt="CFOP">
-        <h6 class="titulo_null">Quinas</h6>
-        <p class="nome_null"></p>
-    </div>
-</div>
-
-
 <br>
 <br>
 <br>

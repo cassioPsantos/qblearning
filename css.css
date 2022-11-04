@@ -35,6 +35,8 @@
     border-radius: 8px;
     margin-right: 0;
     border-width: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 .botao_vermelho:hover {
@@ -237,6 +239,8 @@
 .esp {
     margin-top: 14px;
     margin-left: 8px;
+    height: 34px;
+    padding-top: 9px;
 }
 
 .esp2 {
@@ -819,11 +823,29 @@ input[type="file"] {
 
 .tutoriais {
     display: flex;
+    width: 820px;
+    margin: auto;
+}
+
+.tutoriais_centro {
+    display: flex;
+    width: 880px;
+    margin: auto;
+    text-align: center;
 }
 
 .imagem_tutorial {
     width: 150px;
     margin: 10px;
+}
+
+.img_tut_1 {
+    display: flex;
+}
+
+.imagem_tutorial_1 {
+    width: 400px;
+    margin: auto;
 }
 
 .caixa_tutorial {
@@ -843,12 +865,78 @@ input[type="file"] {
     top: -10px;
 }
 
+.tut_null {
+    height: 260px;
+    background-color: white;
+}
+
+.tut_null:hover {
+    background-color: white;
+    top: 0px;
+}
+
+.titulo_null {
+    font-size: 25px;
+}
+
+.nome_null {
+    font-size: 15px;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.titulo_videos {
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.videos_tut {
+    margin-left: 100px;
+}
+
+.tut_basico {
+    height: 260px;
+    background-color: #A7D1E7;
+}
+
+.tut_basico:hover {
+    background-color: #85a7b9;
+}
+
+.tut_camadas {
+    height: 260px;
+    background-color: #A7D1E7;
+}
+
+.tut_camadas:hover {
+    background-color: #85a7b9;
+}
+
+.tut_cfop {
+    height: 260px;
+    background-color: #A7D1E7;
+}
+
+.tut_cfop:hover {
+    background-color: #85a7b9;
+}
+
 .nome_tutorial {
     font-size: 30px;
     color: white;
 }
 
 .nome_tutorial:hover {
+    color: white;
+}
+
+.nome_tutorial_detalhes {
+    font-size: 25px;
+    color: white;
+}
+
+.nome_tutorial_detalhes:hover {
     color: white;
 }
 
