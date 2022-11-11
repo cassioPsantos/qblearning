@@ -17,12 +17,13 @@ $id_usuario = $_SESSION['id_usuario'];
 <?php
 if (isset($_POST['btnEnviar'])) {
     $tipo_cubo = $_POST['tipo_cubo'];
+    $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
     $manutencao = $_POST['manutencao'];
     $aquisicao = $_POST['aquisicao'];
     
-    $sql = "INSERT INTO cubos (id_usuario, tipo_cubo, modelo, manutencao, aquisicao) 
-            VALUES ('$id_usuario', '$tipo_cubo', '$modelo', '$manutencao', '$aquisicao')";
+    $sql = "INSERT INTO cubos (id_usuario, tipo_cubo, marca, modelo, manutencao, aquisicao) 
+            VALUES ('$id_usuario', '$tipo_cubo', '$marca', '$modelo', '$manutencao', '$aquisicao')";
 
     mysqli_query($conn, $sql);
 
@@ -55,6 +56,14 @@ if (isset($_POST['btnEnviar'])) {
                 <option value="Square-1">Square-1</option>
                 <option value="Clock">Clock</option>
                 </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+            Marca do cubo: <input class="form-control" type="text" name="marca"/>
             </div>
         </div>
     </div>

@@ -175,8 +175,20 @@ $media = number_format((float)tempoFinal(mysqli_fetch_array($query_cubo)['media'
     <div class="dados_cubo_fav">
         <h5 class="">Quantidade de tempos: <?php echo $temp ?></h5>
         <h5 class="">Melhor tempo: <?php echo $melhor_tempo ?></h5>
-        <h5 class="">Média: <?php echo $media ?></h5>
-        <h5 class="">Melhor média: <?php echo $melhor_media ?></h5>
+        <h5 class="">Média: <?php 
+                        if ($media != 0) {
+                            $tempo_final = tempoFinal($media);
+                            echo $tempo_final;
+                        } else {
+                            echo 'N/A';
+                        }?></h5>
+        <h5 class="">Melhor média: <?php                        
+                        if ($melhor_media != 0) {
+                            $tempo_final = tempoFinal($melhor_media);
+                            echo $tempo_final;
+                        } else {
+                            echo 'N/A';
+                        }?></h5>
     </div>
 </div>
 <br>

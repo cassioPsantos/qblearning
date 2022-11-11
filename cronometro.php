@@ -375,7 +375,7 @@ $_SESSION['embar'] = $embaralhamento;
             <td><?php 
                 if ($media != 0) {
                     $tempo_final = tempoFinal($media);
-                    echo number_format((float)$tempo_final, 2);
+                    echo $tempo_final;
                 } else {
                     echo 'N/A';
                 }
@@ -388,7 +388,7 @@ $_SESSION['embar'] = $embaralhamento;
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
                 $tempo_final = tempoFinal($media_5);
-                echo number_format((float)$tempo_final, 2);
+                echo $tempo_final;
             } else {
                 echo "N/A";
             }
@@ -401,7 +401,7 @@ $_SESSION['embar'] = $embaralhamento;
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
                 $tempo_final = tempoFinal($melhor_media);
-                echo number_format((float)$tempo_final, 2);
+                echo $tempo_final;
             } else {
                 echo "N/A";
             }
@@ -414,7 +414,7 @@ $_SESSION['embar'] = $embaralhamento;
             mysqli_query($conn, $sql_checktempos);
             if (mysqli_affected_rows($conn) >= 5) {
                 $tempo_final = tempoFinal($pior_media);
-                echo number_format((float)$tempo_final, 2);
+                echo $tempo_final;
             } else {
                 echo "N/A";
             }

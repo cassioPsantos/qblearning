@@ -20,6 +20,7 @@ create table cubos (
 	cod int primary key not null auto_increment,
     id_usuario int,
     tipo_cubo varchar(15),
+    marca varchar(20),
     modelo varchar(30),
     manutencao date,
     aquisicao date,
@@ -87,6 +88,14 @@ create table ultima_media (
     tipo_cubo varchar(15),
     ultima_media float(4,2),
     dia date,
+    foreign key (id_usuario) references usuarios(id)
+);
+
+create table nivel_guia (
+    cod int primary key not null auto_increment,
+    id_usuario int,
+    tipo_cubo varchar(15),
+    nivel int,
     foreign key (id_usuario) references usuarios(id)
 );
 

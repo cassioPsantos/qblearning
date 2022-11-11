@@ -209,8 +209,8 @@ switch ($tipo_cubo) {
     </div>
     <h5 class="linha_detalhes">Média geral: 
                 <?php 
-                if ($ultima_media != 0) {
-                    $tempo_final = number_format((float)tempoFinal($media), 2);
+                if ($media != 0) {
+                    $tempo_final = tempoFinal($media);
                     echo $tempo_final;
                 } else {
                     echo 'N/A';
@@ -327,8 +327,8 @@ switch ($tipo_cubo) {
 
 <div class="caixas_detalhe">
 
-    <h3 class="quantidade_tempos">Média geral: <?php echo number_format((float)tempoFinal($media), 2) ?></h3>
-    <h3 class="quantidade_tempos">Desvio padrão: <?php echo number_format((float)tempoFinal($desvio_padrao), 2) ?></h3>
+    <h3 class="quantidade_tempos">Média geral: <?php echo tempoFinal($media) ?></h3>
+    <h3 class="quantidade_tempos">Desvio padrão: <?php echo tempoFinal($desvio_padrao) ?></h3>
 
 <!-- melhor media detalhes -->
 <div class="caixa_pagina">

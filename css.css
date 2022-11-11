@@ -172,7 +172,7 @@
 
 .tabela_cubos {
     margin: auto;
-    margin-top: 80px;
+    margin-top: 60px;
     border-style: solid;
     border-width: 2px;
     border-color: white;
@@ -196,9 +196,18 @@
     border-color: #A7D1E7;
 }
 
+.titulo_tabela_cubos_marca {
+    font-size: 20px;
+    width: 150px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7D1E7;
+}
+
 .titulo_tabela_cubos_modelo {
     font-size: 20px;
-    width: 450px;
+    width: 300px;
     padding: 10px;
     border-style: solid;
     border-width: 1px;
@@ -251,6 +260,31 @@
     height: 34px;
 }
 
+.pesquisar {
+    margin: auto;
+    margin-top: 60px;
+    display: flex;
+    width: 800px;
+    height: 37px;
+}
+
+.pesq_titulo {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.pesq_campo {
+    width: 300px;
+    margin-right: 20px;
+}
+
+.pesq_btn {
+    margin-left: 20px;
+    height: 37px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 /* CADASTRAR CUBO */
 
 .titulo1 {
@@ -298,7 +332,7 @@
 }
 
 .tabela_tempos {
-    width: auto;
+    width: 280px;
     height: 328px;
     overflow-y: scroll;
     border-style: solid;
@@ -313,7 +347,7 @@
 }
 
 .tabela_dados {
-    width: 238px;
+    width: 280px;
     height: 328px;
     border-style: solid;
     border-width: 3px;
@@ -350,9 +384,9 @@
 }
 
 .embar_botao {
-    right: 69px;
+    right: 91px;
     left: auto;
-    bottom: 410px;
+    bottom: 425px;
     position: absolute;
     margin-left: 553px;
 }
@@ -407,7 +441,7 @@
     padding-bottom: 1px;
     margin-top: -3px;
     margin-bottom: -16px;
-    margin-left: 167px;
+    margin-left: 126px;
     background-color: #A7D1E7;
     border-style: solid;
     border-width: 0px;

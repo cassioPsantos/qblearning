@@ -3,6 +3,8 @@ $conn = mysqli_connect('localhost', 'root', 'aluno01') or die ("Não possível c
 $banco = mysqli_select_db($conn, 'qblearning');
 
 function tempoFinal($init) {
+    $init = number_format((float)$init, 2);
+
     if ($init > 3599) {
     $secs = floor($init);
     $milli = (int) (($init - $secs) * 101);
