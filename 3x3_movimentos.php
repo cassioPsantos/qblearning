@@ -12,7 +12,7 @@ include('navbar.php');
 
 <body>
 
-<a class="btn_voltar" href="3x3_basico.php">Voltar</a>
+<a class="btn_voltar" href="guia_3x3.php">Voltar</a>
 <br>
 <div class="titulo_tutorial">
 
@@ -29,11 +29,13 @@ include('navbar.php');
 </div>
 
 <div class="tutoriais_centro">
-    <div class="tut_null caixa_tutorial_centro">
+    <div class="tut_null caixa_tutorial"></div>
+    <div class="tut_null caixa_tutorial">
         <img class="imagem_tutorial" src="cubes/basic.png" alt="Cubo feito">
         <h6 class="titulo_null">Como segurar</h6>
         <p class="nome_null">Considere que você está segurando o cubo com a face vermelha apontada para você e a face branca apontada para cima. Tente fazer os movimentos no seu cubo!</p>
     </div>
+    <div class="tut_null caixa_tutorial"></div>
 </div>
 
 <br>

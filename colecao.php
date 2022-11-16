@@ -46,18 +46,18 @@ if (isset($_POST['btnEnviar'])) {
 
     <form method="POST">
         <div class="pesquisar form-group">
-        <p class="pesq_titulo">Pesquisar:</p> 
-        <input class="pesq_campo form-control" type="text" name="pesquisa">
-        <p class="pesq_titulo">Filtrar por:</p> 
-        <div class="pesq_select">
-        <select class="form-control" name="filtro">
-            <option selected="true" disabled="disabled" hidden="hidden"></option>
-            <option value="tipo_cubo">Tipo de Cubo</option>
-            <option value="marca">Marca</option>
-            <option value="modelo">Modelo</option>
-        </select>
-        </div>
-        <input class="pesq_btn botao_azul" type="submit" value="Pesquisar" name="btnEnviar"/>
+            <p class="pesq_titulo">Pesquisar:</p> 
+            <input class="pesq_campo form-control" type="text" name="pesquisa" value="<?=$pesquisa?>">
+            <p class="pesq_titulo">Filtrar por:</p> 
+            <div class="pesq_select">
+                <select class="form-control" name="filtro">
+                    <option selected="true" disabled="disabled" hidden="hidden"></option>
+                    <option value="tipo_cubo">Tipo de Cubo</option>
+                    <option value="marca">Marca</option>
+                    <option value="modelo">Modelo</option>
+                </select>
+            </div>
+            <input class="pesq_btn botao_azul" type="submit" value="Pesquisar" name="btnEnviar"/>
         </div>  
     </form>
 
@@ -117,8 +117,20 @@ if (isset($_POST['btnEnviar'])) {
                 </td>
                 <td class="linha_tabela_cubos"><?php echo $dados['marca'] ?></td>
                 <td class="linha_tabela_cubos"><?php echo $dados['modelo'] ?></td>
-                <td class="linha_tabela_cubos"><?php echo date_format(date_create($dados['aquisicao']), "d/m/Y") ?></td>
-                <td class="linha_tabela_cubos"><?php echo date_format(date_create($dados['manutencao']), "d/m/Y") ?></td>
+                <td class="linha_tabela_cubos"><?php
+                                                if ($dados['aquisicao'] != '0000-00-00') {
+                                                    echo date_format(date_create($dados['aquisicao']), "d/m/Y");
+                                                } else {
+                                                    echo 'N/A';
+                                                }
+                                                ?></td>
+                <td class="linha_tabela_cubos"><?php    
+                                                if ($dados['manutencao'] != '0000-00-00') {
+                                                    echo date_format(date_create($dados['manutencao']), "d/m/Y");
+                                                } else {
+                                                    echo 'N/A';
+                                                }
+                                                ?></td>
                 <td class="linha_tabela_cubos">
                     <div class="esp2">
                     <a class='botao_azul esp esp3' href='editar_cubo.php?codigo_cubo=<?php echo $codigo_cubo ?>'>Editar</a>

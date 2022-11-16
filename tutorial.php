@@ -24,17 +24,17 @@ $tipo_cubo = $_SESSION['tipo_cubo'];
 
 <div class="tutoriais">
     <div class="caixa_tutorial">
-        <img class="imagem_tutorial" src="imagens/2x2branco.png" alt="2x2">
+        <a href="tutorial_2x2.php"><img class="imagem_tutorial" src="imagens/2x2branco.png" alt="2x2"></a>
         <a href="tutorial_2x2.php" class="nome_tutorial">Cubo 2x2</a>
     </div>
 
     <div class="caixa_tutorial">
-        <img class="imagem_tutorial" src="imagens/3x3branco.png" alt="3x3">
-        <a href="3x3_tutorial.php" class="nome_tutorial">Cubo 3x3</a>
+        <a href="guia_3x3.php"><img class="imagem_tutorial" src="imagens/3x3branco.png" alt="3x3"></a>
+        <a href="guia_3x3.php" class="nome_tutorial">Cubo 3x3</a>
     </div>
 
     <div class="caixa_tutorial">
-        <img class="imagem_tutorial" src="imagens/4x4branco.png" alt="4x4">
+        <a href="tutorial_4x4.php"><img class="imagem_tutorial" src="imagens/4x4branco.png" alt="4x4"></a>
         <a href="tutorial_4x4.php" class="nome_tutorial">Cubo 4x4</a>
     </div>
 </div>

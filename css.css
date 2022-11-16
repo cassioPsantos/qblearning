@@ -130,6 +130,7 @@
     font-size: 20px;
     border-radius: 10px;
     margin: 10px;
+    transition: background-color 0.3s, text-decoration 0.3s;
 }
 
 .navbtn:hover {
@@ -249,7 +250,7 @@
     margin-top: 14px;
     margin-left: 8px;
     height: 34px;
-    padding-top: 9px;
+    padding-top: 6px;
 }
 
 .esp2 {
@@ -869,7 +870,7 @@ input[type="file"] {
 }
 
 .imagem_tutorial {
-    width: 150px;
+    width: 110px;
     margin: 10px;
 }
 
@@ -882,31 +883,58 @@ input[type="file"] {
     margin: auto;
 }
 
+.imagem_tutorial_2 {
+    width: 180px;
+    margin: 10px;
+}
+
 .caixa_tutorial {
-    width: 170px;
-    height: 240px;
+    width: 130px;
+    height: 210px;
     background-color: #A7D1E7;
     text-align: center;
     border-radius: 10px;
     margin: 50px;
-    position: relative;
-    top: 0;
-    transition: top ease 0.2s;
 }
 
 .caixa_tutorial:hover {
     background-color: #85a7b9;
-    top: -10px;
+}
+
+.caixa_tutorial_1 {
+    width: 150px;
+    height: 180px;
+    background-color: #A7D1E7;
+    text-align: center;
+    border-radius: 10px;
+    margin: 50px;
+}
+
+.caixa_tutorial_1:hover {
+    background-color: #85a7b9;
+}
+
+.caixa_tutorial_2 {
+    width: 160px;
+    height: 210px;
+    background-color: #A7D1E7;
+    text-align: center;
+    border-radius: 10px;
+    margin: 50px;
+}
+
+.caixa_tutorial_2:hover {
+    background-color: #85a7b9;
 }
 
 .tut_null {
+    width: 200px;
     height: 260px;
     background-color: white;
 }
 
 .tut_null:hover {
     background-color: white;
-    top: 0px;
 }
 
 .titulo_null {
@@ -929,35 +957,8 @@ input[type="file"] {
     margin-left: 100px;
 }
 
-.tut_basico {
-    height: 260px;
-    background-color: #A7D1E7;
-}
-
-.tut_basico:hover {
-    background-color: #85a7b9;
-}
-
-.tut_camadas {
-    height: 260px;
-    background-color: #A7D1E7;
-}
-
-.tut_camadas:hover {
-    background-color: #85a7b9;
-}
-
-.tut_cfop {
-    height: 260px;
-    background-color: #A7D1E7;
-}
-
-.tut_cfop:hover {
-    background-color: #85a7b9;
-}
-
 .nome_tutorial {
-    font-size: 30px;
+    font-size: 25px;
     color: white;
 }
 
@@ -966,14 +967,13 @@ input[type="file"] {
 }
 
 .nome_tutorial_detalhes {
-    font-size: 25px;
+    font-size: 22px;
     color: white;
 }
 
 .nome_tutorial_detalhes:hover {
     color: white;
 }
-
 
 .titulo_conteudo_tutorial {
     margin-top: 100px;
@@ -985,4 +985,80 @@ input[type="file"] {
     margin-right: 50px;
     text-align: justify;
     text-indent: 40px;
+}
+
+.guia_caminho {
+    display: flex;
+}
+
+.img_guia {
+    width: 800px;
+    height: 280px;
+    margin: auto;
+}
+
+.tut_pecas {
+    position: absolute;
+    top: 330px;
+    left: 550px;
+}
+
+.tut_mov {
+    position: absolute;
+    top: 470px;
+    left: 250px;
+}
+
+.tut_casos {
+    position: absolute;
+    top: 750px;
+    left: 800px;
+}
+
+.tut_camadas {
+    position: absolute;
+    background-color: #03BCA7;
+    top: 1015px;
+    left: 270px;
+}
+
+.tut_camadas:hover {
+    position: absolute;
+    background-color: #02776A;
+}
+
+.tut_extrab {
+    position: absolute;
+    background-color: #03BCA7;
+    top: 1315px;
+    left: 800px;
+}
+
+.tut_extrab:hover {
+    position: absolute;
+    background-color: #02776A;
+}
+
+.tut_mova {
+    position: absolute;
+    background-color: #FF3945;
+    top: 1580px;
+    left: 270px;
+}
+
+.tut_mova:hover {
+    position: absolute;
+    background-color: #A8262F;
+}
+
+.tut_cfop {
+    position: absolute;
+    background-color: #FF3945;
+    top: 1860px;
+    left: 800px;
+}
+
+.tut_cfop:hover {
+    position: absolute;
+    background-color: #A8262F;
 }

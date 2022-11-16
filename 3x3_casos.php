@@ -12,7 +12,7 @@ include('navbar.php');
 
 <body>
 
-<a class="btn_voltar" href="3x3_basico.php">Voltar</a>
+<a class="btn_voltar" href="guia_3x3.php">Voltar</a>
 <br>
 <div class="titulo_tutorial">
 

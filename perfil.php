@@ -116,17 +116,17 @@ switch ($temp) {
 //seleção melhor tempo cubo favorito
 $sql_cubo = "SELECT melhor_tempo FROM melhor_tempo WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$cubo_favorito'";
 $query_cubo = mysqli_query($conn, $sql_cubo);
-$melhor_tempo = number_format((float)tempoFinal(mysqli_fetch_array($query_cubo)['melhor_tempo']), 2);
+$melhor_tempo = mysqli_fetch_array($query_cubo)['melhor_tempo'];
 
 //seleção melhor media cubo favorito
 $sql_cubo = "SELECT melhor_media FROM melhor_media WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$cubo_favorito'";
 $query_cubo = mysqli_query($conn, $sql_cubo);
-$melhor_media = number_format((float)tempoFinal(mysqli_fetch_array($query_cubo)['melhor_media']), 2);
+$melhor_media = mysqli_fetch_array($query_cubo)['melhor_media'];
 
 //seleção media geral cubo favorito
 $sql_cubo = "SELECT AVG(tempo) AS media FROM tempos WHERE id_usuario = '$id_usuario' AND tipo_cubo = '$cubo_favorito'";
 $query_cubo = mysqli_query($conn, $sql_cubo);
-$media = number_format((float)tempoFinal(mysqli_fetch_array($query_cubo)['media']), 2);
+$media = mysqli_fetch_array($query_cubo)['media'];
 
 ?>
 
@@ -174,7 +174,13 @@ $media = number_format((float)tempoFinal(mysqli_fetch_array($query_cubo)['media'
     <h4 class="nome_cubo_fav"><?php echo $nome_cubo ?></h4>
     <div class="dados_cubo_fav">
         <h5 class="">Quantidade de tempos: <?php echo $temp ?></h5>
-        <h5 class="">Melhor tempo: <?php echo $melhor_tempo ?></h5>
+        <h5 class="">Melhor tempo: <?php                         
+                        if ($melhor_tempo != 0) {
+                            $tempo_final = tempoFinal($melhor_tempo);
+                            echo $tempo_final;
+                        } else {
+                            echo 'N/A';
+                        }?></h5>
         <h5 class="">Média: <?php 
                         if ($media != 0) {
                             $tempo_final = tempoFinal($media);
