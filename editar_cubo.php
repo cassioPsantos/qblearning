@@ -18,12 +18,13 @@ $codigo_cubo = $_GET['codigo_cubo'];
 <?php
 if (isset($_POST['btnEnviar'])) {
     $tipo_cubo = $_POST['tipo_cubo'];
+    $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
     $manutencao = $_POST['manutencao'];
     $aquisicao = $_POST['aquisicao'];
     
     $sql = "UPDATE cubos
-            SET tipo_cubo='$tipo_cubo', modelo='$modelo', manutencao='$manutencao', aquisicao='$aquisicao'
+            SET tipo_cubo='$tipo_cubo', marca='$marca', modelo='$modelo', manutencao='$manutencao', aquisicao='$aquisicao'
             WHERE id_usuario='$id_usuario' AND cod='$codigo_cubo'";
 
     mysqli_query($conn, $sql);
@@ -40,6 +41,7 @@ if (isset($_POST['btnEnviar'])) {
     $query = mysqli_query($conn, $sql);
     $dados = mysqli_fetch_array($query);
     $tipo_cubo = $dados['tipo_cubo'];
+    $marca = $dados['marca'];
     $modelo = $dados['modelo'];
     $manutencao = $dados['manutencao'];
     $aquisicao = $dados['aquisicao'];
@@ -65,6 +67,14 @@ if (isset($_POST['btnEnviar'])) {
                 <option value="Square-1">Square-1</option>
                 <option value="Clock">Clock</option>
                 </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+            Marca do cubo: <input class="form-control" type="text" name="marca" value="<?php echo $marca ?>"/>
             </div>
         </div>
     </div>
