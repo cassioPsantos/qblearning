@@ -80,10 +80,24 @@ if (isset($_POST['btnPerfil'])) {
     if (mysqli_affected_rows($conn) > 0) {
         echo "<script> alert('Usuário atualizado com sucesso.') </script>";
         header("Location: http://localhost/qblearning/perfil.php");
+    } else {
+        echo "<script> alert('Ocorreu algum erro.') </script>";
     }
     
 } else {
     $foto = $dados['foto'];
+}
+
+if (isset($_POST['btnTirarFoto'])) {
+    $sql = "UPDATE usuarios SET foto = 'default.png' WHERE id = '$id_usuario'";
+    mysqli_query($conn, $sql);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "<script> alert('Usuário atualizado com sucesso.') </script>";
+        header("Location: http://localhost/qblearning/perfil.php");
+    } else {
+        echo "<script> alert('Ocorreu algum erro.') </script>";
+    }
 }
 
 ?>
@@ -148,6 +162,9 @@ if (isset($_POST['btnPerfil'])) {
         </div>
         <div class="form-group">
             <input class='btn_imagem botao_azul' type="submit" value="Salvar imagem" name="btnPerfil"/>
+        </div>
+        <div class="form-group">
+            <input class='btn_imagem esp4 botao_vermelho' type="submit" value="Tirar foto" name="btnTirarFoto"/>
         </div>
     </div>
 

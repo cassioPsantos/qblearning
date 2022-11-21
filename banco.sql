@@ -91,13 +91,5 @@ create table ultima_media (
     foreign key (id_usuario) references usuarios(id)
 );
 
-create table nivel_guia (
-    cod int primary key not null auto_increment,
-    id_usuario int,
-    tipo_cubo varchar(15),
-    nivel int,
-    foreign key (id_usuario) references usuarios(id)
-);
-
 insert into usuarios (nome_usuario, nome_completo, email, senha, genero, nascimento, foto)
 values ('cassiopsantos', 'Cássio Pereira dos Santos', 'teste@teste', 'teste', 'Masculino', '2004-10-14', 'default.png');

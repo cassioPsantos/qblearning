@@ -47,6 +47,8 @@ include('navbar.php');
     <img class="img_guia" src="imagens/meio2.png" alt="erro"><br>
 </div>
 
+<div class="tut_centro">
+
 <div class="tut_pecas caixa_tutorial">
     <a href="3x3_pecas.php"><img class="imagem_tutorial" src="cubes/peças.png" alt="Peças"></a>
     <a href="3x3_pecas.php" class="nome_tutorial_detalhes">Peças do cubo</a>
@@ -80,6 +82,8 @@ include('navbar.php');
 <div class="tut_cfop caixa_tutorial_2">
     <a href="3x3_cfop.php"><img class="imagem_tutorial" src="cubes/cfop.png" alt="CFOP"></a>
     <a href="3x3_cfop.php" class="nome_tutorial_detalhes">CFOP (método avançado)</a>
+</div>
+
 </div>
 
 </html>
