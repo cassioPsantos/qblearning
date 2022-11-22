@@ -444,7 +444,7 @@
     padding-bottom: 1px;
     margin-top: -3px;
     margin-bottom: -16px;
-    margin-left: 126px;
+    margin-left: 150px;
     background-color: #A7D1E7;
     border-style: solid;
     border-width: 0px;
@@ -605,6 +605,31 @@ input[type="file"] {
     margin-right: 5px;
     margin-bottom: 5px;
     margin-top: 15px;
+}
+
+.titulo_editar_cubo {
+    margin-top: 20px;
+    margin-right: 40px;
+    margin-bottom: -20px;
+    margin-left: 86px;
+    width: auto;
+    display: flex;
+}
+
+.img_editar_cubo {
+    width: 100px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.titulo_editar {
+    margin-top: 40px;
+    margin-left: 5px;
+    padding-bottom: 15px;
+}
+
+.edit_fundo {
+    margin-top: -150px;
 }
 
 /* TABELA DE TEMPOS */
@@ -778,6 +803,10 @@ input[type="file"] {
     position: absolute;
 }
 
+.detalhes_centro {
+    display: flex;
+}
+
 .coisas_detalhes {
     margin-left: 50px;
 }
@@ -793,19 +822,21 @@ input[type="file"] {
 }
 
 .caixas_detalhe {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: auto;
+    margin-right: auto;
     width: auto;
 }
 
 .caixa_pagina {
     margin: 40px;
     width: 430px;
+    height: 165px;
     margin-top: 40px;
     border-style: solid;
     border-width: 3px;
     border-radius: 10px;
     border-color: #A7D1E7;
+    padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -813,6 +844,7 @@ input[type="file"] {
 .caixa_pagina_tempo {
     margin: 40px;
     width: 700px;
+    height: 165px;
     margin-top: 40px;
     border-style: solid;
     border-width: 3px;

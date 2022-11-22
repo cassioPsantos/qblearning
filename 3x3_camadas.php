@@ -28,15 +28,7 @@ include('navbar.php');
 
 </div>
 
-<!-- <div class="tutoriais">
-    <div class="tut_null caixa_tutorial">
-        <img class="imagem_tutorial" src="cubes/centros.png" alt="Peças">
-        <h6 class="titulo_null">Centros</h6>
-        <p class="nome_null">São as 6 peças centrais do cubo. Elas possuem uma cor só, e indicam qual cor aquela face inteira deve seguir. Não é possível mudar um centro de lugar, eles sempre vão estar na mesma posição em relação aos outros centros.</p>
-    </div>
-</div> -->
-
-<h4 class="titulo_conteudo_tutorial">Primeiro passo: fazer a cruz branca</h4>
+<h4 class="titulo_conteudo_tutorial"> &#9733; Primeiro passo: fazer a cruz branca</h4>
 
 <div class="conteudo_tutorial">
 
@@ -113,11 +105,96 @@ include('navbar.php');
 <p>Pode parecer um pouco complexo, mas acredite, é super simples! Lembre-se: a prática leva à perfeição, então pratique! Não tenha medo de embaralhar seu cubo e tentar resolver a cruz branca, é essencial para você aprender.</p>
 
 </div>
+<h4 class="titulo_conteudo_tutorial"> &#9733; Segundo passo: terminar a face branca</h4>
 
+<div class="conteudo_tutorial">
+
+<p>Para terminar a face branca, você deve inserir as quinas brancas em seus lugares certos. Para isso, você deve se atentar às cores da quina para fazer elas estarem na face certa. Primeiramente, localize uma peça de quina que possua a cor branca. Após isso, identifique as duas outras cores e ache o lugar que ela deve ser inserida. Veja o exemplo:</p>
+
+</div>
+
+<div class="tutoriais">
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut9.png" alt="tut9">
+        <p class="nome_null">Após achar uma peça de quina com a cor branca e identificar o lugar que ela deve ir, mova a peça para cima do local que ela deve entrar.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut10.png" alt="tut10">
+        <p class="nome_null">Para colocar essa peça no seu lugar sem estragar a cruz branca, vamos mover a camada de cima em direção ao lado que a cor branca está apontada. No exemplo, a cor branca está apontada para a esquerda, então vamos mover a camada de cima para a esquerda (movimento U).</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut11.png" alt="tut11">
+        <p class="nome_null">Agora, para colocar a peça no lugar certo, vamos mover a camada R em sentido horário para deixar o lugar que a quina deve ser inserida na camada U.</p>
+    </div>
+</div>
 <br>
 <br>
 <br>
 <br>
+<div class="tutoriais">
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut12.png" alt="tut12">
+        <p class="nome_null">Vamos agora mover a camada U em sentido antihorário (U') para colocar a quina junto ao meio branco/vermelho.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut13.png" alt="tut13">
+        <p class="nome_null">Para finalizar, vamos fazer um movimento de R antihorário (R') para colocar as peças de volta no seu lugar certo.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut9.png" alt="tut9">
+        <p class="nome_null"><strong>Uma fórmula para lembrar:</strong> para resolver esse caso, basta fazer a seguinte sequência de movimentos: U R U' R'</p>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="conteudo_tutorial">
+
+<p>Caso a quina esteja apontada para a direita, o processo vai ser o mesmo.</p>
+
+</div>
+
+<div class="tutoriais">
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut14.png" alt="tut14">
+        <p class="nome_null">Primeiramente, mova a peça para cima do local que ela deve entrar.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut15.png" alt="tut15">
+        <p class="nome_null">Agora, vamos mover a camada de cima em direção ao lado que a cor branca está apontada. Agora, a cor branca está apontada para a direita, então vamos mover a camada de cima para a direita (movimento U').</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut16.png" alt="tut16">
+        <p class="nome_null">Vamos mover a camada R em sentido antihorário para deixar o lugar que a quina deve ser inserida na camada U.</p>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="tutoriais">
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut17.png" alt="tut17">
+        <p class="nome_null">Vamos mover a camada U em sentido horário para colocar a quina junto ao meio branco/azul.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut13.png" alt="tut13">
+        <p class="nome_null">Para finalizar, vamos fazer um movimento de R horário para colocar as peças de volta no seu lugar certo.</p>
+    </div>
+
+    <div class="tut_null caixa_tutorial_2">
+        <img class="imagem_tutorial_2" src="cubes/tut14.png" alt="tut14">
+        <p class="nome_null"><strong>Uma fórmula para lembrar:</strong> para resolver esse caso, basta fazer a seguinte sequência de movimentos: U' R' U R</p>
+    </div>
+</div>
+
 <h4 class="titulo_conteudo_tutorial">Vídeos recomendados:</h4>
 
 <h6 class="titulo_videos">&#10070; Cubo Velocidade</h6>

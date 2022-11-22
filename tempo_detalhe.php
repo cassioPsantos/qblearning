@@ -218,12 +218,13 @@ switch ($tipo_cubo) {
     <br>
 </div>
 
-<div class="titulo">
-    <br>
-    <h1>Tempos</h1>
-</div>
-
+<div class="detalhes_centro">
 <div class="caixas_detalhe">
+
+    <div class="titulo">
+        <br>
+        <h1>Tempos</h1>
+    </div>
 
     <h3 class="quantidade_tempos">Quantidade de tempos registrados: <?php echo $quantidade_tempos ?></h3>
     <h3 class="quantidade_tempos">Tempo total gasto resolvendo: <?php echo $tempo_gasto ?></h3>
@@ -320,89 +321,87 @@ switch ($tipo_cubo) {
     </div>
 </div>
 
-<div class="titulo">
-    <br>
-    <h1>Médias</h1>
-</div>
-
 <div class="caixas_detalhe">
+
+    <div class="titulo">
+        <br>
+        <h1>Médias</h1>
+    </div>
 
     <h3 class="quantidade_tempos">Média geral: <?php echo tempoFinal($media) ?></h3>
     <h3 class="quantidade_tempos">Desvio padrão: <?php echo tempoFinal($desvio_padrao) ?></h3>
 
-<!-- melhor media detalhes -->
-<div class="caixa_pagina">
-        <form method="GET">
-        <input type="hidden" name="cod" value="<?php echo $melhor_media_cod ?>"></input>
-        <input type="hidden" name="tabela" value="melhor_media"></input>
-        <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
-        </form>
-    <h3 class="titulo_caixas">Melhor média 3/5:                
-                <?php 
-                if ($melhor_media != 0) {
-                    $tempo_final = tempoFinal($melhor_media);
-                    echo $tempo_final;
-                } else {
-                    echo 'N/A';
-                } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php 
-                if ($melhor_media != 0) {
-                    echo date_format(date_create($melhor_media_data), "d/m/Y");
-                } else {
-                    echo 'N/A';
-                }?></h6>
+    <!-- melhor media detalhes -->
+    <div class="caixa_pagina">
+            <form method="GET">
+            <input type="hidden" name="cod" value="<?php echo $melhor_media_cod ?>"></input>
+            <input type="hidden" name="tabela" value="melhor_media"></input>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            </form>
+        <h3 class="titulo_caixas">Melhor média 3/5:                
+                    <?php 
+                    if ($melhor_media != 0) {
+                        $tempo_final = tempoFinal($melhor_media);
+                        echo $tempo_final;
+                    } else {
+                        echo 'N/A';
+                    } ?></h3>
+        <h6 class="coisas_detalhes">Data: <?php 
+                    if ($melhor_media != 0) {
+                        echo date_format(date_create($melhor_media_data), "d/m/Y");
+                    } else {
+                        echo 'N/A';
+                    }?></h6>
+        <br>
+    </div>
 
-    <br>
-</div>
+    <!-- pior media detalhes -->
+    <div class="caixa_pagina">
+            <form method="GET">
+            <input type="hidden" name="cod" value="<?php echo $pior_media_cod ?>"></input>
+            <input type="hidden" name="tabela" value="pior_media"></input>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            </form>
+        <h3 class="titulo_caixas">Pior média 3/5:                
+                    <?php 
+                    if ($pior_media != 0) {
+                        $tempo_final = tempoFinal($pior_media);
+                        echo $tempo_final;
+                    } else {
+                        echo 'N/A';
+                    } ?></h3>
+        <h6 class="coisas_detalhes">Data: <?php 
+                    if ($pior_media != 0) {
+                        echo date_format(date_create($pior_media_data), "d/m/Y");
+                    } else {
+                        echo 'N/A';
+                    }?></h6>
+        <br>
+    </div>
 
-<!-- pior media detalhes -->
-<div class="caixa_pagina">
-        <form method="GET">
-        <input type="hidden" name="cod" value="<?php echo $pior_media_cod ?>"></input>
-        <input type="hidden" name="tabela" value="pior_media"></input>
-        <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
-        </form>
-    <h3 class="titulo_caixas">Pior média 3/5:                
-                <?php 
-                if ($pior_media != 0) {
-                    $tempo_final = tempoFinal($pior_media);
-                    echo $tempo_final;
-                } else {
-                    echo 'N/A';
-                } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php 
-                if ($pior_media != 0) {
-                    echo date_format(date_create($pior_media_data), "d/m/Y");
-                } else {
-                    echo 'N/A';
-                }?></h6>
-
-    <br>
-</div>
-
-<!-- ultima media detalhes -->
-<div class="caixa_pagina">
-        <form method="GET">
-        <input type="hidden" name="cod" value="<?php echo $ultima_media_cod ?>"></input>
-        <input type="hidden" name="tabela" value="ultima_media"></input>
-        <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
-        </form>
-    <h3 class="titulo_caixas">Última média 3/5:               
-                <?php 
-                if ($ultima_media != 0) {
-                    $tempo_final = tempoFinal($ultima_media);
-                    echo $tempo_final;
-                } else {
-                    echo 'N/A';
-                } ?></h3>
-    <h6 class="coisas_detalhes">Data: <?php 
-                if ($ultima_media != 0) {
-                    echo date_format(date_create($ultima_media_data), "d/m/Y");
-                } else {
-                    echo 'N/A';
-                }?></h6>
-
-    <br>
+    <!-- ultima media detalhes -->
+    <div class="caixa_pagina">
+            <form method="GET">
+            <input type="hidden" name="cod" value="<?php echo $ultima_media_cod ?>"></input>
+            <input type="hidden" name="tabela" value="ultima_media"></input>
+            <input type="submit" onclick="return confirm('Tem certeza que deseja deletar o dado? Essa ação não pode ser desfeita.')" class='deletar_detalhes_btn' name="deletar_btn" value="Excluir"></input></td>
+            </form>
+        <h3 class="titulo_caixas">Última média 3/5:               
+                    <?php 
+                    if ($ultima_media != 0) {
+                        $tempo_final = tempoFinal($ultima_media);
+                        echo $tempo_final;
+                    } else {
+                        echo 'N/A';
+                    } ?></h3>
+        <h6 class="coisas_detalhes">Data: <?php 
+                    if ($ultima_media != 0) {
+                        echo date_format(date_create($ultima_media_data), "d/m/Y");
+                    } else {
+                        echo 'N/A';
+                    }?></h6>
+        <br>
+    </div>
 </div>
 </div>
 

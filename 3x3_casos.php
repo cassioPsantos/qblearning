@@ -35,16 +35,33 @@ include('navbar.php');
 <div class="img_tut_1">
     <img class="imagem_tutorial_1" src="imagens/all.png" alt="Esquema de cores">
 </div>
+<br>
+<div class="conteudo_tutorial">
+
+<p>É importante saber como as cores são dispostas no cubo para facilitar a visualização na hora de resolver. Você pode perceber que a cor branca é oposta à cor amarela, a cor vermelha é oposta à cor laranja, e a cor verde é oposta à cor azul. Se você fizer o seguinte algoritmo no seu cubo: U2 D2 R2 L2 F2 B2, você poderá ver um padrão conhecido como o padrão Xadrez, que mostra cada face com os meios trocas pelos peios da cor oposta à cor daquela face. Experimente!</p>
+
+</div>
+
+<div class="tutoriais_centro">
+    <div class="tut_null caixa_tutorial"></div>
+    <div class="tut_null caixa_tutorial">
+        <img class="imagem_tutorial" src="cubes/checkerboard.png" alt="Padrão de tabuleiro de xadrez">
+        <h6 class="titulo_null">Padrão de xadrez</h6>
+        <p class="nome_null"></p>
+    </div>
+    <div class="tut_null caixa_tutorial"></div>
+</div>
 
 <br>
 <br>
 <br>
 <br>
-<h4 class="titulo_conteudo_tutorial">Vídeos recomendados:</h4>
+<!-- <h4 class="titulo_conteudo_tutorial">Vídeos recomendados:</h4>
 
 <h6 class="titulo_videos">&#10070; Cubo Velocidade</h6>
 
 <iframe class="videos_tut" width="560" height="315" src="https://www.youtube.com/embed/gydNrosJwio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+-->
 <br>
 <br>
 <br>
