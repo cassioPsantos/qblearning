@@ -10,7 +10,7 @@ include('navbar.php');
 <link rel="stylesheet" href="css.css">
 </head>
 
-<body>
+<body id="guiabarra">
 
 <a class="btn_voltar" href="tutorial.php">Voltar</a>
 <br>
@@ -21,7 +21,14 @@ include('navbar.php');
     <h5 class="sub_tutorial">É o ideal para começar - você vai utilizar os conteitos do 3x3 em todos os outros cubos.</h5>
 
 </div>
+<div class="siiim"><p></p></div>
 <br>
+<div class="fundo_guia">
+    <img class="img_fundo" src="imagens/background.png" alt="erro"><br>
+</div>
+<div class="fundo_guia1">
+    <img class="img_fundo" src="imagens/background.png" alt="erro"><br>
+</div>
 <br>
 <br>
 

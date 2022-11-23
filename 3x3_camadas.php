@@ -195,11 +195,12 @@ include('navbar.php');
     </div>
 </div>
 
-<h4 class="titulo_conteudo_tutorial">Vídeos recomendados:</h4>
+<!--<h4 class="titulo_conteudo_tutorial">Vídeos recomendados:</h4>
 
 <h6 class="titulo_videos">&#10070; Cubo Velocidade</h6>
 
 <iframe class="videos_tut" width="560" height="315" src="https://www.youtube.com/embed/gydNrosJwio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+-->
 <br>
 <br>
 <br>

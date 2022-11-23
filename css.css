@@ -1025,10 +1025,29 @@ input[type="file"] {
     display: flex;
 }
 
+.fundo_guia {
+    position: absolute;
+    z-index: -10;
+}
+.fundo_guia1 {
+    position: absolute;
+    top: 1430px;
+    z-index: -10;
+}
+
+.img_fundo {
+    width: 1800px;
+}
+
 .img_guia {
     width: 800px;
     height: 280px;
     margin: auto;
+    z-index: -20;
+}
+
+#guiabarra {
+    overflow-x: hidden;
 }
 
 .tut_pecas {
