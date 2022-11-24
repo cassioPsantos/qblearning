@@ -45,35 +45,36 @@ if (isset($_POST['btnEnviar'])) {
 
         <form method="post">
 
-            <div class="form-group">
-                Nome de usuário: <input class='form-control' type="text" name="nome_usuario"/>
+            <div class="form_etapa">
+                Nome completo <input class='form_campo' type="text" name="nome_completo" required>
             </div>
 
-            <div class="form-group">
-                Nome completo: <input class='form-control' type="text" name="nome_completo"/>
+            Nome de usuário
+            <div class="form_etapa">
+                <input type="text" class="form_campo" id="nome_usuario">
             </div>
 
-            <div class="form-group">
-                Email: <input class="form-control" type="email" name="email"/>
+            <div class="form_etapa">
+                Email<br> <input class="form_campo" type="email" name="email">
             </div>
 
-            <div class="form-group">
-                Senha: <input class='form-control' type="password" name="senha"/>
+            <div class="form_etapa">
+                Senha<br> <input class='form_campo' type="password" name="senha">
             </div>
 
-            <div class="form-group">
-                Confirmar senha: <input class='form-control' type="password" name="confirmar_senha"/>
+            <div class="form_etapa">
+                Confirmar senha <input class='form_campo' type="password" name="confirmar_senha">
             </div>
 
             <div class="row">
 
-                <div class="col-6 form-group">
-                    Data de nascimento: <input class='form-control' type="date" name="nascimento" />
+                <div class="col-6 form_etapa">
+                    Data de nascimento <input class='form_campo' type="date" name="nascimento">
                 </div>
-
-                <div class="col-6 form-group">
-                    Gênero: 
-                    <select class='form-control' name="genero">
+                
+                <div class="col-6 form_etapa">
+                    Gênero
+                    <select class='form_campo' name="genero">
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                         <option value="Outro">Outro</option>
@@ -82,8 +83,8 @@ if (isset($_POST['btnEnviar'])) {
 
             </div>
 
-            <div class="form-group">
-                <input class='botao_azul' type="submit" value="Criar Conta" name="btnEnviar" />
+            <div class="form_etapa">
+                <input class='botao_azul' type="submit" value="Criar Conta" name="btnEnviar">
             </div>
 
         </form>

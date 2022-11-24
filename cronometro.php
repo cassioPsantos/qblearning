@@ -21,15 +21,22 @@ $embar_check = $_GET['embar_check'];
 // definição de dia
 $dia = date("Y-m-d");
 
+//funções tempo
 $tempo = $_GET['tempo'];
 $tempo_final = tempoFinal($tempo);
 if ($embar_check == 1) {
     $_SESSION['cubo_check'] = 1;
 }
 $embar_check = 0;
+
+//mudar tipo cubo
 if (isset($_POST['btnEnviar'])) {
-    $_SESSION['tipo_cubo'] = $_POST['tipo_cubo'];
-    $tipo_cubo = $_SESSION['tipo_cubo'];
+    $tipo_cubo = $_POST['tipo_cubo'];
+    if ($tipo_cubo == null) {
+        $tipo_cubo = $_SESSION['tipo_cubo'];
+    } else {
+        $_SESSION['tipo_cubo'] = $tipo_cubo;
+    }
     $_SESSION['cubo_check'] = 1;
 }
 

@@ -21,20 +21,20 @@ if (isset($_GET['deletar_btn'])) {
 
 if (isset($_POST['btnEnviar'])) {
     $pesquisa = $_POST['pesquisa'];
-    $filtro = $_POST['filtro'];
-    if ($pesquisa != '' AND $filtro != '') {
-        $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario' AND $filtro='$pesquisa' ORDER BY tipo_cubo";
+    if ($pesquisa != null) {
+        $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario' AND (tipo_cubo LIKE '%$pesquisa%' OR marca LIKE '%$pesquisa%' OR modelo LIKE '%$pesquisa%') ORDER BY tipo_cubo";
         $query = mysqli_query($conn, $sql);
     } else {
-        $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario' ORDER BY tipo_cubo";
+        $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario'";
         $query = mysqli_query($conn, $sql);
     }
 } else {
-    $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario' ORDER BY tipo_cubo";
+    $sql = "SELECT * FROM cubos WHERE id_usuario='$id_usuario'";
     $query = mysqli_query($conn, $sql);
 }
 
 ?>
+
 <head>
 <link rel="stylesheet" href="css.css">
 <title>Coleção - QBLearning</title>
@@ -48,15 +48,6 @@ if (isset($_POST['btnEnviar'])) {
         <div class="pesquisar form-group">
             <p class="pesq_titulo">Pesquisar:</p> 
             <input class="pesq_campo form-control" type="text" name="pesquisa" value="<?=$pesquisa?>">
-            <p class="pesq_titulo">Filtrar por:</p> 
-            <div class="pesq_select">
-                <select class="form-control" name="filtro">
-                    <option selected="true" disabled="disabled" hidden="hidden"></option>
-                    <option value="tipo_cubo">Tipo de Cubo</option>
-                    <option value="marca">Marca</option>
-                    <option value="modelo">Modelo</option>
-                </select>
-            </div>
             <input class="pesq_btn botao_azul" type="submit" value="Pesquisar" name="btnEnviar"/>
         </div>  
     </form>
@@ -133,7 +124,7 @@ if (isset($_POST['btnEnviar'])) {
                                                 ?></td>
                 <td class="linha_tabela_cubos">
                     <div class="esp2">
-                    <a class='botao_azul esp esp3' href='editar_cubo.php?codigo_cubo=<?php echo $codigo_cubo ?>'>Editar</a>
+                    <a class='botao_azul esp5 esp3' href='editar_cubo.php?codigo_cubo=<?php echo $codigo_cubo ?>'>Editar</a>
                     <form method="GET">
                     <input type="submit" name="deletar_btn" onclick="return confirm('Tem certeza que deseja excluir esse cubo da sua coleção? Essa ação não pode ser desfeita.')" class='botao_vermelho esp' value="Excluir"></input>
                     <input type="hidden" name="codigo_cubo" value="<?php echo $codigo_cubo ?>"></input>

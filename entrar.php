@@ -46,15 +46,15 @@ if (isset($_POST['btnEntrar'])) {
 
         <form method="post">
 
-            <div class="form-group">
-                Email: <input class="form-control" type="email" name="email"/>
+            <div class="form_etapa">
+                Email<br> <input class="form_campo" type="email" name="email"/>
             </div>
 
-            <div class="form-group">
-                Senha: <input class='form-control' type="password" name="senha"/>
+            <div class="form_etapa">
+                Senha<br> <input class='form_campo' type="password" name="senha"/>
             </div>
 
-            <div class="form-group">
+            <div class="form_etapa">
                 <input class='botao_azul' type="submit" value="Entrar" name="btnEntrar" />
             </div>
 

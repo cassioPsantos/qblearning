@@ -155,7 +155,13 @@ $media = mysqli_fetch_array($query_cubo)['media'];
 </div>
 
 <div class="descricao">
-    <p class="desc_texto">"<?php echo $dados['descricao']?>"</hp>
+    <p class="desc_texto"><?php
+        $descricao = $dados['descricao'];
+    if ($descricao != null) {
+        $descricao = '"'.$descricao.'"';
+        echo $descricao;
+    }
+    ?></hp>
 </div>
 
 <br>
@@ -167,6 +173,7 @@ $media = mysqli_fetch_array($query_cubo)['media'];
 </div>
 
 <br>
+
 <h1 class="titulo">Cubo Favorito</h1>
 <br>
 <div class="cubo_favorito">
@@ -197,6 +204,7 @@ $media = mysqli_fetch_array($query_cubo)['media'];
                         }?></h5>
     </div>
 </div>
+
 <br>
 
 <h3 class="titulo">Tempos regis. p/ cubo</h3>
@@ -205,61 +213,61 @@ $media = mysqli_fetch_array($query_cubo)['media'];
 <div class="tempos_p_cubo">
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/2x2.png" alt="2x2">
-        <h5 class="nome_tempos_cubo">Cubo 2x2: <?php echo $fav_2x2 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 2x2: <?php if ($fav_2x2 > 0) {echo $fav_2x2;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/3x3.png" alt="3x3">
-        <h5 class="nome_tempos_cubo">Cubo 3x3: <?php echo $fav_3x3 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 3x3: <?php if ($fav_3x3 > 0) {echo $fav_3x3;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/4x4.png" alt="4x4">
-        <h5 class="nome_tempos_cubo">Cubo 4x4: <?php echo $fav_4x4 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 4x4: <?php if ($fav_4x4 > 0) {echo $fav_4x4;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/5x5.png" alt="5x5">
-        <h5 class="nome_tempos_cubo">Cubo 5x5: <?php echo $fav_5x5 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 5x5: <?php if ($fav_5x5 > 0) {echo $fav_5x5;}else{echo "N/A";} ?></h5>
     </div>
 </div>
 
 <div class="tempos_p_cubo">
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/6x6.png" alt="6x6">
-        <h5 class="nome_tempos_cubo">Cubo 6x6: <?php echo $fav_6x6 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 6x6: <?php if ($fav_6x6 > 0) {echo $fav_6x6;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/7x7.png" alt="7x7">
-        <h5 class="nome_tempos_cubo">Cubo 7x7: <?php echo $fav_7x7 ?></h5>
+        <h5 class="nome_tempos_cubo">Cubo 7x7: <?php if ($fav_7x7 > 0) {echo $fav_7x7;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/piramynx.png" alt="Piramynx">
-        <h5 class="nome_tempos_cubo">Piramynx: <?php echo $fav_piramynx ?></h5>
+        <h5 class="nome_tempos_cubo">Piramynx: <?php if ($fav_piramynx > 0) {echo $fav_piramynx;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/megaminx.png" alt="megaminx">
-        <h5 class="nome_tempos_cubo">Megaminx: <?php echo $fav_megaminx ?></h5>
+        <h5 class="nome_tempos_cubo">Megaminx: <?php if ($fav_megaminx > 0) {echo $fav_megaminx;}else{echo "N/A";} ?></h5>
     </div>
 </div>
 
 <div class="tempos_p_cubo">
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/skewb.png" alt="skewb">
-        <h5 class="nome_tempos_cubo">Skewb: <?php echo $fav_skewb ?></h5>
+        <h5 class="nome_tempos_cubo">Skewb: <?php if ($fav_skewb > 0) {echo $fav_skewb;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/square1.png" alt="square-1">
-        <h5 class="nome_tempos_cubo">Square-1: <?php echo $fav_square1 ?></h5>
+        <h5 class="nome_tempos_cubo">Square-1: <?php if ($fav_square1 > 0) {echo $fav_square1;}else{echo "N/A";} ?></h5>
     </div>
 
     <div class="tempo_cubo">
         <img class="img_tempos_cubo" src="imagens/clock.png" alt="clock">
-        <h5 class="nome_tempos_cubo">Clock: <?php echo $fav_clock ?></h5>
+        <h5 class="nome_tempos_cubo">Clock: <?php if ($fav_clock > 0) {echo $fav_clock;}else{echo "N/A";} ?></h5>
     </div>
 </div>
 

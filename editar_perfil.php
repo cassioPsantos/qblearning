@@ -22,19 +22,19 @@ if (isset($_POST['btnEnviar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $descricao =  $_POST['descricao'];
-    
-    $sql = "UPDATE usuarios
-            SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
-                email = '$email', descricao = '$descricao'
-            WHERE id='$id_usuario' AND senha='$senha'";
-    mysqli_query($conn, $sql);
 
+    $sql = "SELECT senha FROM usuarios WHERE id='$id_usuario' AND senha='$senha'";
+    mysqli_query($conn, $sql);
+    
     if (mysqli_affected_rows($conn) > 0) {
-        echo "<script> alert('Usuário atualizado com sucesso.') </script>";
+        $sql = "UPDATE usuarios
+                SET nome_usuario = '$nome_usuario', nome_completo = '$nome_completo', 
+                email = '$email', descricao = '$descricao'
+                WHERE id='$id_usuario' AND senha='$senha'";
+        mysqli_query($conn, $sql);
         header("Location: http://localhost/qblearning/perfil.php");
-        } 
-        else {
-        echo "<script> alert('Ocorreu algum erro.') </script>";
+    } else {
+        echo "<script> alert('Senha incorreta.') </script>";
     }
 } else {
     $sql = "SELECT * FROM usuarios WHERE id='$id_usuario'";
